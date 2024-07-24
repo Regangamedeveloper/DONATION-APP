@@ -1,11 +1,11 @@
-import Home from "./pages/home/Home";
-import Login from "./pages/login/Login";
-import Donations from "./pages/donations/Donations";
-import RequestDonation from "./pages/requestdonation/RequestDonation";
-import AddCompaigns from "./pages/addcompaigns/AddCompaigns";
-import Compaigns from "./pages/campaigns/Campaigns";
-import RequestStatus from "./pages/requeststatus/RequestStatus";
-import Transactions from "./pages/transactions/Transactions";
+import Home from './charity/pages/home/Home';
+import Login from "./charity/pages/login/Login";
+import Donations from "./charity/pages/donations/Donations";
+import RequestDonation from "./charity/pages/requestdonation/RequestDonation";
+import AddCompaigns from "./charity/pages/addcompaigns/AddCompaigns";
+import Compaigns from "./charity/pages/campaigns/Campaigns";
+import RequestStatus from "./charity/pages/requeststatus/RequestStatus";
+import Transactions from "./charity/pages/transactions/Transactions";
 import {
   BrowserRouter,
   Routes,

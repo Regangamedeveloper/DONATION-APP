@@ -1,6 +1,19 @@
 .home{
-    background-color: aqua;
-    .title{
-        color:white;
+  background-color:white;
+   display: flex;
+  .homeContainer{
+    flex:6;
+    .widgets{
+      display: flex;
     }
-}
+    .regan{
+      display: flex;
+      margin:none ;
+      width: 1200px;
+      height: 600px;
+    }
+  }
+
+    }
+
+ 
