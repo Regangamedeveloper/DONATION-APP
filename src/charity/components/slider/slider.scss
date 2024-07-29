@@ -1,0 +1,88 @@
+.slider{
+    height: 100%;
+    width:100%;
+    position: relative;
+  
+    .des{
+        width: 600px;
+        position:absolute;
+        z-index: 999;
+        color: aliceblue;
+        top: 20px;
+        left: 10px;
+    }
+    .des h1{
+        font-size:46px;
+    }
+    .des p{
+        font-size: 22px;
+    }
+    .bot{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding:300px;
+    }
+    .bot span{
+        width: 45px;
+        height: 12px;
+        background-color: rgb(179,178,176);
+        margin-left: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 3px ,2px,2px rgba(73,72,72,0.338);
+    }
+    .hero {
+        padding: 2rem; /* Choose one padding value */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        margin-left: 400px;
+        button {
+          background-color: #007B5F;
+          color: white;
+          padding: 1rem 2rem;
+          border: none;
+          border-radius: 5px;
+          font-size: 1.1rem;
+          font-weight: bold;
+          transition: background-color 0.3s ease;
+          margin:-70px;
+          cursor: pointer;
+          &:hover {
+            background-color: #0056b3;
+          }
+        }
+      }
+      .silderContainer{
+            /* Basic Styling */
+            width: 80%; /* Adjust width as needed */
+            margin: 50px auto; /* Center the container */
+            padding: 30px; 
+            background-color: #f8f8f8; /* Light background color */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Center the heading */
+
+            /* Animation - Customize for your desired slider effect */
+            /* Example: Fade-in animation */
+            animation: fadeIn 1s ease-in-out;
+        h2{
+            color: #007B5F; /* Darker text color for contrast */
+            margin-bottom: 20px;
+            
+        }
+        @keyframes fadeIn {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
+          }
+      }
+
+
+}

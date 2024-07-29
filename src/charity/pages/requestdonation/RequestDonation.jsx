@@ -1,9 +1,98 @@
-import "./requestdonation.scss"
-const RequestDonation = ()=>{
-    return(
-        <div className="requestdonation">
-        <h1 className="title">compaign</h1>
+import "./requestdonation.scss";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Navbar from "../../components/navbar/Navbar";
+import Sidebar from "../../components/sidebar/Sidebar";
+import React, { useState } from "react";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import { rows as initialRows } from "../../components/request"; 
+const RequestDonation = () => {
+  const [selectedValues, setSelectedValues] = useState({});
+  const [searchTerm, setSearchTerm] = useState("");
+  const [rows] = useState(initialRows);
+
+  const handleChange = (event, rowId) => {
+    setSelectedValues({
+      ...selectedValues,
+      [rowId]: event.target.value,
+    });
+  };
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredRows = rows.filter((row) => {
+    return (
+      row.id.toString().includes(searchTerm) ||
+      row.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  });
+
+  return (
+    <div className="requestdonation">
+      <Sidebar />
+      <div className="requestdonationContainer">
+        <Navbar />
+        <div className="top">
+          <h1>REQUEST DONATION DETAILS</h1>
         </div>
-    )
-}
+
+        <div className="bottom">
+          <TableContainer className="table">
+          <div className="bar">
+          <TextField
+            label="Search Donors"
+            variant="outlined"
+            value={searchTerm}
+            onChange={handleSearchChange}
+            sx={{ width: "50%", mb: 2 }}
+          />
+          </div>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell className="tablell">ID</TableCell>
+                  <TableCell className="tablell">Name</TableCell>
+                  <TableCell className="tablell">Select Campaign</TableCell>
+                  <TableCell className="tablell">Action</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {filteredRows.map((row) => (
+                  <TableRow key={row.id}>
+                    <TableCell className="tableCell">{row.id}</TableCell>
+                    <TableCell className="tableCell">{row.name}</TableCell>
+                    <TableCell className="tableCell">
+                      <select
+                        value={selectedValues[row.id] || "none"}
+                        onChange={(event) => handleChange(event, row.id)}
+                      >
+                        <option value="none">Select Campaign</option>
+                        <option value="option1">Campaign A</option>
+                        <option value="option2">Campaign B</option>
+                        {/* Add more campaign options as needed */}
+                      </select>
+                    </TableCell>
+                    <TableCell className="tableCell">
+                      <Button variant="contained" color="primary">
+                        Request
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default RequestDonation;

@@ -10,28 +10,26 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  Link,
 } from "react-router-dom";
 function App() {
   return (
-    <div className="App">
+      <div className="App">
       <BrowserRouter>
       <Routes>
         <Route path ="/">
         <Route index element ={<Home/>}/>
         <Route path="login" index element ={<Login/>}/>
-        <Route path="addcompaigns" index element ={<AddCompaigns/>}/>
-        <Route path="compaigns" index element ={<Compaigns/>}/>
+        <Route path="addcampaigns" index element ={<AddCompaigns/>}/>
+        <Route path="campaigns" index element ={<Compaigns/>}/>
         <Route path="donations" index element ={<Donations/>}/>
         <Route path="requestdonation" index element ={<RequestDonation/>}/>
-        <Route path="request status" index element ={<RequestStatus/>}/>
+        <Route path="requeststatus" index element ={<RequestStatus/>}/>
         <Route path="transactions" index element ={<Transactions/>}/>
         </Route>
       </Routes>
       </BrowserRouter>
-
     </div>
   );
-}
+};
 
 export default App;
