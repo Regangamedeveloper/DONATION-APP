@@ -6,11 +6,18 @@ import AddCompaigns from "./charity/pages/addcompaigns/AddCompaigns";
 import Compaigns from "./charity/pages/campaigns/Campaigns";
 import RequestStatus from "./charity/pages/requeststatus/RequestStatus";
 import Transactions from "./charity/pages/transactions/Transactions";
+import DonorHome from "./donor/pages/donorhome/DonorHome";
 import {
   BrowserRouter,
   Routes,
   Route,
 } from "react-router-dom";
+import Donate from "./donor/pages/donate/Donate";
+import Donationrequest from "./donor/pages/donationrequest/Donationrequest";
+import Trackdonation from "./donor/pages/trackdonation/Trackdonation";
+import TransactionsD from "./donor/pages/transactions/TransactionsD";
+import Donorp from "./donor/pages/profile/Donorp";
+
 function App() {
   return (
       <div className="App">
@@ -25,6 +32,12 @@ function App() {
         <Route path="requestdonation" index element ={<RequestDonation/>}/>
         <Route path="requeststatus" index element ={<RequestStatus/>}/>
         <Route path="transactions" index element ={<Transactions/>}/>
+        <Route path="donorhome" index element ={<DonorHome/>}/>
+        <Route path="donate" index element ={<Donate/>}/>
+        <Route path="donationrequest" index element ={<Donationrequest/>}/>
+        <Route path="trackdonation" index element ={<Trackdonation/>}/>
+        <Route path="transaction" index element ={<TransactionsD/>}/>
+        <Route path="profile" index element ={<Donorp/>}/>
         </Route>
       </Routes>
       </BrowserRouter>

@@ -1,0 +1,41 @@
+.track-donation-page {
+    padding: 10px;
+    background-color: #f9f9f9;
+  
+    .track-donation-content {
+      max-width: 1000px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+      h1 {
+        text-align: center;
+        color: #017960;
+        margin-bottom: 20px;
+      }
+  
+      .donation-table {
+        width: 100%;
+        border-collapse: collapse;
+  
+        th,
+        td {
+          padding: 10px;
+          text-align: left;
+          border-bottom: 1px solid #ddd;
+        }
+  
+        th {
+          background-color: #017960;
+          color: #fff;
+        }
+  
+        tr:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+      }
+    }
+  }
+  
