@@ -4,6 +4,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import React, { useState } from 'react';
 import {Link} from "react-router-dom";
+import Adminfooter from "../../../Admin/components/Adminfooter";
 const AddCompaigns = ()=>{
     const [description, setDescription] = useState('');
     const [endDate, setEndDate] = useState("");
@@ -72,6 +73,8 @@ const AddCompaigns = ()=>{
     </Link>
 </form>
     </div>
+    
+    <Adminfooter/>
     </div>
        </div>
        
