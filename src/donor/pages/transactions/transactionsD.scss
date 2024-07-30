@@ -1,0 +1,51 @@
+.transactions-page {
+    padding: 10px;
+    background-color: #f9f9f9;
+  
+    .transactions-content {
+      max-width: 1000px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+      h1 {
+        text-align: center;
+        color: #017960;
+        margin-bottom: 20px;
+      }
+  
+      .transactions-table {
+        width: 100%;
+        border-collapse: collapse;
+  
+        th,
+        td {
+          padding: 10px;
+          text-align: left;
+          border-bottom: 1px solid #ddd;
+        }
+  
+        th {
+          background-color: #017960;
+          color: #fff;
+        }
+  
+        .print-button {
+          background-color: #017960;
+          color: #fff;
+          padding: 5px 10px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+  
+          &:hover {
+            background-color: #014f40;
+          }
+        }
+      }
+    }
+  }
+  
