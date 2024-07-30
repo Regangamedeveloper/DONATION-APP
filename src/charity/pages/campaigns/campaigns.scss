@@ -1,0 +1,102 @@
+$gray-light: #f5f5f5;
+$green-primary: #007B5F;
+$white: #fff;
+.campaigns{
+    display: flex;
+    gap: 15px;
+    .campaignsContainer{
+      background-color: whitesmoke;
+      height: 158vh;
+        flex:6;
+        .top , 
+        .bottom{
+            -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
+padding: 10px;
+margin: 20px;
+display: flex; 
+h1{
+  text-align: center;
+    color:#007B5F; 
+    display: flex;
+    margin-left: 20%;
+   
+ }
+ 
+  .bar{
+    display: flex;    
+    width: 60%;
+    margin-left: 700px;
+    .MuiTextField-root { 
+      width: 50%;            /* Adjust width as needed */
+      
+      /* Optional: Style the input field itself */
+      input {
+      padding: 15px; /* Add some padding to the input */
+        border-radius: 4px; /* Round the corners */
+      }
+
+ }
+}
+.table {
+  .tableCell{
+    text-align: center;
+  }
+  .cellWrapper {
+    display: flex;
+    align-items: center;
+    border-bottom: 15px;
+    .image {
+      width: 70px;
+      height: 70px;
+      margin-right: 10px;
+      object-fit: cover
+      }
+    }
+    .status {
+      padding: 5px;
+      border-radius: 5px;
+  
+      &.Approved {
+        background-color: #4CAF50; /* Green for Approved */
+  color: white;
+      }
+      &.Pending {
+        background-color: #FFC107; /* Yellow for Pending */
+  color: black;
+      }
+      &.Closed{
+        background-color: #F44336; /* Red for Rejected */
+  color: white;
+      }
+    }
+    .tablell {
+      font-size: 15px;
+      font-weight: bold;
+      background-color:#007B5F;/* Green color */
+      color: white; /* Make text white for better contrast */
+      padding: 8px;
+      text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100px; 
+  text-align: center;
+    }
+    tbody {
+      tr {
+        background-color: $gray-light;
+        &:nth-child(even) {
+          background-color: $white; // Alternate row colors
+          text-align: center;
+        }
+
+      }
+    }
+    
+    
+  }
+      
+}
+}
+}

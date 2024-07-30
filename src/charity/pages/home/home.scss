@@ -1,6 +1,27 @@
-.home{
-    background-color: aqua;
-    .title{
-        color:white;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.home {
+  display: flex;
+  font-family: ' sans-serif';
+  gap: 15px;
+  .homeContainer {
+    flex: 6;
+    padding: 2rem;
+    background-color: whitesmoke;
+    height: 145vh;
+    .top {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      background-color: #f2f2f2;
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color:#007B5F;
+      }
     }
-}
+
+  }
+  }

@@ -1,37 +1,48 @@
-import Home from "./pages/home/Home";
-import Login from "./pages/login/Login";
-import Donations from "./pages/donations/Donations";
-import RequestDonation from "./pages/requestdonation/RequestDonation";
-import AddCompaigns from "./pages/addcompaigns/AddCompaigns";
-import Compaigns from "./pages/campaigns/Campaigns";
-import RequestStatus from "./pages/requeststatus/RequestStatus";
-import Transactions from "./pages/transactions/Transactions";
+import Home from './charity/pages/home/Home';
+import Login from "./charity/pages/login/Login";
+import Donations from "./charity/pages/donations/Donations";
+import RequestDonation from "./charity/pages/requestdonation/RequestDonation";
+import AddCompaigns from "./charity/pages/addcompaigns/AddCompaigns";
+import Compaigns from "./charity/pages/campaigns/Campaigns";
+import RequestStatus from "./charity/pages/requeststatus/RequestStatus";
+import Transactions from "./charity/pages/transactions/Transactions";
+import DonorHome from "./donor/pages/donorhome/DonorHome";
 import {
   BrowserRouter,
   Routes,
   Route,
-  Link,
 } from "react-router-dom";
+import Donate from "./donor/pages/donate/Donate";
+import Donationrequest from "./donor/pages/donationrequest/Donationrequest";
+import Trackdonation from "./donor/pages/trackdonation/Trackdonation";
+import TransactionsD from "./donor/pages/transactions/TransactionsD";
+import Donorp from "./donor/pages/profile/Donorp";
+
 function App() {
   return (
-    <div className="App">
+      <div className="App">
       <BrowserRouter>
       <Routes>
         <Route path ="/">
         <Route index element ={<Home/>}/>
         <Route path="login" index element ={<Login/>}/>
-        <Route path="addcompaigns" index element ={<AddCompaigns/>}/>
-        <Route path="compaigns" index element ={<Compaigns/>}/>
+        <Route path="addcampaigns" index element ={<AddCompaigns/>}/>
+        <Route path="campaigns" index element ={<Compaigns/>}/>
         <Route path="donations" index element ={<Donations/>}/>
         <Route path="requestdonation" index element ={<RequestDonation/>}/>
-        <Route path="request status" index element ={<RequestStatus/>}/>
+        <Route path="requeststatus" index element ={<RequestStatus/>}/>
         <Route path="transactions" index element ={<Transactions/>}/>
+        <Route path="donorhome" index element ={<DonorHome/>}/>
+        <Route path="donate" index element ={<Donate/>}/>
+        <Route path="donationrequest" index element ={<Donationrequest/>}/>
+        <Route path="trackdonation" index element ={<Trackdonation/>}/>
+        <Route path="transaction" index element ={<TransactionsD/>}/>
+        <Route path="profile" index element ={<Donorp/>}/>
         </Route>
       </Routes>
       </BrowserRouter>
-
     </div>
   );
-}
+};
 
 export default App;
