@@ -74,8 +74,10 @@ const RequestDonation = () => {
                         onChange={(event) => handleChange(event, row.id)}
                       >
                         <option value="none">Select Campaign</option>
-                        <option value="option1">Campaign A</option>
-                        <option value="option2">Campaign B</option>
+                        <option value="option1">Education</option>
+                        <option value="option2">Health</option>
+                        <option value="option2">land</option>
+                        <option value="option2">Water</option>
                         {/* Add more campaign options as needed */}
                       </select>
                     </TableCell>

@@ -12,6 +12,9 @@ import TextField from "@mui/material/TextField";
 import { rows as initialRows } from "../../components/status"; 
 
 const RequestStatus = () => {
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
+  };
   const [searchTerm, setSearchTerm] = useState("");
   const [rows] = useState(initialRows); 
 
@@ -72,7 +75,7 @@ const RequestStatus = () => {
                         <img src={row.img} alt="" className="image" />
                       </div>
                     </TableCell>
-                    <TableCell className="tableCell">{row.amount}</TableCell>
+                    <TableCell className="tableCell">{formatCurrency(row.amount)}</TableCell>
                     <TableCell className="tableCell">{row.donor}</TableCell>
                     <TableCell className="tableCell">
                       {row.registeredDate}

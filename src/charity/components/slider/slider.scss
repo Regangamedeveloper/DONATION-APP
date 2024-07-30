@@ -2,20 +2,22 @@
     height: 100%;
     width:100%;
     position: relative;
-  
     .des{
         width: 600px;
         position:absolute;
         z-index: 999;
         color: aliceblue;
         top: 20px;
-        left: 10px;
+        text-align: center;
+        margin-left: 200px;
     }
     .des h1{
         font-size:46px;
+        position: relative;
     }
     .des p{
         font-size: 22px;
+        position: relative;
     }
     .bot{
         display: flex;
@@ -32,30 +34,15 @@
         cursor: pointer;
         box-shadow: 3px ,2px,2px rgba(73,72,72,0.338);
     }
-    .hero {
-        padding: 2rem; /* Choose one padding value */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        justify-content: center;
-        margin-left: 400px;
-        button {
-          background-color: #007B5F;
-          color: white;
-          padding: 1rem 2rem;
-          border: none;
-          border-radius: 5px;
-          font-size: 1.1rem;
-          font-weight: bold;
-          transition: background-color 0.3s ease;
-          margin:-70px;
-          cursor: pointer;
-          &:hover {
-            background-color: #0056b3;
-          }
-        }
-      }
+    .transparent{
+      width: 100%;
+      height: 50vh;
+      position: absolute;
+      z-index:"998";
+      top:0;
+      left:0;
+      background-image:linear-gradient(to top,rgba(255,0,0,0),#007B5F);
+    }
       .silderContainer{
             /* Basic Styling */
             width: 80%; /* Adjust width as needed */
@@ -83,6 +70,7 @@
             }
           }
       }
+      
 
 
 }

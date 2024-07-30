@@ -11,6 +11,10 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import {  rows as initialRows } from "../../components/campaign";
 const Campaigns = () => {
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
+  };
+
   const [searchTerm, setSearchTerm] = useState("");
   const [rows] = useState(initialRows);
 
@@ -69,8 +73,8 @@ const Campaigns = () => {
                       </div>
                     </TableCell>
                     <TableCell className="tableCell">{row.description}</TableCell>
-                    <TableCell className="tableCell">{row.amount}</TableCell>
-                    <TableCell className="tableCell">{row.amountCollected}</TableCell>
+                    <TableCell className="tableCell">{formatCurrency(row.amount)}</TableCell>
+                    <TableCell className="tableCell">{formatCurrency(row.amountCollected)}</TableCell>
                     <TableCell className="tableCell">{row.EndDate}</TableCell>
                     <TableCell className="tableCell">{row.registeredDate}</TableCell>
                     <TableCell className="tableCell">
