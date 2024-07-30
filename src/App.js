@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import Home from './charity/pages/home/Home';
 import Login from "./charity/pages/login/Login";
 import Donations from "./charity/pages/donations/Donations";
@@ -38,6 +39,21 @@ function App() {
         <Route path="trackdonation" index element ={<Trackdonation/>}/>
         <Route path="transaction" index element ={<TransactionsD/>}/>
         <Route path="profile" index element ={<Donorp/>}/>
+=======
+        
+>>>>>>> Stashed changes
+        </Route>
+        
+        <Route path="admin" element={<Adminlayout />}>
+            <Route index element={<Adminhome />} />
+            <Route path="donordetails" index element={<Donordetails />} /> 
+            <Route path="charitydetails" index element={<Charitydetails />} /> 
+            <Route path="donationdetails" index element={<Donationdetails />} /> 
+            <Route path="campaigndetails" index element={<Campaigndetails />} /> 
+            <Route path="userinfo/:id" index element={<Userinfo />} /> 
+            <Route path="charityinfo/:id" index element={<Charityinfo />} /> 
+            <Route path="campaigninfo/:id" index element={<Campaigninfo />} /> 
+            <Route path="adminprofile" index element={<Adminprofile />} /> 
         </Route>
       </Routes>
       </BrowserRouter>
