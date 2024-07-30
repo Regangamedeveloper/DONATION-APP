@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+
 import Home from './charity/pages/home/Home';
 import Login from "./charity/pages/login/Login";
 import Donations from "./charity/pages/donations/Donations";
@@ -18,6 +18,17 @@ import Donationrequest from "./donor/pages/donationrequest/Donationrequest";
 import Trackdonation from "./donor/pages/trackdonation/Trackdonation";
 import TransactionsD from "./donor/pages/transactions/TransactionsD";
 import Donorp from "./donor/pages/profile/Donorp";
+import Adminhome from './Admin/pages/Adminhome';
+import Adminlayout from './Admin/Adminlayout';
+import Adminprofile from './Admin/pages/Adminprofile';
+import Campaigndetails from './Admin/pages/Campaigndetails';
+import { Campaigninfo } from './Admin/pages/Campaigninfo';
+import Charitydetails from './Admin/pages/Charitydetails';
+import { Charityinfo } from './Admin/pages/Charityinfo';
+import Donationdetails from './Admin/pages/Donationdetails';
+import Donordetails from './Admin/pages/Donordetails';
+import { Userinfo } from './Admin/pages/Userinfo';
+import './styles.scss';
 
 function App() {
   return (
@@ -39,9 +50,6 @@ function App() {
         <Route path="trackdonation" index element ={<Trackdonation/>}/>
         <Route path="transaction" index element ={<TransactionsD/>}/>
         <Route path="profile" index element ={<Donorp/>}/>
-=======
-        
->>>>>>> Stashed changes
         </Route>
         
         <Route path="admin" element={<Adminlayout />}>
