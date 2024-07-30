@@ -1,10 +1,10 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import { DataGrid, GridToolbar, renderActionsCell } from '@mui/x-data-grid';
+import { DataGrid, GridToolbar} from '@mui/x-data-grid';
 import { Link } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
 // import EditIcon from '@mui/icons-material/Edit';
-import { Edit } from '@mui/icons-material';
+import EditIcon from '@mui/icons-material/Edit';
 import { Tooltip } from '@mui/material';
 
 
@@ -32,7 +32,7 @@ export default function Datatable(props) {
         return <div className="action"> 
          <Tooltip title='view activity & Edit user'>
          <Link to={`/${props.slug}/${params.row.id}`}>
-            <Edit style={{ 
+            <EditIcon style={{ 
             border:'none',
             borderRadius:'5px',
             padding:'5px',

@@ -11,6 +11,7 @@ import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { rows as initialRows } from "../../components/request"; 
+import Adminfooter from "../../../Admin/components/Adminfooter";
 const RequestDonation = () => {
   const [selectedValues, setSelectedValues] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
@@ -92,6 +93,7 @@ const RequestDonation = () => {
             </Table>
           </TableContainer>
         </div>
+        <Adminfooter/>
       </div>
     </div>
   );
