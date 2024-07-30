@@ -1,0 +1,39 @@
+.homeadmin {
+  padding: 20px;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(180px, auto);
+  background-color: white;
+
+  
+}
+
+.box {
+  height: auto;
+  padding: 20px;
+  border-radius: 5px; /* Increase border radius for a softer look */
+  border: none; /* Remove the border */
+  background-color: white;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05); /* Add a subtle box shadow to each box */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Add smooth transitions on hover */
+
+  &:hover {
+    transform: translateY(-3px); /* Lift the box slightly on hover */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Increase box shadow on hover */
+  }
+
+  &.box1 {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+  &.box2 {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  &.box7 {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+}
