@@ -23,10 +23,10 @@
       }
   
       .bottom {
-        display: flex;
+        display: flexbox;
         flex-direction: column;
         gap: 20px;
-  
+      
         .items {
           display: flex;
           flex-direction: column;
