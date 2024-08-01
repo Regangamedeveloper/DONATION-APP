@@ -10,6 +10,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TextField from "@mui/material/TextField"; 
 import { rows as initialRows } from "../../components/status"; 
+import Adminfooter from "../../../Admin/components/Adminfooter";
 
 const RequestStatus = () => {
   const formatCurrency = (amount) => {
@@ -86,6 +87,7 @@ const RequestStatus = () => {
             </Table>
           </TableContainer>
         </div>
+        <Adminfooter/>
       </div>
     </div>
   );

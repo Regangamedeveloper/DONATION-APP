@@ -13,6 +13,7 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
+import Adminfooter from '../../../Admin/components/Adminfooter';
 
 const Donations = () => {
   const [rows, setRows] = useState(initialRows);
@@ -212,7 +213,7 @@ const Donations = () => {
             </Button>
           </Box>
         </Modal>
-
+        <Adminfooter/>
       </div>
     </div> 
   );

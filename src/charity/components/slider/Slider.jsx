@@ -1,6 +1,8 @@
 import "./slider.scss"
 import { useState } from "react";
 import { useEffect } from "react";
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import AdsClickIcon from '@mui/icons-material/AdsClick';
 const Slider = ()=>{
     const imageSlider=[{
         url:"https://images.pexels.com/photos/8060425/pexels-photo-8060425.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -68,11 +70,16 @@ const Slider = ()=>{
                 </div>
                 </div>
                 <div className="silderContainer">
-                <h2>Mission</h2>
-                <p>ADRA's purpose is to serve humanity so all may live as God intended</p>
+                <VisibilityIcon className="icon"/>
+                <h1>Purpose Statement</h1>
+                <p> To serve humanity so all may live as God intended</p>
                 </div>
-
-
+                <div className="silderContainer">
+                <AdsClickIcon />
+                <h2>Motto</h2>
+                <p>Justice,Compassion,Love</p>
+                </div>
+                
         </div>
     )
 }

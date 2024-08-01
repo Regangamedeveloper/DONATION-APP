@@ -35,6 +35,15 @@
         tr:nth-child(even) {
           background-color: #f2f2f2;
         }
+        .vp-btn{
+          background-color: #017960;
+          color: #fff;
+          padding: 5px 10px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+        }
       }
     }
   }

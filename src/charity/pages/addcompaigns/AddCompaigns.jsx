@@ -1,9 +1,10 @@
 import "./addcompaigns.scss"
 import Navbar from "../../components/navbar/Navbar"
 import Sidebar from "../../components/sidebar/Sidebar";
-import UploadFileIcon from '@mui/icons-material/UploadFile';
+import UnarchiveTwoToneIcon from '@mui/icons-material/UnarchiveTwoTone';
 import React, { useState } from 'react';
 import {Link} from "react-router-dom";
+import Adminfooter from "../../../Admin/components/Adminfooter";
 const AddCompaigns = ()=>{
     const [description, setDescription] = useState('');
     const [endDate, setEndDate] = useState("");
@@ -23,7 +24,7 @@ const AddCompaigns = ()=>{
         <div className="addcompaignsContainer">
         <Navbar/>
         <div className="top">
-            <h1>ADD COMPAIGN </h1>
+            <h1>ADD CAMPAIGN </h1>
             </div>
        <div className="bottom">
         <div className="items">
@@ -34,7 +35,7 @@ const AddCompaigns = ()=>{
     </div>
     <div className="formInput">
         <label htmlFor="file"  >
-        Compaign image:<UploadFileIcon className="icon"/></label>
+        Compaign image:<UnarchiveTwoToneIcon className="icon"/></label>
         <input type="file" id ="file" style={{display:""}} />
     </div>
     <div className="formInput">
@@ -67,11 +68,13 @@ const AddCompaigns = ()=>{
     </div>
     <Link to="/campaigns"style={{textDecoration:"none"}}>
     <button>
-        submit
+        SUBMIT
     </button>
     </Link>
 </form>
     </div>
+    
+    <Adminfooter/>
     </div>
        </div>
        

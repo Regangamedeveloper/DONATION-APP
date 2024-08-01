@@ -52,7 +52,11 @@ const TrackDonation = () => {
                 <td>{donation.amountDonated.toLocaleString()}</td>
                 <td>{donation.donationDate}</td>
                 <td>{donation.status}</td>
-                <td>{donation.impact}</td>
+                <td>
+                  <button className='vp-btn'>
+                    View Report
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>

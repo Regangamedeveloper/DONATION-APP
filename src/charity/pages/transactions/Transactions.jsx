@@ -10,6 +10,7 @@ import TableRow from "@mui/material/TableRow";
 import "./transactions.scss";
 import { rows as initialRows } from "../../components/transactions";
 import TextField from "@mui/material/TextField"; 
+import Adminfooter from "../../../Admin/components/Adminfooter";
 
 const Transactions = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -76,6 +77,7 @@ const Transactions = () => {
             </Table>
           </TableContainer>
         </div>
+        <Adminfooter/>
       </div>
     </div>
   );

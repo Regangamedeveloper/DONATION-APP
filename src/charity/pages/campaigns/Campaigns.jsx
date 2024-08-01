@@ -10,6 +10,7 @@ import TableRow from "@mui/material/TableRow";
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import {  rows as initialRows } from "../../components/campaign";
+import Adminfooter from "../../../Admin/components/Adminfooter";
 const Campaigns = () => {
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
@@ -36,7 +37,7 @@ const Campaigns = () => {
       <div className="campaignsContainer">
         <Navbar />
         <div className="top">
-          <h1>FUNDRAISING CAMPAIGN DETAILS</h1>
+          <h1>CAMPAIGN DETAILS</h1>
         </div>
 
         <div className="bottom">
@@ -86,6 +87,7 @@ const Campaigns = () => {
             </Table>
           </TableContainer>
         </div>
+        <Adminfooter/>
       </div>
     </div>
   );
