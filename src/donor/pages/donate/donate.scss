@@ -1,120 +1,99 @@
 .donate-page {
-    padding: 10px;
-    background-color: #f9f9f9;
-  
-    .donate-content {
-      max-width: 800px;
-      margin: auto;
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  
-      h1 {
-        text-align: center;
-        color: #017960;
-        margin-bottom: 20px;
-      }
-  
-      .program-details,
-      .donation-details,
-      .payment-methods,
-      .additional-options {
-        margin: 20px 0;
-      }
-  
-      .program-list {
-        display: flex;
-        flex-wrap: wrap;
-        
-        .program {
-          background: #fff;
-          padding: 15px;
-          margin: 10px;
-          border-radius: 8px;
-          cursor: pointer;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-          transition: background 0.3s;
-  
-          &.selected {
-            background: #d1d099;
-          }
-  
-          h3 {
-            color: #017960;
-          }
-  
-          p {
-            color: #555;
-          }
-        }
-      }
-  
-      .amount-options {
-        display: flex;
-        gap: 10px;
-        margin: 10px 0;
-  
-        button,
-        input {
-          padding: 10px;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-        }
-  
-        button {
-          background-color: #017960;
-          color: #fff;
-          cursor: pointer;
-          transition: background-color 0.3s;
-  
-          &:hover {
-            background-color: #014f40;
-          }
-        }
-  
-        input {
-          width: 100px;
-        }
-      }
-  
-      select,
+  padding: 0;
+  background-color: #f9f9f9;
+
+  .donate-content {
+    max-width: 800px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    h1 {
+      text-align: center;
+      color: #017960;
+      margin-bottom: 20px;
+    }
+
+    .program-details,
+    .donation-details,
+    .payment-methods,
+    .additional-options {
+      margin: 20px 0;
+    }
+
+    select,
+    input {
+      padding: 10px;
+      width: 100%;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .amount-options {
+      display: flex;
+      gap: 5px;
+      margin: 5px 0;
+
+      button,
       input {
         padding: 10px;
-        width: 100%;
-        margin: 10px 0;
         border: 1px solid #ccc;
         border-radius: 5px;
       }
-  
-      .additional-options {
-        ul {
-          list-style: none;
-          padding: 0;
-  
-          li {
-            background: #fff;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-          }
-        }
-      }
-  
+
       button {
         background-color: #017960;
         color: #fff;
-        padding: 15px;
-        border: none;
-        border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s;
-  
+
         &:hover {
           background-color: #014f40;
         }
       }
+
+      input {
+        width: 100px;
+      }
+    }
+
+    .mobile-money,
+    .card-details {
+      margin-top: 20px;
+    }
+
+    button {
+      background-color: #017960;
+      color: #fff;
+      padding: 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      //width: 100%;
+      text-align: center;
+
+      &:hover {
+        background-color: #014f40;
+      }
+    }
+
+    .success-message {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #e6f7e6;
+      border: 1px solid #c6e6c6;
+      border-radius: 5px;
+      color: #333;
+      text-align: center;
+
+      h2 {
+        margin-bottom: 10px;
+        color: #017960;
+      }
     }
   }
-  
+}

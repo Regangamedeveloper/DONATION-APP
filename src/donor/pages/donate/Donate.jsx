@@ -7,9 +7,14 @@ const Donate = () => {
   const [donationFrequency, setDonationFrequency] = useState('one-time');
   const [charityProgram, setCharityProgram] = useState('');
   const [dedication, setDedication] = useState('');
+  const [paymentMethod, setPaymentMethod] = useState('');
+  const [mobileNumber, setMobileNumber] = useState('');
+  const [cardDetails, setCardDetails] = useState({ number: '', expiry: '', cvv: '' });
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleDonate = () => {
     // Handle donation logic
+    setIsSuccess(true); // Simulate successful transaction
   };
 
   return (
@@ -19,25 +24,12 @@ const Donate = () => {
         <h1>Donate to a Charity Program</h1>
 
         <section className="program-details">
-          <h2>Select a Program</h2>
-          {/* Example program listing */}
-          <div className="program-list">
-            <div
-              className={`program ${charityProgram === 'Education Program' ? 'selected' : ''}`}
-              onClick={() => setCharityProgram('Education Program')}
-            >
-              <h3>Education Program</h3>
-              <p>Providing education resources to underprivileged children.</p>
-            </div>
-            <div
-              className={`program ${charityProgram === 'Health Program' ? 'selected' : ''}`}
-              onClick={() => setCharityProgram('Health Program')}
-            >
-              <h3>Health Program</h3>
-              <p>Ensuring healthcare access in remote areas.</p>
-            </div>
-            {/* Add more programs as needed */}
-          </div>
+          <h2>Select a Charity Campaign</h2>
+          <select value={charityProgram} onChange={(e) => setCharityProgram(e.target.value)}>
+            <option value="">Select a Program</option>
+            <option value="Education Program">Education Program</option>
+            <option value="Health Program">Health Program</option>
+          </select>
         </section>
 
         <section className="donation-details">
@@ -76,19 +68,60 @@ const Donate = () => {
 
         <section className="payment-methods">
           <h2>Payment Methods</h2>
-          {/* Payment method selection */}
+          <label>Choose Payment Method</label>
+          <select value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value)}>
+            <option value="">Select Payment Method</option>
+            <option value="mobile-money">Mobile Money</option>
+            <option value="visa">Visa</option>
+          </select>
+
+          {paymentMethod === 'mobile-money' && (
+            <div className="mobile-money">
+              <label>Mobile Number</label>
+              <input
+                type="tel"
+                placeholder="Enter Mobile Number"
+                value={mobileNumber}
+                onChange={(e) => setMobileNumber(e.target.value)}
+              />
+            </div>
+          )}
+
+          {paymentMethod === 'visa' && (
+            <div className="card-details">
+              <label>Card Number</label>
+              <input
+                type="text"
+                placeholder="Card Number"
+                value={cardDetails.number}
+                onChange={(e) => setCardDetails({ ...cardDetails, number: e.target.value })}
+              />
+              <label>Expiry Date</label>
+              <input
+                type="text"
+                placeholder="MM/YY"
+                value={cardDetails.expiry}
+                onChange={(e) => setCardDetails({ ...cardDetails, expiry: e.target.value })}
+              />
+              <label>CVV</label>
+              <input
+                type="text"
+                placeholder="CVV"
+                value={cardDetails.cvv}
+                onChange={(e) => setCardDetails({ ...cardDetails, cvv: e.target.value })}
+              />
+            </div>
+          )}
         </section>
 
         <button onClick={handleDonate}>Donate Now</button>
 
-        {/* <section className="additional-options">
-          <h2>Other Options</h2>
-          <ul>
-            <li>Corporate Matching</li>
-            <li>Volunteer Opportunities</li>
-            <li>Subscribe to Newsletter</li>
-          </ul>
-        </section> */}
+        {isSuccess && (
+          <div className="success-message">
+            <h2>Thank you for your donation!</h2>
+            <p>Your contribution has been successfully processed.</p>
+          </div>
+        )}
       </div>
     </div>
   );
