@@ -11,6 +11,7 @@ const DonationRequest = () => {
       programPicture: '/images/edu.jfif', // Placeholder image path
       amountNeeded: 50000000,
       requestDate: '2024-07-20',
+      status: 'pending',
     },
     {
       id: 2,
@@ -18,6 +19,7 @@ const DonationRequest = () => {
       programPicture: '/images/health.jfif', // Placeholder image path
       amountNeeded: 100000000,
       requestDate: '2024-07-21',
+      status: 'pending',
     },
   ]);
 
@@ -43,6 +45,20 @@ const DonationRequest = () => {
     }
   };
 
+  const handleAccept = (id) => {
+    setRequests((prevRequests) =>
+      prevRequests.map((request) =>
+        request.id === id ? { ...request, status: 'accepted' } : request
+      )
+    );
+  };
+
+  const handleReject = (id) => {
+    setRequests((prevRequests) =>
+      prevRequests.filter((request) => request.id !== id)
+    );
+  };
+
   return (
     <div className="donation-request-page">
       <Navbar />
@@ -57,7 +73,7 @@ const DonationRequest = () => {
               <th>Amount Needed</th>
               <th>Your Donation</th>
               <th>Request Date</th>
-              <th>Donate</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
@@ -74,23 +90,43 @@ const DonationRequest = () => {
                 </td>
                 <td>{request.amountNeeded.toLocaleString()}</td>
                 <td>
-                  <input
-                    type="number"
-                    value={donationAmounts[request.id] || ''}
-                    onChange={(e) =>
-                      handleAmountChange(request.id, e.target.value)
-                    }
-                    placeholder="Enter amount"
-                  />
+                  {request.status === 'accepted' && (
+                    <input
+                      type="number"
+                      value={donationAmounts[request.id] || ''}
+                      onChange={(e) =>
+                        handleAmountChange(request.id, e.target.value)
+                      }
+                      placeholder="Enter amount"
+                    />
+                  )}
                 </td>
                 <td>{request.requestDate}</td>
                 <td>
-                  <button
-                    onClick={() => handleDonate(request.id)}
-                    className="donate-button"
-                  >
-                    Donate
-                  </button>
+                  {request.status === 'pending' && (
+                    <>
+                      <button
+                        onClick={() => handleAccept(request.id)}
+                        className="accept-button"
+                      >
+                        Accept
+                      </button>
+                      <button
+                        onClick={() => handleReject(request.id)}
+                        className="reject-button"
+                      >
+                        Reject
+                      </button>
+                    </>
+                  )}
+                  {request.status === 'accepted' && (
+                    <button
+                      onClick={() => handleDonate(request.id)}
+                      className="donate-button"
+                    >
+                      Donate
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}

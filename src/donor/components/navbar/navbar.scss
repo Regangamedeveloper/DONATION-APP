@@ -1,12 +1,15 @@
 .navbar {
-  background-color: rgba(1, 121, 96,255);
+  background-color: rgba(1, 121, 97, 0.582);
   padding: 10px;
+  margin-top: 10px;
   display: flex;
+  height: 80px;
   justify-content: space-between;
   align-items: center;
 
   .navbar-logo {
     img {
+      margin-top: 10px;
       margin-left: 20px;
       height: 60px;
       transition: transform 0.3s;
@@ -23,18 +26,57 @@
     justify-content: flex-end;
     margin: 0;
     padding: 0;
-    
+
     .navbar-item {
       margin-right: 20px;
+      position: relative;
+
       a {
         color: #fff;
         text-decoration: none;
         padding: 10px;
+        font-size: 17px;
         transition: background-color 0.3s;
 
         &:hover {
           background-color: #d1d099;
           color: black;
+        }
+      }
+
+      &.avatar {
+        cursor: pointer;
+
+        img {
+          height: 40px;
+          border-radius: 50%;
+          transition: transform 0.3s;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+
+        .dropdown {
+          position: absolute;
+          top: 100%;
+          right: 0;
+          background-color: #fff;
+          border-radius: 5px;
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+          overflow: hidden;
+
+          a {
+            display: block;
+            padding: 10px 20px;
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+
+            &:hover {
+              background-color: #f1f1f1;
+            }
+          }
         }
       }
     }

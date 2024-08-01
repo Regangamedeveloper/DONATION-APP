@@ -1,4 +1,7 @@
 .home-page {
+  background-image: url('/img/2kids.jpg');
+  background-size: cover;
+  background-position:  center;
     .header {
       background-image: url('/img/2kids.jpg'); // replace with your image path
       background-size: cover;
@@ -68,7 +71,7 @@
         text-align: center;
         margin-bottom: 40px;
         font-size: 36px;
-        color: #333;
+        color: #ffffff;
       }
   
       .cards {
@@ -197,6 +200,19 @@
     .events-section {
       padding: 50px 0;
       text-align: center;
+
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 36px;
+        color: #ffffff;
+      }
+      h3 {
+        text-align: center;
+        margin-bottom: 15px;
+        font-size: 25px;
+        color: #ffffff;
+      }
       
       .events-container {
         display: flex;
@@ -236,7 +252,7 @@
         }
         
         .btn-join {
-          background-color: #F2994A;
+          background-color: rgba(255, 69, 0, 1);
           color: #fff;
           border: none;
           padding: 10px 20px;
