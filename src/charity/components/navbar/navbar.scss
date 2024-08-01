@@ -6,27 +6,6 @@
     font-size: 14px;
     background-color:#007B5F;;
     font-weight: bolder;
-    .language-dropdown {
-      position: absolute;
-      top: 100%;  // Adjust for spacing
-      right: 0;   
-      background-color: #007B5F;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      list-style: none;
-      padding: 8px 0; 
-      min-width: 100px;
-  
-      li {
-        padding: 8px 12px; 
-        cursor: pointer;
-  
-        &:hover {
-          background-color:#007B5F;
-        }
-      }
-    
-  }
     .wrapper {
       width: 100%;
       padding: 20px;

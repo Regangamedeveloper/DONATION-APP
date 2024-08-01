@@ -1,8 +1,8 @@
 import "./sidebar.scss"
-import AddHomeWorkIcon from '@mui/icons-material/AddHomeWork';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import ArticleIcon from '@mui/icons-material/Article';
-import RequestPageIcon from '@mui/icons-material/RequestPage';
+import AddIcon from '@mui/icons-material/Add';
+import HomeIcon from '@mui/icons-material/Home';
+import TableRowsIcon from '@mui/icons-material/TableRows';
+import Diversity2OutlinedIcon from '@mui/icons-material/Diversity2Outlined';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
@@ -20,16 +20,16 @@ const Sidebar = ()=>{
             <p className="title">MENU</p>
             <li>
             <Link to="/"style={{textDecoration:"none"}}>
-            <DashboardIcon className="icon"/>
+            <HomeIcon className="icon"/>
                 <span>
-                    Home page
+                    Home
                 </span>
                 </Link>
             </li>
             <p className="title">CAMPAIGNS</p>
             <li>
             <Link to="/addcampaigns"style={{textDecoration:"none"}}>
-            <AddHomeWorkIcon className="icon"/>
+            < AddIcon className="icon"/>
                 <span>
                     Add campaigns
                 </span>
@@ -37,7 +37,7 @@ const Sidebar = ()=>{
             </li>
             <li>   
             <Link to="/campaigns"style={{textDecoration:"none"}}>
-            <ArticleIcon className="icon"/>
+            <TableRowsIcon className="icon"/>
                 <span>
                     Campaigns
                 </span>
@@ -46,7 +46,7 @@ const Sidebar = ()=>{
             <p className="title">DONATION</p>
             <li>
             <Link to="/requestdonation"style={{textDecoration:"none"}}>
-            <RequestPageIcon className="icon"/>
+            <Diversity2OutlinedIcon className="icon"/>
                 <span>
                     Request Donation
                 </span>

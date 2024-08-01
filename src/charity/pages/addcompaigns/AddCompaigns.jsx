@@ -24,7 +24,7 @@ const AddCompaigns = ()=>{
         <div className="addcompaignsContainer">
         <Navbar/>
         <div className="top">
-            <h1>ADD COMPAIGN </h1>
+            <h1>ADD CAMPAIGN </h1>
             </div>
        <div className="bottom">
         <div className="items">

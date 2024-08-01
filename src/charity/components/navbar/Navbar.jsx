@@ -40,23 +40,9 @@ const Navbar = () => {
           <Diversity1SharpIcon />
         </div>
         <div className="items">
-          <div className="item" onClick={toggleDropdown}>
+          <div className="item" >
             <LanguageIcon />
-            {selectedLanguage}
-            {isDropdownOpen && (
-              <ul className="language-dropdown">
-                <li onClick={() => handleLanguageChange("English")}>
-                  English
-                </li>
-                <li onClick={() => handleLanguageChange("Español")}>
-                  Español
-                </li>
-                <li onClick={() => handleLanguageChange("Français")}>
-                  Français
-                </li>
-                {/* Add more languages as needed */}
-              </ul>
-            )}
+          
           </div>
 
           <div className="item">

@@ -37,7 +37,7 @@ const Campaigns = () => {
       <div className="campaignsContainer">
         <Navbar />
         <div className="top">
-          <h1>FUNDRAISING CAMPAIGN DETAILS</h1>
+          <h1>CAMPAIGN DETAILS</h1>
         </div>
 
         <div className="bottom">
