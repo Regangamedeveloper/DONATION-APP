@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./requeststatus.scss";
-import Navbar from "../../components/navbar/Navbar";
+
 import Sidebar from "../../components/sidebar/Sidebar";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -11,6 +11,7 @@ import TableRow from "@mui/material/TableRow";
 import TextField from "@mui/material/TextField"; 
 import { rows as initialRows } from "../../components/status"; 
 import Adminfooter from "../../../Admin/components/Adminfooter";
+import Nav from "../../components/nav/Nav";
 
 const RequestStatus = () => {
   const formatCurrency = (amount) => {
@@ -37,14 +38,14 @@ const RequestStatus = () => {
     <div className="requeststatus">
       <Sidebar />
       <div className="requeststatusContainer">
-        <Navbar />
+      <Nav/>
         <div className="top">
           <h1>REQUEST STATUS DETAILS</h1>
         </div>
 
         <div className="bottom">
           <TableContainer className="table">
-          <div className="bar">
+          <div className="searchbar">
           <TextField
             label="Search Requests"
             variant="outlined"

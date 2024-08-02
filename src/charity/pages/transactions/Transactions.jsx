@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
-import Navbar from "../../components/navbar/Navbar";
+
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -11,6 +11,7 @@ import "./transactions.scss";
 import { rows as initialRows } from "../../components/transactions";
 import TextField from "@mui/material/TextField"; 
 import Adminfooter from "../../../Admin/components/Adminfooter";
+import Nav from "../../components/nav/Nav";
 
 const Transactions = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -35,14 +36,14 @@ const Transactions = () => {
     <div className="transactions">
       <Sidebar />
       <div className="transactionsContainer">
-        <Navbar />
+       <Nav/>
         <div className="top">
           <h1>TRANSACTION DETAILS</h1>
 
         </div>
         <div className="bottom">
           <TableContainer className="table">
-          <div className="bar">
+          <div className="searchbar">
           <TextField
             label="Search Transactions"
             variant="outlined"

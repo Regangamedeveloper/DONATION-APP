@@ -1,14 +1,14 @@
 import "./home.scss"
-import Navbar from "../../components/navbar/Navbar"
 import Sidebar from "../../components/sidebar/Sidebar"
 import Slider from "../../components/slider/Slider"
 import Adminfooter from "../../../Admin/components/Adminfooter";
+import Nav from "../../components/nav/Nav";
 const Home = ()=>{
     return(
         <div className="home">
         <Sidebar />
         <div className="homeContainer">
-        <Navbar/>
+    <Nav/>
         <Slider/>
         <Adminfooter/>
             </div>

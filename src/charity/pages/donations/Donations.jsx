@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Navbar from "../../components/navbar/Navbar";
+
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -14,6 +14,7 @@ import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Adminfooter from '../../../Admin/components/Adminfooter';
+import Nav from '../../components/nav/Nav';
 
 const Donations = () => {
   const [rows, setRows] = useState(initialRows);
@@ -88,14 +89,14 @@ const Donations = () => {
     <div className="donations">
       <Sidebar />
       <div className="donationsContainer">
-        <Navbar />
+        <Nav/>
         <div className="top">
           <h1>DONATION DETAILS</h1>
         </div>
 
         <div className="bottom">
           <TableContainer className="table">
-          <div className="bar">
+          <div className="searchbar">
           <TextField
             label="Search Donations"
             variant="outlined"

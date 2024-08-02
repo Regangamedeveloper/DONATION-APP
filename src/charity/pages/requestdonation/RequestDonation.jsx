@@ -5,13 +5,14 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Navbar from "../../components/navbar/Navbar";
+
 import Sidebar from "../../components/sidebar/Sidebar";
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { rows as initialRows } from "../../components/request"; 
 import Adminfooter from "../../../Admin/components/Adminfooter";
+import Nav from "../../components/nav/Nav";
 const RequestDonation = () => {
   const [selectedValues, setSelectedValues] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
@@ -39,14 +40,14 @@ const RequestDonation = () => {
     <div className="requestdonation">
       <Sidebar />
       <div className="requestdonationContainer">
-        <Navbar />
+       <Nav/>
         <div className="top">
           <h1>REQUEST DONATION DETAILS</h1>
         </div>
 
         <div className="bottom">
           <TableContainer className="table">
-          <div className="bar">
+          <div className="searchbar">
           <TextField
             label="Search Donors"
             variant="outlined"
