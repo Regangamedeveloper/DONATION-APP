@@ -34,6 +34,7 @@ import Login from './Authentication/Login/Login';
 import Forgot from './Authentication/forgotpasword/Forgot';
 import Adminlogin from './Authentication/adminlogin/Adminlogin';
 import NotFound from './404 page/NotFound';
+import AdminTransactions from './Admin/pages/AdminTransactions';
 
 
 
@@ -75,6 +76,7 @@ function App() {
             <Route path="charityinfo/:id" index element={<Charityinfo />} /> 
             <Route path="campaigninfo/:id" index element={<Campaigninfo />} /> 
             <Route path="adminprofile" index element={<Adminprofile />} /> 
+            <Route path="transactions" index element={<AdminTransactions />} /> 
         </Route>
         <Route path="land" element={<Land/>}></Route>
       </Routes>
