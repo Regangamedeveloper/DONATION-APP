@@ -1,5 +1,4 @@
 import "./campaigns.scss";
-import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -11,6 +10,7 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import {  rows as initialRows } from "../../components/campaign";
 import Adminfooter from "../../../Admin/components/Adminfooter";
+import Nav from "../../components/nav/Nav";
 const Campaigns = () => {
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
@@ -35,14 +35,14 @@ const Campaigns = () => {
     <div className="campaigns">
       <Sidebar />
       <div className="campaignsContainer">
-        <Navbar />
+        <Nav/>
         <div className="top">
           <h1>CAMPAIGN DETAILS</h1>
         </div>
 
         <div className="bottom">
           <TableContainer className="table">
-          <div className="bar">
+          <div className="searchbar">
           <TextField
             label="Search Campaigns"
             variant="outlined"

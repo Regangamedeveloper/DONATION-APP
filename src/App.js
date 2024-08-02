@@ -29,13 +29,15 @@ import Donationdetails from './Admin/pages/Donationdetails';
 import Donordetails from './Admin/pages/Donordetails';
 import { Userinfo } from './Admin/pages/Userinfo';
 import './styles.scss';
+import Land from './Landing/pages/land';
 
 function App() {
   return (
       <div className="App">
       <BrowserRouter>
       <Routes>
-        <Route path ="/">
+        <Route path ="/" >
+        <Route index element ={<Home/>}/>
         <Route index element ={<Home/>}/>
         <Route path="login" index element ={<Login/>}/>
         <Route path="addcampaigns" index element ={<AddCompaigns/>}/>
@@ -63,6 +65,7 @@ function App() {
             <Route path="campaigninfo/:id" index element={<Campaigninfo />} /> 
             <Route path="adminprofile" index element={<Adminprofile />} /> 
         </Route>
+        <Route path="land" element={<Land/>}></Route>
       </Routes>
       </BrowserRouter>
     </div>

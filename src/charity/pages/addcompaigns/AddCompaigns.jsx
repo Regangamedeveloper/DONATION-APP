@@ -1,10 +1,11 @@
 import "./addcompaigns.scss"
-import Navbar from "../../components/navbar/Navbar"
+
 import Sidebar from "../../components/sidebar/Sidebar";
 import UnarchiveTwoToneIcon from '@mui/icons-material/UnarchiveTwoTone';
 import React, { useState } from 'react';
 import {Link} from "react-router-dom";
 import Adminfooter from "../../../Admin/components/Adminfooter";
+import Nav from "../../components/nav/Nav";
 const AddCompaigns = ()=>{
     const [description, setDescription] = useState('');
     const [endDate, setEndDate] = useState("");
@@ -22,7 +23,7 @@ const AddCompaigns = ()=>{
         <div className="addcompaigns">
         <Sidebar />
         <div className="addcompaignsContainer">
-        <Navbar/>
+        <Nav/>
         <div className="top">
             <h1>ADD CAMPAIGN </h1>
             </div>

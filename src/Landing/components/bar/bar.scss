@@ -1,0 +1,41 @@
+// bar.scss
+.bar {
+  background-color:#007B5F ; // Example background color
+  padding: 10px 20px; // Example padding
+  border-bottom: 10px solid rgb(231, 228, 228);
+  .wrapper {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; // Align logo left, items right
+
+    .logo {
+      img {
+        height: 70px; // Adjust logo height as needed
+      }
+    }
+
+    .items {
+      display: flex;
+      align-items: center;
+      color: white;
+
+      .item {
+        margin-left: 20px; // Spacing between items
+        display: flex;
+        align-items: center;
+
+        .icon {
+          font-size: 20px; // Adjust icon size
+        }
+        .signInButton, 
+        .loginButton {
+          background-color: white; // Example 
+          border: none;
+          padding: 8px 12px;
+          cursor: pointer;
+          // ... add more styles as needed
+        }
+      }
+    }
+  }
+}

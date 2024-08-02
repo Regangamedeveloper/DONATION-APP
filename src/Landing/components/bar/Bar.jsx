@@ -1,18 +1,24 @@
-import React, { useState } from "react";
-import "./navbar.scss";
+// Bar.jsx 
+import React from 'react';
+import './bar.scss'; 
+import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import FullscreenExitOutlinedIcon from "@mui/icons-material/FullscreenExitOutlined";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
-import Diversity1SharpIcon from "@mui/icons-material/Diversity1Sharp";
-import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
-const Navbar = () => {
+
+const Bar = () => {
   return (
-    <div className="navbar">
+    <div className="bar">
       <div className="wrapper">
         <div className="logo">
-          <Diversity1SharpIcon />
+          <img 
+            src="https://adra.org.nz/wp-content/uploads/2021/08/ADRA-Horizontal-Logo-WHITE-1024x272.png" // Replace with the actual path to your logo 
+            alt="Your Brand" 
+          />
         </div>
+
         <div className="items">
+          {/* Existing items (Language, Dark Mode, etc.) */}
           <div className="item">
             <LanguageOutlinedIcon className="icon" />
             English
@@ -27,16 +33,15 @@ const Navbar = () => {
             <ListOutlinedIcon className="icon" />
           </div>
           <div className="item">
-            <img
-              src="https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-              alt=""
-              className="avatar"
-            />
+            <button className="signInButton">Sign In</button>
+          </div>
+          <div className="item">
+            <button className="loginButton">Login</button>
           </div>
         </div>
       </div>
-      </div>
+    </div>
   );
 };
 
-export default Navbar;
+export default Bar;
