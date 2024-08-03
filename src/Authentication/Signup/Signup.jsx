@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import './signup.scss';
 import { Link } from 'react-router-dom';
-// import logo from '../../Admin/images/adra-vertical-logo-998x1024-2675010800.png';
+import logo from '../../Admin/images/adra-vertical-logo-998x1024-2675010800.png';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-const Signup = ()=> {
+const Signup = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,12 +21,10 @@ const Signup = ()=> {
   return (
     <div className="signup-container">
       <div className="signup-form">
-        <h2>Sign Up for ADRA</h2>
-        {/* <img src={logo} alt='logo'style={{
-            width:'50px',
-            height:'50px',
-            marginleft:'100px'
-        }}/> */}
+        <div className="logo">
+          <img src={logo} alt="ADRA Logo" />
+        </div>
+        <h3>Sign Up</h3>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="firstName">First Name:</label>
@@ -58,12 +59,18 @@ const Signup = ()=> {
           <div className="form-group">
             <label htmlFor="password">Password:</label>
             <input
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+            <span
+              className="show-password"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <VisibilityOff /> : <Visibility />}
+            </span>
           </div>
           <button type="submit" className="green-button">
             Sign Up
@@ -76,6 +83,6 @@ const Signup = ()=> {
       </div>
     </div>
   );
-}
+};
 
 export default Signup;

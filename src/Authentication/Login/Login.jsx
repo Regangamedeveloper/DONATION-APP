@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './login.scss';
 import { Link } from 'react-router-dom';
+import logo from '../../Admin/images/adra-vertical-logo-998x1024-2675010800.png';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -15,7 +16,11 @@ function Login() {
   return (
     <div className="login-container">
       <div className="login-form">
-        <h2>Log in to ADRA</h2>
+      <div className="logo">
+          {/* Replace with your actual logo */}
+          <img src={logo} alt="ADRA Logo" />
+        </div>
+        <h2>Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="email">Email:</label>

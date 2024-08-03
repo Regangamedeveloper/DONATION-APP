@@ -1,5 +1,6 @@
 .signup-container {
     display: flex;
+    position: relative;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -12,10 +13,18 @@
     padding: 30px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    width: 350px;
+    width: 400px;
+  }
+  .logo {
+    text-align: center;
+    margin-bottom: 30px;
   }
   
-  .signup-form h2 {
+  .logo img {
+    max-width: 50px;
+  }
+  
+  .signup-form h3 {
     text-align: center;
     margin-bottom: 20px;
     color: #333;
@@ -49,7 +58,7 @@
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
     width: 100%;
   }
@@ -60,4 +69,14 @@
   .account-link {
     text-align: center;
     margin-top: 15px;
+  }
+  .show-password {
+    cursor: pointer;
+    font-size: 0.7em;
+    color: #464444;
+    margin-left: 10px;
+    position: absolute;
+    top: 71.5%;
+    left: 60%;
+   
   }
