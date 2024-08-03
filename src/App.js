@@ -1,6 +1,5 @@
 
 import Home from './charity/pages/home/Home';
-import Login from "./charity/pages/login/Login";
 import Donations from "./charity/pages/donations/Donations";
 import RequestDonation from "./charity/pages/requestdonation/RequestDonation";
 import AddCompaigns from "./charity/pages/addcompaigns/AddCompaigns";
@@ -30,6 +29,14 @@ import Donordetails from './Admin/pages/Donordetails';
 import { Userinfo } from './Admin/pages/Userinfo';
 import './styles.scss';
 import Land from './Landing/pages/land';
+import Signup from './Authentication/Signup/Signup';
+import Login from './Authentication/Login/Login';
+import Forgot from './Authentication/forgotpasword/Forgot';
+import Adminlogin from './Authentication/adminlogin/Adminlogin';
+import NotFound from './404 page/NotFound';
+import AdminTransactions from './Admin/pages/AdminTransactions';
+
+
 
 function App() {
   return (
@@ -39,7 +46,7 @@ function App() {
         <Route path ="/" >
         <Route index element ={<Home/>}/>
         <Route index element ={<Home/>}/>
-        <Route path="login" index element ={<Login/>}/>
+        {/* <Route path="login" index element ={<Login/>}/> */}
         <Route path="addcampaigns" index element ={<AddCompaigns/>}/>
         <Route path="campaigns" index element ={<Compaigns/>}/>
         <Route path="donations" index element ={<Donations/>}/>
@@ -52,6 +59,11 @@ function App() {
         <Route path="trackdonation" index element ={<Trackdonation/>}/>
         <Route path="transaction" index element ={<TransactionsD/>}/>
         <Route path="profile" index element ={<Donorp/>}/>
+        <Route path="signup" index element ={<Signup/>}/>
+        <Route path="login" index element ={<Login/>}/>
+        <Route path="forgotpassword" index element ={<Forgot/>}/>
+        <Route path="adra-admin-login" index element ={<Adminlogin/>}/>
+        <Route path="*" index element ={<NotFound/>}/>
         </Route>
         
         <Route path="admin" element={<Adminlayout />}>
@@ -64,6 +76,7 @@ function App() {
             <Route path="charityinfo/:id" index element={<Charityinfo />} /> 
             <Route path="campaigninfo/:id" index element={<Campaigninfo />} /> 
             <Route path="adminprofile" index element={<Adminprofile />} /> 
+            <Route path="transactions" index element={<AdminTransactions />} /> 
         </Route>
         <Route path="land" element={<Land/>}></Route>
       </Routes>

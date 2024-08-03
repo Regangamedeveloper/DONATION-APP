@@ -1,0 +1,82 @@
+.signup-container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.compassion.com%2Fmultimedia%2Fmake-a-donation-children-in-togo.jpg&f=1&nofb=1&ipt=8190a21f6f92780c2bc40b67dec3b332cb125e1b27cf6eed01e464a27afa2419&ipo=images'); // Replace with your background image
+    background-size: cover;
+  }
+  
+  .signup-form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 400px;
+  }
+  .logo {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .logo img {
+    max-width: 50px;
+  }
+  
+  .signup-form h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+  }
+  
+  .green-button {
+    background-color: #017960; /* Green */
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .green-button:hover {
+    background-color: #033305; /* Darker green on hover */
+  }
+  .account-link {
+    text-align: center;
+    margin-top: 15px;
+  }
+  .show-password {
+    cursor: pointer;
+    font-size: 0.7em;
+    color: #464444;
+    margin-left: 10px;
+    position: absolute;
+    top: 71.5%;
+    left: 60%;
+   
+  }

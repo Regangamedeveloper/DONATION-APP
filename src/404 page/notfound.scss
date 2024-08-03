@@ -1,0 +1,54 @@
+.not-found-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0; /* Light gray background */
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .not-found-content {
+    text-align: center;
+    padding: 40px;
+    
+  }
+  
+  .error-code {
+    font-size: 7em;
+    color: #f12c16; /* Red color for error code */
+    margin-bottom: 20px;
+  }
+  
+  .error-message {
+    margin-bottom: 30px;
+  }
+  
+  .error-message h1 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .error-message p {
+    font-size: 1em;
+    color: #666;
+  }
+  
+  .green-button {
+    background-color: #017960; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .green-button:hover {
+    background-color: #033305; /* Darker green on hover */
+  }

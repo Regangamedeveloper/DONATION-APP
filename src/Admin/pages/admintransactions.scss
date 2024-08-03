@@ -1,0 +1,46 @@
+.admin-transactions {
+    padding: 20px;
+  
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+  
+    .MuiTextField-root {
+      margin-bottom: 20px;
+    }
+  
+    .MuiPaper-root {
+      padding: 20px;
+  
+      .MuiTable-root {
+        width: 100%;
+  
+        .MuiTableHead-root {
+          background-color: #f0f0f0;
+  
+          .MuiTableCell-root {
+            font-weight: bold;
+          }
+        }
+  
+        .MuiTableRow-root {
+          &:nth-child(even) {
+            background-color: #f9f9f9;
+          }
+  
+          .MuiTableCell-root {
+            padding: 12px;
+          }
+        }
+  
+        .MuiTableCell-root {
+          border-bottom: 1px solid #eee;
+        }
+      }
+    }
+  
+    .MuiButton-root {
+      margin-right: 10px;
+    }
+  }
