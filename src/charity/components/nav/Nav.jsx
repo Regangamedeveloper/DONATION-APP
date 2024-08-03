@@ -11,7 +11,7 @@ const Nav = () => {
   return (
     <div className="nav">
       <div className="wrapper">
-        <div className="logo">
+        <div className="brand">
           <img 
             src="https://adra.org.nz/wp-content/uploads/2019/11/adra-vertical-logo.png" // Replace with the actual path to your logo 
             alt="Your Brand" 

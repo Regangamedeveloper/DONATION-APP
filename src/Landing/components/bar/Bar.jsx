@@ -10,7 +10,7 @@ const Bar = () => {
   return (
     <div className="bar">
       <div className="wrapper">
-        <div className="logo">
+        <div className="log">
           <img 
             src="https://adra.org.nz/wp-content/uploads/2021/08/ADRA-Horizontal-Logo-WHITE-1024x272.png" // Replace with the actual path to your logo 
             alt="Your Brand" 

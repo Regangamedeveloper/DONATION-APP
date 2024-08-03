@@ -67,7 +67,7 @@ const Lid= ()=>{
                 </div>
                 </div>
                 <div className="lidContainer">
-                <div className="logo">
+                <div className="lg">
           <img 
             src="https://adra.org.nz/wp-content/uploads/2019/11/adra-vertical-logo.png" // Replace with the actual path to your logo 
             alt="Your Brand" 

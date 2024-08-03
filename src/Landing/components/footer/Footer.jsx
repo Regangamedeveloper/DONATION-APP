@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-column">
-        <div className="logo">
+        <div className="fame">
           <img 
             src="https://adra.org.nz/wp-content/uploads/2019/11/adra-vertical-logo.png" // Replace with the actual path to your logo 
             alt="Your Brand" 
