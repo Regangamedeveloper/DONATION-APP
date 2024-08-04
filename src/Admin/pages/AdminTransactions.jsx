@@ -1,9 +1,9 @@
 // AdminTransactions.js
 import React, { useState } from 'react';
 import './donordetails.scss';
-import Datatable from '../components/Datatable';
 import Adduser from '../components/Adduser';
 import { transactionsData as originalData } from '../components/menudata';
+import Transactiondatatable from '../components/Transactiondatatable';
 
 // Function to preprocess data and format dates
 const preprocessData = (data) => {
@@ -143,7 +143,7 @@ const AdminTransactions = () => {
         <h1>Transaction Details</h1>
         <button onClick={() => setOpen(true)}>Add New Transaction</button>
       </div>
-      <Datatable slug="admin/userinfo" columns={columns} rows={transactionsData} />
+      <Transactiondatatable slug="admin/userinfo" columns={columns} rows={transactionsData} />
       {open && <Adduser slug="Donor" columns={columns} setOpen={setOpen} />}
     </div>
   );
