@@ -1,0 +1,70 @@
+.forgot-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpeaceforpaul.org%2Fwp-content%2Fuploads%2F2016%2F08%2Fchildren-1.jpg&f=1&nofb=1&ipt=66c4d2923d821e5e1534c4b5b4e702047c547522e36d3b5761f57e7404b33a41&ipo=images'); /* Replace with your background image */
+    background-size: cover;
+  }
+  
+  .forgot-form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 350px;
+  }
+  
+  .forgot-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .forgot-form p {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #666;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+  }
+  
+  .green-button {
+    background-color: #017960; /* Green */
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .green-button:hover {
+    background-color: #033305; /* Darker green on hover */
+  }
+  
+  .account-link {
+    text-align: center;
+    margin-top: 15px;
+  }

@@ -64,7 +64,7 @@ export const menu = [
             {
                 id: 1,
                 title: 'Transactions',
-                url: '#',
+                url: '/admin/transactions',
                 icon: <PaidIcon />,
             },
         ],
@@ -732,3 +732,70 @@ export const chartBoxProduct = {
     
   ];
     
+export const transactionsData = [
+  {
+    id: 1,
+    donor: {
+      first_name: "John",
+      last_name: "Doe",
+    },
+    amount: 50.00,
+    currency: "USD",
+    transaction_date: new Date("2023-10-27T10:30:00"),
+    payment_method: "Credit Card",
+    transaction_status: "Completed",
+    campaign: "Clean Water Project",
+  },
+  {
+    id: 2,
+    donor: {
+      first_name: "Jane",
+      last_name: "Smith",
+    },
+    amount: 100.00,
+    currency: "USD",
+    transaction_date: new Date("2023-10-25T14:15:00"),
+    payment_method: "PayPal",
+    transaction_status: "Pending",
+    campaign: "Recurring Monthly Support",
+  },
+  {
+    id: 3,
+    donor: {
+      first_name: "Peter",
+      last_name: "Brown",
+    },
+    amount: 25.50,
+    currency: "USD",
+    transaction_date: new Date("2023-10-23T09:00:00"),
+    payment_method: "Bank Transfer",
+    transaction_status: "Completed",
+    campaign: "General Donation",
+  },
+  {
+    id: 4,
+    donor: {
+      first_name: "Sarah",
+      last_name: "Wilson",
+    },
+    amount: 75.00,
+    currency: "USD",
+    transaction_date: new Date("2023-10-21T16:45:00"),
+    payment_method: "Credit Card",
+    transaction_status: "Failed",
+    campaign: "Education Initiative",
+  },
+  {
+    id: 5,
+    donor: {
+      first_name: "David",
+      last_name: "Jones",
+    },
+    amount: 500.00,
+    currency: "USD",
+    transaction_date: new Date("2023-10-19T12:30:00"),
+    payment_method: "PayPal",
+    transaction_status: "Completed",
+    campaign: "Emergency Relief Fund",
+  },
+];

@@ -4,6 +4,8 @@ $white: #fff;
 .campaigns{
     display: flex;
     gap: 15px;
+    background-color: whitesmoke;
+    height: 180vh;
     .campaignsContainer{
       background-color: whitesmoke;
       height: 158vh;
@@ -50,7 +52,8 @@ h1{
       width: 70px;
       height: 70px;
       margin-right: 10px;
-      object-fit: cover
+      object-fit: cover;
+      border-radius: 20px;
       }
     }
     .status {
