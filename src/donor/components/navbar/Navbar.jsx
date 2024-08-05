@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './navbar.scss';
+import './navbar.scss'
+import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 
 const Navbar = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleDropdown = () => {
     setDropdownVisible(!dropdownVisible);
+  };
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
   };
 
   return (
@@ -16,29 +22,31 @@ const Navbar = () => {
           <img src="/images/ADRAl-Logo.png" alt="Company Logo" />
         </Link>
       </div>
-      <ul className="navbar-list">
+      <div className={`menu-icon ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+        {menuOpen ? '✖' : '☰'}
+      </div>
+      <ul className={`navbar-list ${menuOpen ? 'active' : ''}`}>
         <li className="navbar-item">
-          <Link to="/donorhome">Home</Link>
+          <Link to="/donorhome" onClick={toggleMenu}>Home</Link>
         </li>
         <li className="navbar-item">
-          <Link to="/donate">Donate</Link>
+          <Link to="/donate" onClick={toggleMenu}>Donate</Link>
         </li>
         <li className="navbar-item">
-          <Link to="/donationrequest">Donation Request</Link>
+          <Link to="/aboutUs" onClick={toggleMenu}>AboutUs</Link>
         </li>
-        <li className="navbar-item">
-          <Link to="/trackdonation">Track Donations</Link>
-        </li>
-        <li className="navbar-item">
-          <Link to="/transaction">Transactions</Link>
-        </li>
+        <div className="navbar-item icon">
+        <Link to="/donationrequest" onClick={toggleMenu}><NotificationsNoneOutlinedIcon className="icon"/></Link>
+          <div className="counter">1</div>
+        </div>
         <li className="navbar-item avatar">
-          <img src= '/images/avatar.png' alt="User Avatar" onClick={toggleDropdown} />
+          <img src="/images/avatar.png" alt="User Avatar" onClick={toggleDropdown} />
           {dropdownVisible && (
             <div className="dropdown">
-              <Link to="/profile">Edit Profile</Link>
-              <Link to="/history">View History</Link>
-              <Link to="/logout">Logout</Link>
+              <Link to="/profile" onClick={toggleMenu}>Edit Profile</Link>
+              <Link to="/trackdonation" onClick={toggleMenu}>Track Donations</Link>
+              <Link to="/transaction" onClick={toggleMenu}>Transactions</Link>
+              <Link to="/logout" onClick={toggleMenu}>Logout</Link>
             </div>
           )}
         </li>

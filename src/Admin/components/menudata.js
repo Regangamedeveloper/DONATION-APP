@@ -731,75 +731,71 @@ export const chartBoxProduct = {
       }
     
   ];
- export const transactionsData = [
-    {
-      transaction_id: 1,
-      donor: {
-        donor_id: 101,
-        first_name: "John",
-        last_name: "Doe",
-      },
-      amount: 50.00,
-      currency: "USD",
-      transaction_date: new Date("2023-10-27T10:30:00"),
-      payment_method: "Credit Card",
-      transaction_status: "Completed",
-      notes: "Donation for the 'Clean Water' project",
+    
+export const transactionsData = [
+  {
+    id: 1,
+    donor: {
+      first_name: "John",
+      last_name: "Doe",
     },
-    {
-      transaction_id: 2,
-      donor: {
-        donor_id: 102,
-        first_name: "Jane",
-        last_name: "Smith",
-      },
-      amount: 100.00,
-      currency: "USD",
-      transaction_date: new Date("2023-10-25T14:15:00"),
-      payment_method: "PayPal",
-      transaction_status: "Pending",
-      notes: "Recurring monthly donation",
+    amount: 50.00,
+    currency: "USD",
+    transaction_date: new Date("2023-10-27T10:30:00"),
+    payment_method: "Credit Card",
+    transaction_status: "Completed",
+    campaign: "Clean Water Project",
+  },
+  {
+    id: 2,
+    donor: {
+      first_name: "Jane",
+      last_name: "Smith",
     },
-    {
-      transaction_id: 3,
-      donor: {
-        donor_id: 103,
-        first_name: "Peter",
-        last_name: "Brown",
-      },
-      amount: 25.50,
-      currency: "USD",
-      transaction_date: new Date("2023-10-23T09:00:00"),
-      payment_method: "Bank Transfer",
-      transaction_status: "Completed",
-      notes: "Donation made via website",
+    amount: 100.00,
+    currency: "USD",
+    transaction_date: new Date("2023-10-25T14:15:00"),
+    payment_method: "PayPal",
+    transaction_status: "Pending",
+    campaign: "Recurring Monthly Support",
+  },
+  {
+    id: 3,
+    donor: {
+      first_name: "Peter",
+      last_name: "Brown",
     },
-    {
-      transaction_id: 4,
-      donor: {
-        donor_id: 104,
-        first_name: "Sarah",
-        last_name: "Wilson",
-      },
-      amount: 75.00,
-      currency: "USD",
-      transaction_date: new Date("2023-10-21T16:45:00"),
-      payment_method: "Credit Card",
-      transaction_status: "Failed",
-      notes: "Payment failed due to insufficient funds",
+    amount: 25.50,
+    currency: "USD",
+    transaction_date: new Date("2023-10-23T09:00:00"),
+    payment_method: "Bank Transfer",
+    transaction_status: "Completed",
+    campaign: "General Donation",
+  },
+  {
+    id: 4,
+    donor: {
+      first_name: "Sarah",
+      last_name: "Wilson",
     },
-    {
-      transaction_id: 5,
-      donor: {
-        donor_id: 105,
-        first_name: "David",
-        last_name: "Jones",
-      },
-      amount: 500.00,
-      currency: "USD",
-      transaction_date: new Date("2023-10-19T12:30:00"),
-      payment_method: "PayPal",
-      transaction_status: "Completed",
-      notes: "Large donation for the 'Education' project",
+    amount: 75.00,
+    currency: "USD",
+    transaction_date: new Date("2023-10-21T16:45:00"),
+    payment_method: "Credit Card",
+    transaction_status: "Failed",
+    campaign: "Education Initiative",
+  },
+  {
+    id: 5,
+    donor: {
+      first_name: "David",
+      last_name: "Jones",
     },
-  ];
+    amount: 500.00,
+    currency: "USD",
+    transaction_date: new Date("2023-10-19T12:30:00"),
+    payment_method: "PayPal",
+    transaction_status: "Completed",
+    campaign: "Emergency Relief Fund",
+  },
+];

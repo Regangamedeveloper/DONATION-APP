@@ -35,8 +35,7 @@ import Forgot from './Authentication/forgotpasword/Forgot';
 import Adminlogin from './Authentication/adminlogin/Adminlogin';
 import NotFound from './404 page/NotFound';
 import AdminTransactions from './Admin/pages/AdminTransactions';
-
-
+import AllCampaigns from './donor/pages/allcampaigns/AllCampaigns';
 
 function App() {
   return (
@@ -64,6 +63,7 @@ function App() {
         <Route path="forgotpassword" index element ={<Forgot/>}/>
         <Route path="adra-admin-login" index element ={<Adminlogin/>}/>
         <Route path="*" index element ={<NotFound/>}/>
+        <Route path="allcampaigns" index element ={<AllCampaigns/>}/>
         </Route>
         
         <Route path="admin" element={<Adminlayout />}>

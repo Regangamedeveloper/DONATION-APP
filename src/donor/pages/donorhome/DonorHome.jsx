@@ -1,6 +1,7 @@
 import React from 'react'
 import './donorhome.scss'
 import Navbar from '../../components/navbar/Navbar'
+import { Link } from 'react-router-dom'
 
 const DonorHome = () => {
   return (
@@ -81,6 +82,9 @@ const DonorHome = () => {
               </div>
             </div>
           </div>
+        <div className="view-all">
+          <span><Link to="/allcampaigns">View All</Link></span>
+        </div>
         </div>
       </div>
       <div className="events-section">
