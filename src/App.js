@@ -30,6 +30,7 @@ import Donordetails from './Admin/pages/Donordetails';
 import { Userinfo } from './Admin/pages/Userinfo';
 import './styles.scss';
 import Land from './Landing/pages/land';
+import AllCampaigns from './donor/pages/allcampaigns/AllCampaigns';
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
         <Route path="trackdonation" index element ={<Trackdonation/>}/>
         <Route path="transaction" index element ={<TransactionsD/>}/>
         <Route path="profile" index element ={<Donorp/>}/>
+        <Route path="allcampaigns" index element ={<AllCampaigns/>}/>
         </Route>
         
         <Route path="admin" element={<Adminlayout />}>
