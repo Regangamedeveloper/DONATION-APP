@@ -12,10 +12,7 @@ const Nav = () => {
     <div className="nav">
       <div className="wrapper">
         <div className="brand">
-          <img 
-            src="https://adra.org.nz/wp-content/uploads/2019/11/adra-vertical-logo.png" // Replace with the actual path to your logo 
-            alt="Your Brand" 
-          />
+        Donation Managment Tracking System
         </div>
 
         <div className="items">
