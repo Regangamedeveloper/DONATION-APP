@@ -2,21 +2,14 @@ import React from 'react'
 import './donorhome.scss'
 import Navbar from '../../components/navbar/Navbar'
 import { Link } from 'react-router-dom'
+import Footer from '../../../Landing/components/footer/Footer'
+import DonorSlider from '../../components/donorslider/DonorSlider'
 
 const DonorHome = () => {
   return (
     <div className="home-page">
       <Navbar />
-      <div className="header">
-        <div className="header-content">
-          <h1>Donate 4 a better world</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempus vestibulum mauris quis aliquam.</p>
-          <div className="header-buttons">
-            <button className="btn-donate">Donate Now</button>
-            <button className="btn-read-more">Read More</button>
-          </div>
-        </div>
-      </div>
+      <DonorSlider/>
       <div className="causes">
         <h2>Our Causes</h2>
         <div className="cards">
@@ -83,7 +76,7 @@ const DonorHome = () => {
             </div>
           </div>
         <div className="view-all">
-          <span><Link to="/allcampaigns">View All</Link></span>
+          <span><Link to="/allcampaigns">View All Campaigns</Link></span>
         </div>
         </div>
       </div>
@@ -127,6 +120,7 @@ const DonorHome = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   )
 }

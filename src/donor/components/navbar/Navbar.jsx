@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './navbar.scss'
-import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
+//import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 
 const Navbar = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -32,19 +32,18 @@ const Navbar = () => {
         <li className="navbar-item">
           <Link to="/donate" onClick={toggleMenu}>Donate</Link>
         </li>
-        <li className="navbar-item">
-          <Link to="/aboutUs" onClick={toggleMenu}>AboutUs</Link>
-        </li>
         <div className="navbar-item icon">
-        <Link to="/donationrequest" onClick={toggleMenu}><NotificationsNoneOutlinedIcon className="icon"/></Link>
-          <div className="counter">1</div>
+        <Link to="/donationrequest" onClick={toggleMenu}>Donation Requests</Link>
+          <div className="counter">2</div>
         </div>
+        <li className="navbar-item">
+          <Link to="/trackdonation" onClick={toggleMenu}>Track Donations</Link>
+        </li>
         <li className="navbar-item avatar">
           <img src="/images/avatar.png" alt="User Avatar" onClick={toggleDropdown} />
           {dropdownVisible && (
             <div className="dropdown">
-              <Link to="/profile" onClick={toggleMenu}>Edit Profile</Link>
-              <Link to="/trackdonation" onClick={toggleMenu}>Track Donations</Link>
+              <Link to="/profile" onClick={toggleMenu}>View Profile</Link>
               <Link to="/transaction" onClick={toggleMenu}>Transactions</Link>
               <Link to="/logout" onClick={toggleMenu}>Logout</Link>
             </div>
