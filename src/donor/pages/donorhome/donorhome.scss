@@ -1,79 +1,18 @@
 .home-page {
-  background-image: url('/img/2kids.jpg');
+  background-color: whitesmoke;
+  //background-image: url('/img/2kids.jpg');
   background-size: cover;
   background-position:  center;
   background-attachment: fixed;
-    .header {
-      background-image: url('/img/2kids.jpg'); // replace with your image path
-      background-size: cover;
-      background-position: center;
-      box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
-      margin-top: 80px;
-      height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: #fff;
-  
-      .header-content {
-        max-width: 600px;
-  
-        h1 {
-          font-size: 48px;
-          margin-bottom: 20px;
-          text-transform: uppercase;
-        }
-  
-        p {
-          font-size: 18px;
-          margin-bottom: 40px;
-        }
-  
-        .header-buttons {
-          display: flex;
-          justify-content: center;
-          gap: 20px;
-  
-          .btn-donate,
-          .btn-read-more {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-  
-            &.btn-donate {
-              background-color: rgba(255, 69, 0, 1);
-              color: #fff;
-  
-              &:hover {
-                background-color: rgba(255, 69, 0, 0.8);
-              }
-            }
-  
-            &.btn-read-more {
-              background-color: rgba(255, 255, 255, 0.8);
-              color: rgba(255, 69, 0, 1);
-  
-              &:hover {
-                background-color: rgba(255, 255, 255, 0.6);
-              }
-            }
-          }
-        }
-      }
-    }
   
     .causes {
-      padding: 50px 0;
+      padding: 30px 0;
   
       h2 {
         text-align: center;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
         font-size: 36px;
-        color: #ffffff;
+        color: #000;
       }
   
       .cards {
@@ -204,11 +143,7 @@
           justify-content: center;
           margin-left: 20px;
           color: #ffffff;
-    
-          .arrow-icon {
-            font-size: 24px;
-            margin-right: 10px;
-          }
+          width: 70px;
     
           span {
             font-size: 18px;
@@ -225,20 +160,20 @@
       }
     }
     .events-section {
-      padding: 50px 0;
+      padding: 10px 0;
       text-align: center;
 
       h2 {
         text-align: center;
         margin-bottom: 20px;
         font-size: 36px;
-        color: #ffffff;
+        color: #000;
       }
       h3 {
         text-align: center;
         margin-bottom: 15px;
         font-size: 25px;
-        color: #ffffff;
+        color: #000;
       }
       
       .events-container {

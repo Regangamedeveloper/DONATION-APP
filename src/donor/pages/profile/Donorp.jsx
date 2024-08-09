@@ -3,12 +3,11 @@ import Navbar from '../../components/navbar/Navbar';
 import './donorp.scss';
 
 const Donorp = () => {
-  // Example initial state with placeholder data
   const [donorDetails, setDonorDetails] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    address: '',
+    name: 'Robert Kabushenga',
+    email: 'kabushengaR@example.com',
+    phone: '555-123-4567',
+      address: 'South Carolina, SC',
   });
 
   useEffect(() => {
@@ -34,7 +33,7 @@ const Donorp = () => {
     <div className="donorp-page">
       <Navbar />
       <div className="donorp-content">
-        <h1>Edit Your Details</h1>
+        <h1>Your Profile</h1>
         <form onSubmit={handleSubmit} className="donor-form">
           <div className="form-group">
             <label htmlFor="name">Name:</label>
