@@ -3,13 +3,13 @@ import './donorhome.scss'
 import Navbar from '../../components/navbar/Navbar'
 import { Link } from 'react-router-dom'
 import Footer from '../../../Landing/components/footer/Footer'
-import DonorSlider from '../../components/donorslider/DonorSlider'
+import DonorSlier from '../../components/donorslier/DonorSlier'
 
 const DonorHome = () => {
   return (
     <div className="home-page">
       <Navbar />
-      <DonorSlider/>
+      <DonorSlier/>
       <div className="causes">
         <h2>Our Causes</h2>
         <div className="cards">

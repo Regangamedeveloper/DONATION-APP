@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './donorslider.scss';
+import './donorslier.scss';
 
 const slides = [
   {
@@ -19,7 +19,7 @@ const slides = [
   },
 ];
 
-const DonorSlider = () => {
+const DonorSlier = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -62,4 +62,4 @@ const DonorSlider = () => {
   );
 };
 
-export default DonorSlider;
+export default DonorSlier;
