@@ -23,9 +23,6 @@ router.get("/",(req,res,next)=>{
   router.put("/",(req,res,next)=>{
     res.status(200).json(
       {
-        statusCode:200,
-        status:"success",
-        clientId:uuidv4(),
         message:"Regangamedeveloper",
       });
   });
