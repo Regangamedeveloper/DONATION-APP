@@ -1,21 +1,28 @@
-const {MongoClient} =require("mongodb");
+const { MongoClient } = require("mongodb");
 require("dotenv").config();
-const url="mongodb+srv://donation:donation@donation.2fex8.mongodb.net/?retryWrites=true&w=majority&appName=Donation"
+const url = process.env.API_KEY;
 
-const client =new MongoClient(url);
-const dbName="Donation";
+const client = new MongoClient(url);
+const dbName = "Donation";
 let db;
 
 async function main() {
-    //connecting with mongodb atlas
-    await client.connect();
-    db = client.db(dbName); 
+    try {
+        // Connecting with MongoDB Atlas
+        await client.connect();
+        db = client.db(dbName);
+        console.log("MongoDB Connected..");
+    } catch (error) {
+        console.error("Connection failed:", error);
+        throw error; // Re-throw the error after logging it
+    }
 }
-main()
-.then((value)=>{
-    db=client.db(dbName)
-    console.log("MongoDB Connected..");
-})
-.catch((error)=>{console.log(error)});
 
-module.exports={client, db};
+// Initialize the connection and export the client and db
+main()
+    .then(() => {
+        module.exports = { client, db };
+    })
+    .catch((error) => {
+        console.error("Error in connecting to MongoDB:", error);
+    });
