@@ -1,15 +1,14 @@
-.addcompaigns {
+.addcampaigns {
     display: flex;
     height: 180vh;
     gap: 15px;
     background-color: whitesmoke;
   
-    .addcompaignsContainer {
+    .addcontainer {
       flex: 1;
       padding: 20px;
       background-color: whitesmoke;
       height: 150vh;
-  
       .top {
         display: flex;
         justify-content: center;
@@ -87,4 +86,4 @@
         }
       }
     }
-  }
+  };

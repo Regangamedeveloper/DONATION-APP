@@ -1,14 +1,40 @@
-import "./addcompaigns.scss"
-
+import "./addcampaigns.scss"
 import Sidebar from "../../components/sidebar/Sidebar";
 import UnarchiveTwoToneIcon from '@mui/icons-material/UnarchiveTwoTone';
-import React, { useState } from 'react';
-import {Link} from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import {useNavigate} from "react-router-dom";
 import Adminfooter from "../../../Admin/components/Adminfooter";
+import axios from "axios";
 import Nav from "../../components/nav/Nav";
-const AddCompaigns = ()=>{
-    const [description, setDescription] = useState('');
-    const [endDate, setEndDate] = useState("");
+const AddCampaigns = ()=>{
+     const [name , setName]= useState('');
+     const [image , setImage]= useState('');
+     const [description, setDescription] = useState('');
+     const [amount, setAmount] =useState('');
+     const [endDate, setEndDate] = useState("");
+     const [loading ,setLoading] =useState(false);
+const navigate =useNavigate();
+const handleSaveBook =()=>{ 
+     const data ={
+        name,
+        image,
+        description,
+        amount,
+        endDate,
+     };
+     setLoading(true);
+     axios
+     .post("http://localhost:5000/campaigns", data)
+     .then(()=>{
+        setLoading(false);
+        navigate('/campaigns');
+     })
+     .catch((error)=>{
+        setLoading(false);
+        alert('An error happened.Please Check console');
+        console.log(error);
+     });
+    };
     const now = new Date();
     const month = String(now.getMonth() + 1).padStart(2, '0');
     const day = String(now.getDate()).padStart(2, '0');
@@ -16,13 +42,12 @@ const AddCompaigns = ()=>{
     const hours = String(now.getHours()).padStart(2, '0');
     const minutes = String(now.getMinutes()).padStart(2, '0');
     const seconds = String(now.getSeconds()).padStart(2, '0');
-  
     const currentDateTime = `${month}/${day}/${year}  ${hours}:${minutes}:${seconds}`
     
     return(
-        <div className="addcompaigns">
+        <div className="addcampaigns">
         <Sidebar />
-        <div className="addcompaignsContainer">
+        <div className="addcontainer">
         <Nav/>
         <div className="top">
             <h1>ADD CAMPAIGN </h1>
@@ -31,13 +56,23 @@ const AddCompaigns = ()=>{
         <div className="items">
 <form>
     <div className="formInput">
-        <label>CompaignName</label>
-        <input type="text" placeholder="Compaign Name*"/>
+        <label>CampaignName</label>
+        <input 
+        type="text" 
+        placeholder="Compaign Name*"
+        value={name}
+        onChange={(e)=> setName(e.target.value)}
+        />
+        
     </div>
     <div className="formInput">
         <label htmlFor="file"  >
-        Compaign image:<UnarchiveTwoToneIcon className="icon"/></label>
-        <input type="file" id ="file" style={{display:""}} />
+        Campaign image:<UnarchiveTwoToneIcon className="icon"/></label>
+        <input type="file"
+         id ="file" 
+         style={{display:""}}
+          />
+          
     </div>
     <div className="formInput">
   <label htmlFor="description">Description:</label> 
@@ -52,7 +87,12 @@ const AddCompaigns = ()=>{
 </div>
     <div className="formInput">
         <label>Amount</label>
-        <input type="text" placeholder="Amount Needed ??"/>
+        <input type="text" 
+        value={amount}
+        onChange={(e) => setAmount(e.target.value)}
+          placeholder="Amount Needed ??"S
+        />
+
     </div>
     <div className="formInput">
     <label htmlFor="startDate">Start Date and Time:</label>
@@ -67,12 +107,10 @@ const AddCompaigns = ()=>{
         onChange={(e) => setEndDate(e.target.value)}
       />
     </div>
-    <Link to="/campaigns"style={{textDecoration:"none"}}>
-    <button>
+    <button onClick={handleSaveBook}>
         SUBMIT
     </button>
-    </Link>
-</form>
+</form> 
     </div>
     
     <Adminfooter/>
@@ -83,4 +121,4 @@ const AddCompaigns = ()=>{
 
     )
 }
-export default AddCompaigns;
+export default AddCampaigns;

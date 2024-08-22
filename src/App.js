@@ -2,8 +2,8 @@
 import Home from './charity/pages/home/Home';
 import Donations from "./charity/pages/donations/Donations";
 import RequestDonation from "./charity/pages/requestdonation/RequestDonation";
-import AddCompaigns from "./charity/pages/addcompaigns/AddCompaigns";
-import Compaigns from "./charity/pages/campaigns/Campaigns";
+import AddCampaigns from "./charity/pages/addcampaigns/AddCampaigns";
+import Campaigns from "./charity/pages/campaigns/Campaigns";
 import RequestStatus from "./charity/pages/requeststatus/RequestStatus";
 import Transactions from "./charity/pages/transactions/Transactions";
 import DonorHome from "./donor/pages/donorhome/DonorHome";
@@ -46,8 +46,8 @@ function App() {
         <Route index element ={<Home/>}/>
         <Route index element ={<Home/>}/>
         {/* <Route path="login" index element ={<Login/>}/> */}
-        <Route path="addcampaigns" index element ={<AddCompaigns/>}/>
-        <Route path="campaigns" index element ={<Compaigns/>}/>
+        <Route path="addcampaigns" index element ={<AddCampaigns/>}/>
+        <Route path="campaigns" index element ={<Campaigns/>}/>
         <Route path="donations" index element ={<Donations/>}/>
         <Route path="requestdonation" index element ={<RequestDonation/>}/>
         <Route path="requeststatus" index element ={<RequestStatus/>}/>

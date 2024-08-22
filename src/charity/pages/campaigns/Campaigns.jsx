@@ -6,51 +6,65 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import React, { useState } from "react";
-import TextField from "@mui/material/TextField";
-import {  rows as initialRows } from "../../components/campaign";
+import React, { useState, useEffect } from "react";
 import Adminfooter from "../../../Admin/components/Adminfooter";
+import axios from "axios";
 import Nav from "../../components/nav/Nav";
+
 const Campaigns = () => {
+  const [campaigns, setCampaigns] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+
+    axios
+      .get("http://localhost:5000/campaigns") 
+      .then((res) => {
+        // Format dates before setting the state
+        const formattedCampaigns = res.data.data.map((campaign) => ({
+          ...campaign,
+          registeredDate: new Date(campaign.registeredDate).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit' 
+          }),
+          endDate: new Date(campaign.endDate).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit' // Only include year, month, and day
+          })
+        }));
+        setCampaigns(formattedCampaigns);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setLoading(false);
+      });
+  }, []); 
+
   const formatCurrency = (amount) => {
-    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(amount);
   };
-
-  const [searchTerm, setSearchTerm] = useState("");
-  const [rows] = useState(initialRows);
-
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
-
-  const filteredRows = rows.filter((row) => {
-    return (
-      row.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      row.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      row.status.toLowerCase().includes(searchTerm.toLowerCase()) 
-    );
-  });
 
   return (
     <div className="campaigns">
       <Sidebar />
       <div className="campaignsContainer">
-        <Nav/>
+        <Nav />
         <div className="top">
           <h1>CAMPAIGN DETAILS</h1>
         </div>
 
         <div className="bottom">
           <TableContainer className="table">
-          <div className="searchbar">
-          <TextField
-            label="Search Campaigns"
-            variant="outlined"
-            value={searchTerm}
-            onChange={handleSearchChange}
-            sx={{ width: "50%", mb: 2 }}
-          />
-          </div>
             <Table>
               <TableHead>
                 <TableRow>
@@ -65,21 +79,27 @@ const Campaigns = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {filteredRows.map((row) => (
-                  <TableRow key={row.id}>
-                    <TableCell className="tableCell">{row.name}</TableCell>
+                {campaigns.map((campaign, index) => (
+                  <TableRow key={campaign.id}>
+                    <TableCell className="tableCell">{campaign.name}</TableCell>
                     <TableCell className="tableCell">
                       <div className="cellWrapper">
-                        <img src={row.img} alt="" className="image" />
+                        <img src={campaign.image} alt="" className="image" />
                       </div>
                     </TableCell>
-                    <TableCell className="tableCell">{row.description}</TableCell>
-                    <TableCell className="tableCell">{formatCurrency(row.amount)}</TableCell>
-                    <TableCell className="tableCell">{formatCurrency(row.amountCollected)}</TableCell>
-                    <TableCell className="tableCell">{row.EndDate}</TableCell>
-                    <TableCell className="tableCell">{row.registeredDate}</TableCell>
+                    <TableCell className="tableCell">{campaign.description}</TableCell>
                     <TableCell className="tableCell">
-                    <span className={`status ${row.status}`}>{row.status}</span>
+                      {formatCurrency(campaign.amount)}
+                    </TableCell>
+                    <TableCell className="tableCell">
+                      {formatCurrency(campaign.amountCollected)}
+                    </TableCell>
+                    <TableCell className="tableCell">{campaign.endDate}</TableCell>
+                    <TableCell className="tableCell">{campaign.registeredDate}</TableCell>
+                    <TableCell className="tableCell">
+                      <span className={`status ${campaign.status}`}>
+                        {campaign.status}
+                      </span>
                     </TableCell>
                   </TableRow>
                 ))}
@@ -87,7 +107,7 @@ const Campaigns = () => {
             </Table>
           </TableContainer>
         </div>
-        <Adminfooter/>
+        <Adminfooter />
       </div>
     </div>
   );
