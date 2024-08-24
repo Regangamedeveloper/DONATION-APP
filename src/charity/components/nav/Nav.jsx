@@ -12,9 +12,9 @@ const Nav = () => {
     <div className="nav">
       <div className="wrapper">
         <div className="brand">
-        Donation Managment Tracking System
+        <span className="tube">
+        <img src="https://adra.org.nz/wp-content/uploads/2019/11/adra-vertical-logo.png"alt="Your Logo" className="tube" /> </span>
         </div>
-
         <div className="items">
           {/* Existing items (Language, Dark Mode, etc.) */}
           <div className="item">

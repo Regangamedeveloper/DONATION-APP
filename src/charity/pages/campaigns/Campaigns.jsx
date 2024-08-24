@@ -10,11 +10,14 @@ import React, { useState, useEffect } from "react";
 import Adminfooter from "../../../Admin/components/Adminfooter";
 import axios from "axios";
 import Nav from "../../components/nav/Nav";
+import TextField from "@mui/material/TextField"; 
 
 const Campaigns = () => {
   const [campaigns, setCampaigns] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
+  
   useEffect(() => {
     setLoading(true);
 
@@ -42,7 +45,7 @@ const Campaigns = () => {
         setLoading(false);
       })
       .catch((error) => {
-        console.error(error);
+        console.error('Error fetching campaigns',error);
         setLoading(false);
       });
   }, []); 
@@ -52,7 +55,25 @@ const Campaigns = () => {
       style: "currency",
       currency: "USD",
     }).format(amount);
+
   };
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredcampaigns = campaigns.length > 0
+    ? campaigns.filter((campaign) => {
+        return (
+          campaign.id?.toString().includes(searchTerm.toString()) ||
+          campaign.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          campaign.description?.toLowerCase().includes(
+            searchTerm.toLowerCase()
+          )
+        );
+      })
+    : campaigns;
+
+ 
 
   return (
     <div className="campaigns">
@@ -65,6 +86,15 @@ const Campaigns = () => {
 
         <div className="bottom">
           <TableContainer className="table">
+          <div className="searchbar">
+          <TextField
+            label="Search Campaigns"
+            variant="filled"
+            value={searchTerm}
+            onChange={handleSearchChange}
+            sx={{ width: "50%", mb: 2 }}
+          />
+          </div>
             <Table>
               <TableHead>
                 <TableRow>
@@ -79,13 +109,17 @@ const Campaigns = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {campaigns.map((campaign, index) => (
+                {filteredcampaigns.map((campaign, index) => (
                   <TableRow key={campaign.id}>
                     <TableCell className="tableCell">{campaign.name}</TableCell>
                     <TableCell className="tableCell">
-                      <div className="cellWrapper">
-                        <img src={campaign.image} alt="" className="image" />
-                      </div>
+                    <div className="cellWrapper">
+                    <img
+             src={`http://localhost:5000/uploads/${campaign.image}`} 
+            alt="Campaign Image" // Use a more descriptive alt text
+            className="image"
+          />
+              </div>
                     </TableCell>
                     <TableCell className="tableCell">{campaign.description}</TableCell>
                     <TableCell className="tableCell">

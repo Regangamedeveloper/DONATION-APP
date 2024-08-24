@@ -1,16 +1,31 @@
-const express =require("express");
-const router =express.Router(); 
+const express = require("express");
+const router = express.Router(); 
 const Campaigns = require('../models/campaignsModel');
+const multer = require('multer');
+const path = require('path');
 
-router.post('/', async (req, res) => {
+// Multer storage configuration
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/'); // Upload directory
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname)); // Unique filename with extension
+  }
+});
+
+// Multer upload configuration
+const upload = multer({ storage:storage });
+
+router.post('/', upload.single('image'), async (req, res) => {
   try {
     const newCampaign = new Campaigns({
       name: req.body.name,
-      image: req.body.image,
+      image: req.file.filename, // Store only the filename
       description: req.body.description,
       amount: req.body.amount,
       amountCollected: req.body.amountCollected,
-      endDate:req.body.endDate
+      endDate: req.body.endDate
     });
 
     console.log('Creating campaign:', newCampaign);
@@ -22,6 +37,8 @@ router.post('/', async (req, res) => {
     res.status(500).json({ error: 'Failed to create campaign' });
   }
 });
+
+
 router.get('/', async (req, res) => {
   try {
     const campaigns = await Campaigns.find({});

@@ -11,7 +11,11 @@
     .brand {
       color: #007B5F;
       font-size: 20px;
-      
+      img {
+        // Style the logo image as needed
+        max-width: 10%; 
+        height: auto;  
+      }
     }
 
     .items {

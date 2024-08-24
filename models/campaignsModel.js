@@ -7,7 +7,7 @@ const campaignsSchema = new mongoose.Schema({
   },
   image: {
     type: String,
-    required: false,
+    required: true,
   },
   description: {
     type: String,
@@ -38,6 +38,6 @@ const campaignsSchema = new mongoose.Schema({
   timestamps: true
 });
 
-const Campaigns = mongoose.model('Adra', campaignsSchema);
+const Campaigns = mongoose.model('campaigns', campaignsSchema);
 
 module.exports = Campaigns;

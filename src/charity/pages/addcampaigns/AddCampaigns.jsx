@@ -6,36 +6,46 @@ import {useNavigate} from "react-router-dom";
 import Adminfooter from "../../../Admin/components/Adminfooter";
 import axios from "axios";
 import Nav from "../../components/nav/Nav";
-const AddCampaigns = ()=>{
-     const [name , setName]= useState('');
-     const [image , setImage]= useState('');
-     const [description, setDescription] = useState('');
-     const [amount, setAmount] =useState('');
-     const [endDate, setEndDate] = useState("");
-     const [loading ,setLoading] =useState(false);
-const navigate =useNavigate();
-const handleSaveBook =()=>{ 
-     const data ={
-        name,
-        image,
-        description,
-        amount,
-        endDate,
-     };
-     setLoading(true);
-     axios
-     .post("http://localhost:5000/campaigns", data)
-     .then(()=>{
-        setLoading(false);
-        navigate('/campaigns');
-     })
-     .catch((error)=>{
-        setLoading(false);
-        alert('An error happened.Please Check console');
-        console.log(error);
-     });
+
+const AddCampaigns = () => {
+    const [name , setName]= useState('');
+    const [image , setImage]= useState(null); // Changed to accept the file object
+    const [description, setDescription] = useState('');
+    const [amount, setAmount] =useState('');
+    const [endDate, setEndDate] = useState("");
+    const [loading ,setLoading] =useState(false);
+    const navigate =useNavigate();
+
+    const handleSaveBook = async () => { 
+      if (!name || !image || !description || !amount || !endDate) {
+        alert("Please fill in all required fields.");
+        return; // Prevent submission if any field is empty
+    }
+
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('image', image); // Add the selected image file
+        formData.append('description', description);
+        formData.append('amount', amount);
+        formData.append('endDate', endDate);
+
+        setLoading(true);
+        try {
+            const response = await axios.post("http://localhost:5000/campaigns", formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data' // Important for image uploads
+                }
+            });
+            setLoading(false);
+            navigate('/');
+        } catch (error) {
+            setLoading(false);
+            alert('An error happened. Please Check console');
+            console.log(error);
+        }
     };
-    const now = new Date();
+
+     const now = new Date();
     const month = String(now.getMonth() + 1).padStart(2, '0');
     const day = String(now.getDate()).padStart(2, '0');
     const year = now.getFullYear();
@@ -43,8 +53,8 @@ const handleSaveBook =()=>{
     const minutes = String(now.getMinutes()).padStart(2, '0');
     const seconds = String(now.getSeconds()).padStart(2, '0');
     const currentDateTime = `${month}/${day}/${year}  ${hours}:${minutes}:${seconds}`
-    
-    return(
+
+    return (
         <div className="addcampaigns">
         <Sidebar />
         <div className="addcontainer">
@@ -66,14 +76,9 @@ const handleSaveBook =()=>{
         
     </div>
     <div className="formInput">
-        <label htmlFor="file"  >
-        Campaign image:<UnarchiveTwoToneIcon className="icon"/></label>
-        <input type="file"
-         id ="file" 
-         style={{display:""}}
-          />
-          
-    </div>
+       <label htmlFor="imageUpload">Campaign image:</label>
+       <input type="file" id="imageUpload" onChange={(e) => setImage(e.target.files[0])} />
+   </div>
     <div className="formInput">
   <label htmlFor="description">Description:</label> 
   <textarea 
@@ -90,7 +95,7 @@ const handleSaveBook =()=>{
         <input type="text" 
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
-          placeholder="Amount Needed ??"S
+          placeholder="Amount Needed ??"
         />
 
     </div>
