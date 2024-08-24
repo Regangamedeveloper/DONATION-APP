@@ -4,6 +4,7 @@ const mongoose =require ("mongoose");
 const cors = require("cors");
  // Assuming your routes are in a 'routes' folder
 const campaignsRoute =require('./routes/campaigns')
+const donationRoute = require('./routes/donationsRoute');
 
 
 const app =express();
@@ -22,6 +23,7 @@ mongoose
   .catch((err) => console.error("Failed to Connect to MongoDB:", err));
 app.use(express.urlencoded({extended:true}));
 app.use("/campaigns",campaignsRoute);
+app.use('/api/donations', donationRoute);
 // Use the router for campaigns routes
 // Use your routes
 

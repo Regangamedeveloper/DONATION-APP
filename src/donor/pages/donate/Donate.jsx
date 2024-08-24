@@ -1,6 +1,15 @@
-import React, { useState } from 'react';
-import Navbar from '../../components/navbar/Navbar';
-import './donate.scss';
+import React, { useState, useEffect } from 'react';
+import './donate.scss'; // Import your CSS file
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+import { Stack } from '@mui/material';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import Navbar from '../../components/navbar/Navbar'
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} {...props} />;
+});
 
 const Donate = () => {
   const [donationAmount, setDonationAmount] = useState('');
@@ -10,16 +19,98 @@ const Donate = () => {
   const [paymentMethod, setPaymentMethod] = useState('');
   const [mobileNumber, setMobileNumber] = useState('');
   const [cardDetails, setCardDetails] = useState({ number: '', expiry: '', cvv: '' });
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [openSuccess, setOpenSuccess] = useState(false);
+  const [openError, setOpenError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [campaigns, setCampaigns] = useState([]); 
 
-  const handleDonate = () => {
-    // Handle donation logic
-    setIsSuccess(true); // Simulate successful transaction
+  useEffect(() => {
+    const fetchCampaigns = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/campaigns');
+        const result = await response.json();
+        console.log('Fetched campaigns:', result); // Ensure this shows the expected data
+        setCampaigns(result.data); // Use `result.data` to set campaigns
+        console.log('campaign', campaigns)
+      } catch (error) {
+        console.error('Error fetching campaigns:', error);
+        setErrorMessage('Failed to load campaigns. Please try again later.');
+        setOpenError(true);
+      }
+    };
+  
+    fetchCampaigns();
+  }, []);
+  
+
+  const handleDonate = async () => {
+    try {
+      // Find the selected campaign object
+      const selectedCampaignData = campaigns.find(
+        (campaign) => campaign._id === charityProgram
+      );
+
+      if (!selectedCampaignData) {
+        // Handle case where campaign is not found
+        setErrorMessage('Please select a valid charity campaign.');
+        setOpenError(true);
+        return; 
+      }
+
+      const response = await fetch('http://localhost:5000/api/donations', { 
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          charityProgram: selectedCampaignData, // Send the campaign object
+          donationAmount,
+          donationFrequency,
+          dedication,
+          paymentMethod,
+          paymentDetails: paymentMethod === 'mobile-money'
+            ? { mobileNumber }
+            : { cardDetails },
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setOpenSuccess(true);
+        setErrorMessage(null);
+        setTimeout(() => {
+          window.location.reload(); 
+        }, 3000);
+      } else {
+        setErrorMessage(data.error || 'Donation failed. Please try again.');
+        setOpenError(true);
+      }
+
+    } catch (error) {
+      console.error('Error during donation:', error);
+      setErrorMessage('An unexpected error occurred. Please try again later.');
+      setOpenError(true);
+    }
+  };
+
+  const handleCloseSuccess = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenSuccess(false);
+  };
+
+  const handleCloseError = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenError(false);
   };
 
   return (
     <div className="donate-page">
-      <Navbar />
+      <Navbar/>
       <div className="donate-content">
         <h1>Donate to a Charity Program</h1>
 
@@ -27,29 +118,31 @@ const Donate = () => {
           <h2>Select a Charity Campaign</h2>
           <select value={charityProgram} onChange={(e) => setCharityProgram(e.target.value)}>
             <option value="">Select a Program</option>
-            <option value="Education Program">Education Program</option>
-            <option value="Health Program">Health Program</option>
+            {Array.isArray(campaigns) && campaigns.length > 0 ? (
+              campaigns.map((campaign) => (
+                <option key={campaign._id} value={campaign._id}>
+                  {campaign.name}
+                </option>
+              ))
+            ) : (
+              <option value="">No campaigns available</option>
+            )}
           </select>
         </section>
 
         <section className="donation-details">
           <h2>Donation Details</h2>
 
-          <label>Donation Amount</label>
-          <div className="amount-options">
-            <button onClick={() => setDonationAmount(100000)}>100,000</button>
-            <button onClick={() => setDonationAmount(500000)}>500,000</button>
-            <button onClick={() => setDonationAmount(5000000)}>5,000,000</button>
-            <button onClick={() => setDonationAmount(10000000)}>10,000,000</button>
-            <input
-              type="number"
-              placeholder="Enter Amount"
-              value={donationAmount}
-              onChange={(e) => setDonationAmount(e.target.value)}
-            />
-          </div>
+          <label htmlFor="donationAmount">Donation Amount</label>
+          <input
+            type="number"
+            id="donationAmount"
+            placeholder="Enter Amount"
+            value={donationAmount}
+            onChange={(e) => setDonationAmount(e.target.value)}
+          />
 
-          <label>Donation Frequency</label>
+          <label htmlFor="donationFrequency">Donation Frequency</label>
           <select value={donationFrequency} onChange={(e) => setDonationFrequency(e.target.value)}>
             <option value="one-time">One-Time</option>
             <option value="monthly">Monthly</option>
@@ -57,9 +150,10 @@ const Donate = () => {
             <option value="annually">Annually</option>
           </select>
 
-          <label>Dedicate this Donation</label>
+          <label htmlFor="dedication">Dedicate this Donation</label>
           <input
             type="text"
+            id="dedication"
             placeholder="In honor/memory of"
             value={dedication}
             onChange={(e) => setDedication(e.target.value)}
@@ -68,7 +162,7 @@ const Donate = () => {
 
         <section className="payment-methods">
           <h2>Payment Methods</h2>
-          <label>Choose Payment Method</label>
+          <label htmlFor="paymentMethod">Choose Payment Method</label>
           <select value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value)}>
             <option value="">Select Payment Method</option>
             <option value="mobile-money">Mobile Money</option>
@@ -77,9 +171,10 @@ const Donate = () => {
 
           {paymentMethod === 'mobile-money' && (
             <div className="mobile-money">
-              <label>Mobile Number</label>
+              <label htmlFor="mobileNumber">Mobile Number</label>
               <input
                 type="tel"
+                id="mobileNumber"
                 placeholder="Enter Mobile Number"
                 value={mobileNumber}
                 onChange={(e) => setMobileNumber(e.target.value)}
@@ -89,23 +184,26 @@ const Donate = () => {
 
           {paymentMethod === 'visa' && (
             <div className="card-details">
-              <label>Card Number</label>
+              <label htmlFor="cardNumber">Card Number</label>
               <input
                 type="text"
+                id="cardNumber"
                 placeholder="Card Number"
                 value={cardDetails.number}
                 onChange={(e) => setCardDetails({ ...cardDetails, number: e.target.value })}
               />
-              <label>Expiry Date</label>
+              <label htmlFor="expiryDate">Expiry Date</label>
               <input
                 type="text"
+                id="expiryDate"
                 placeholder="MM/YY"
                 value={cardDetails.expiry}
                 onChange={(e) => setCardDetails({ ...cardDetails, expiry: e.target.value })}
               />
-              <label>CVV</label>
+              <label htmlFor="cvv">CVV</label>
               <input
                 type="text"
+                id="cvv"
                 placeholder="CVV"
                 value={cardDetails.cvv}
                 onChange={(e) => setCardDetails({ ...cardDetails, cvv: e.target.value })}
@@ -116,12 +214,19 @@ const Donate = () => {
 
         <button onClick={handleDonate}>Donate Now</button>
 
-        {isSuccess && (
-          <div className="success-message">
-            <h2>Thank you for your donation!</h2>
-            <p>Your contribution has been successfully processed.</p>
-          </div>
-        )}
+        <Stack spacing={2} sx={{ width: '100%' }}>
+          <Snackbar open={openSuccess} autoHideDuration={6000} onClose={handleCloseSuccess}>
+            <Alert onClose={handleCloseSuccess} severity="success" sx={{ width: '100%' }}>
+              Donation successful!
+            </Alert>
+          </Snackbar>
+
+          <Snackbar open={openError} autoHideDuration={6000} onClose={handleCloseError}>
+            <Alert onClose={handleCloseError} severity="error" sx={{ width: '100%' }}>
+              {errorMessage}
+            </Alert>
+          </Snackbar>
+        </Stack>
       </div>
     </div>
   );
