@@ -2,19 +2,25 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #017960;
-  padding: 10px;
+  background-color: #017960; /* A vibrant green */
+  padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
   height: 80px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+
+  &.scrolled {
+    background-color: #014f40; /* Darker green for scrolled state */
+  }
 
   .navbar-logo {
     img {
       margin-top: 10px;
       height: 60px;
-      transition: transform 0.3s;
+      transition: transform 0.3s ease;
 
       &:hover {
         transform: scale(1.1);
@@ -48,36 +54,37 @@
       a {
         color: #fff;
         text-decoration: none;
-        padding: 10px;
-        font-size: 20px;
-        font-weight: bold;
-        transition: background-color 0.3s;
+        padding: 10px 15px; /* Increase padding for better visual separation */
+        font-size: 18px; /* Slightly larger font size */
+        font-weight: 500; /* More prominent text */
+        transition: background-color 0.3s ease;
 
         &:hover {
-          background-color: #d1d099;
+          background-color: #d1d099; /* A subtle light yellow on hover */
           color: black;
         }
       }
 
-      .icon{
-        font-size: 30px;
+      .icon {
+        font-size: 24px;
         cursor: pointer;
+        color: #fff;
       }
 
-      .counter{
-        width: 15px;
-        height: 15px;
-        background-color: red;
+      .counter {
+        width: 20px; /* Increase size slightly */
+        height: 20px;
+        background-color: #ff5733; /* Bright orange for urgency */
         color: white;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 10px;
+        font-size: 12px;
         font-weight: bold;
         position: absolute;
-        top: -5px;
-        right: -5px;
+        top: -8px; /* Adjust position for better visual appeal */
+        right: -8px;
       }
 
       &.avatar {
@@ -88,7 +95,8 @@
           width: 40px;
           object-fit: cover;
           border-radius: 50%;
-          transition: transform 0.3s;
+          transition: transform 0.3s ease;
+          border: 2px solid #d1d099; /* Subtle yellow border */
 
           &:hover {
             transform: scale(1.1);
@@ -110,9 +118,10 @@
             color: #333;
             text-decoration: none;
             font-size: 16px;
+            transition: background-color 0.3s ease;
 
             &:hover {
-              background-color: #f1f1f1;
+              background-color: #f1f1f1; /* Light gray on hover */
             }
           }
         }
@@ -138,6 +147,7 @@
       .navbar-item {
         width: 100%;
         text-align: center;
+        margin-bottom: 10px; /* Add spacing between items */
 
         a {
           width: 100%;
@@ -152,7 +162,7 @@
     .navbar-item.avatar .dropdown {
       top: auto;
       right: 0;
-      width: 100PX;
+      width: 100px;
     }
   }
 }

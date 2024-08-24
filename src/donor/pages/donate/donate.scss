@@ -1,20 +1,43 @@
 .donate-page {
   background-color: #f9f9f9;
   margin-top: 80px;
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fstatic.guim.co.uk%2Fsys-images%2FGuardian%2FPix%2Fpictures%2F2015%2F2%2F16%2F1424102498656%2F2a5727f3-74c1-40a1-85ec-5e98f2897551-2060x1236.jpeg&f=1&nofb=1&ipt=0f3665bdd549946743356f001698c2702ae474e47c3376f2811b2b3e56d9ad7b&ipo=images');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 3%;
 
   .donate-content {
-    max-width: 800px;
-    margin: auto;
-    margin-top: 20px;
+    max-width: 600px;
     background: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     h1 {
-      text-align: center;
-      color: #017960;
+      background-color: #017960; /* Green background for the ribbon */
+      color: #fff; /* White text */
+      padding: 0.5rem 1rem; /* Adjust padding for the ribbon */
       margin-bottom: 20px;
+      border-radius: 5px; /* Rounded corners for the ribbon */
+      font-size: 1.5rem; /* Adjust font size */
+      font-weight: 500;
+      text-align: center;
+    }
+
+    label {
+      color: #3e3c3cc5; /* A lighter gray for the heading and label text */
+      font-weight: 400; /* Slightly lighter weight for a softer look */
+      font-size: 1rem; 
+    }
+    h2{
+      color: #017960;
+      font-weight: 600;
+      font-size: 1.2rem;
     }
 
     .program-details,
@@ -31,6 +54,8 @@
       margin: 10px 0;
       border: 1px solid #ccc;
       border-radius: 5px;
+      font-size: 0.9rem; 
+      color: #444; /* A darker gray for better contrast in input fields */
     }
 
     .amount-options {
@@ -43,6 +68,8 @@
         padding: 10px;
         border: 1px solid #ccc;
         border-radius: 5px;
+        font-size: 0.9rem;
+        color: #555; /* A lighter gray for text */
       }
 
       button {
@@ -69,13 +96,12 @@
     button {
       background-color: #017960;
       color: #fff;
-      padding: 15px;
+      padding: 15px 30px;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s;
-      //width: 100%;
-      text-align: center;
+      font-size: 1rem; 
 
       &:hover {
         background-color: #014f40;
