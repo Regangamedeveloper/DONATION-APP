@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -8,47 +7,45 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./donations.scss";
-import { rows as initialRows } from "../../components/donations"; 
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Adminfooter from '../../../Admin/components/Adminfooter';
 import Nav from '../../components/nav/Nav';
-
 const Donations = () => {
-  const [rows, setRows] = useState(initialRows);
-  const [editingRowId, setEditingRowId] = useState(null);
-  const [editedRowData, setEditedRowData] = useState({});
+  const [donations, setDonations] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [editingDonationId, setEditingDonationId] = useState(null);
+  const [editedDonationData, setEditedDonationData] = useState({});
   const [searchTerm, setSearchTerm] = useState('');
 
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
   };
 
-  const handleUpdateClick = (rowId) => {
-    setEditingRowId(rowId);
-    const rowToUpdate = rows.find((row) => row.id === rowId);
-    setEditedRowData(rowToUpdate);
+  const handleUpdateClick = (donationId) => {
+    setEditingDonationId(donationId);
+    const donationToUpdate = donations.find((donation) => donation.id === donationId);
+    setEditedDonationData(donationToUpdate);
   };
 
   const handleCloseModal = () => {
-    setEditingRowId(null);
-    setEditedRowData({});
+    setEditingDonationId(null);
+    setEditedDonationData({});
   };
 
   const handleChangeFormData = (event) => {
-    setEditedRowData({
-      ...editedRowData,
+    setEditedDonationData({
+      ...editedDonationData,
       [event.target.name]: event.target.value
     });
   };
 
   const handleSaveUpdate = () => {
-    const updatedRows = rows.map((row) =>
-      row.id === editingRowId ? editedRowData : row
-    );
-    setRows(updatedRows);
+    const updateddonations = donations.map((donation) =>
+      donation.id === editingDonationId ? editedDonationData : donation );
+    setDonations(updateddonations);
     handleCloseModal();
   };
 
@@ -57,22 +54,20 @@ const Donations = () => {
   };
 
   // Filtering logic (search multiple columns)
-  const filteredRows = rows.filter((row) => {
-    const searchTermLower = searchTerm.toLowerCase();
-
+    const filtereddonations = donations.length > 0
+    ? donations.filter((donation) => {
     return (
-      row.name.toLowerCase().includes(searchTermLower) ||
-      row.campaign.toLowerCase().includes(searchTermLower) ||
-      row.mode.toLowerCase().includes(searchTermLower) ||
-      row.for.toLowerCase().includes(searchTermLower) ||
-      row.on.toLowerCase().includes(searchTermLower) ||
-      row.paid.toLowerCase().includes(searchTermLower) ||
-      row.status.toLowerCase().includes(searchTermLower) ||
-      formatCurrency(row.amount).includes(searchTermLower) 
+      donation.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      donation.campaign?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      donation.mode?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      donation.for?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      donation.on?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      donation.paid?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      donation.status?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      formatCurrency(donation.amount)?.includes(searchTerm.toLowerCase()) 
     );
-  });
-
-
+  })
+:donations;
   const modalStyle = {
     position: 'absolute',
     top: '50%',
@@ -84,7 +79,7 @@ const Donations = () => {
     boxShadow: 24,
     p: 4,
   };
-
+ 
   return (
     <div className="donations">
       <Sidebar />
@@ -99,7 +94,7 @@ const Donations = () => {
           <div className="searchbar">
           <TextField
             label="Search Donations"
-            variant="outlined"
+            variant="filled"
             value={searchTerm}
             onChange={handleSearchChange}
             sx={{ width: "50%", mb: 2 }}
@@ -114,33 +109,31 @@ const Donations = () => {
                   <TableCell className="tablell">Donation Amount</TableCell>
                   <TableCell className="tablell">Paid On</TableCell>
                   <TableCell className="tablell">Status</TableCell>
-                  <TableCell className="tablell">Spent For</TableCell>
                   <TableCell className="tablell">Spent On</TableCell>
                   <TableCell className="tablell">Update</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {filteredRows.map((row) => (
-                  <TableRow key={row.id}>
-                    <TableCell className="tableCell">{row.name}</TableCell>
-                    <TableCell className="tableCell">{row.campaign}</TableCell>
-                    <TableCell className="tableCell">{row.mode}</TableCell>
+                {filtereddonations.map((donation) => (
+                  <TableRow key={donation.id}>
+                    <TableCell className="tableCell">{donation.name}</TableCell>
+                    <TableCell className="tableCell">{donation.charityProgram}</TableCell>
+                    <TableCell className="tableCell">{donation.paymentMethod}</TableCell>
                     <TableCell className="tableCell">
-                      {formatCurrency(row.amount)}
+                      {formatCurrency(donation.donationAmount)}
                     </TableCell>
-                    <TableCell className="tableCell">{row.paid}</TableCell>
+                    <TableCell className="tableCell">{donation.paid}</TableCell>
                     <TableCell className="tableCell">
-                      <span className={`status ${row.status.toLowerCase()}`}>
-                        {row.status}
+                      <span className={`status ${donation.status.toLowerCase()}`}>
+                        {donation.status}
                       </span>
                     </TableCell>
-                    <TableCell className="tableCell">{row.for}</TableCell>
-                    <TableCell className="tableCell">{row.on}</TableCell>
+                    <TableCell className="tableCell">{donation.spent}</TableCell>
                     <TableCell className="tableCell">
                       <Button
                         variant="contained"
                         color="primary"
-                        onClick={() => handleUpdateClick(row.id)}
+                        onClick={() => handleUpdateClick(donation.id)}
                       >
                         Update
                       </Button>
@@ -153,46 +146,38 @@ const Donations = () => {
         </div> 
 
         {/* Update Modal */}
-        <Modal open={editingRowId !== null} onClose={handleCloseModal}>
+        <Modal open={editingDonationId !== null} onClose={handleCloseModal}>
           <Box sx={modalStyle}>
             <h2>Update Donation</h2>
 
             <TextField
               label="Charity Name"
               name="name"
-              value={editedRowData.name || ''}
+              value={editedDonationData.name || ''}
               onChange={handleChangeFormData}
               fullWidth
               margin="normal"
             />
             <TextField
-              label="Campaign Name"
-              name="campaign"
-              value={editedRowData.campaign || ''}
+              label="charityProgram"
+              name=""
+              value={editedDonationData.campaign || ''}
               onChange={handleChangeFormData}
               fullWidth
               margin="normal"
             />
             <TextField
               label="Payment Mode"
-              name="mode"
-              value={editedRowData.mode || ''}
-              onChange={handleChangeFormData}
-              fullWidth
-              margin="normal"
-            />
-            <TextField
-              label="Spent For"
-              name="for"
-              value={editedRowData.for || ''}
+              name="paymentMethod"
+              value={editedDonationData.mode || ''}
               onChange={handleChangeFormData}
               fullWidth
               margin="normal"
             />
             <TextField
               label="Spent On"
-              name="on"
-              value={editedRowData.on || ''}
+              name="spent"
+              value={editedDonationData.on || ''}
               onChange={handleChangeFormData}
               fullWidth
               margin="normal"

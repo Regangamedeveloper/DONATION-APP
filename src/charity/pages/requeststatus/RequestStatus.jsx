@@ -17,9 +17,11 @@ const RequestStatus = () => {
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
   };
-  const [searchTerm, setSearchTerm] = useState("");
+  
   const [rows] = useState(initialRows); 
 
+
+  const [searchTerm, setSearchTerm] = useState("");
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };

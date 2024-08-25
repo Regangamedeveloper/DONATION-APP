@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const campaignsSchema = new mongoose.Schema({
+
   name: {
     type: String,
     required: true,
@@ -19,7 +20,6 @@ const campaignsSchema = new mongoose.Schema({
   },
   amountCollected:{
     type: String,
-    required:false,
   },
   endDate: {
     type: Date,

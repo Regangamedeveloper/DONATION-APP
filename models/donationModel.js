@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const donationSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    default: 'ADRA' 
+  },
   charityProgram: {
     type: String,
     required: true,
@@ -22,6 +26,18 @@ const donationSchema = new mongoose.Schema({
     enum: ['mobile-money', 'visa'],
     required: true,
   },
+  paid:{
+    type:Date,
+  },
+  spent:{
+    type: String,
+  },
+  status: {
+    type: String,
+    enum: ['Active', 'Completed', 'Pending'], 
+    default: 'Active' 
+  },
+
   paymentDetails: {
     mobileNumber: {
       type: String,
@@ -32,10 +48,13 @@ const donationSchema = new mongoose.Schema({
       cvv: { type: String },
     },
   },
+
   transactionId: {
     type: String,
     // integrate a payment gateway and store the transaction ID here
   },
+ 
+
   timestamp: {
     type: Date,
     default: Date.now,

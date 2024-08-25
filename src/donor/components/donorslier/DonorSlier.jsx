@@ -31,7 +31,7 @@ const DonorSlier = () => {
   }, []);
 
   return (
-    <div className="slider">
+    <div className="slier">
       {slides.map((slide, index) => (
         <div
           key={index}

@@ -3,8 +3,6 @@ import './donate.scss'; // Import your CSS file
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import { Stack } from '@mui/material';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
 import Navbar from '../../components/navbar/Navbar'
 
 const Alert = React.forwardRef(function Alert(props, ref) {
