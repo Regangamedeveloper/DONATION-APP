@@ -9,13 +9,10 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import "./donations.scss";
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Adminfooter from '../../../Admin/components/Adminfooter';
 import Nav from '../../components/nav/Nav';
 import axios from 'axios'; // Import Axios
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
 
 const Donations = () => {
   const [donations, setDonations] = useState([]);
@@ -24,6 +21,7 @@ const Donations = () => {
   const [editedDonationData, setEditedDonationData] = useState({});
   const [searchTerm, setSearchTerm] = useState('');
   const [campaigns, setCampaigns] = useState([]);
+  const [showModal, setShowModal] = useState(false); 
 
   useEffect(() => {
     const fetchDonations = async () => {
@@ -41,7 +39,7 @@ const Donations = () => {
 
     const fetchCampaigns = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/campaigns');
+        const response = await axios.get('http://localhost:5000/campaigns'); 
         setCampaigns(response.data.data); // Assuming campaigns are nested under 'data'
       } catch (error) {
         console.error('Error fetching campaigns:', error);
@@ -61,11 +59,13 @@ const Donations = () => {
     setEditingDonationId(donationId);
     const donationToUpdate = donations.find((donation) => donation.id === donationId);
     setEditedDonationData(donationToUpdate);
+    setShowModal(true); 
   };
 
   const handleCloseModal = () => {
     setEditingDonationId(null);
     setEditedDonationData({});
+    setShowModal(false); 
   };
 
   const handleChangeFormData = (event) => {
@@ -121,10 +121,11 @@ const Donations = () => {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
+    bgcolor: 'white', 
+    border: '2px solid #ccc', 
     boxShadow: 24,
-    p: 4,
+    padding: '20px', 
+    borderRadius: '5px', 
   };
 
   return (
@@ -139,12 +140,18 @@ const Donations = () => {
         <div className="bottom">
           <TableContainer className="table">
             <div className="searchbar">
-              <TextField
-                label="Search Donations"
-                variant="filled"
+              <input
+                type="text"
+                placeholder="Search Donations"
                 value={searchTerm}
                 onChange={handleSearchChange}
-                sx={{ width: "50%", mb: 2 }}
+                style={{
+                  width: '100%', 
+                  padding: '8px', 
+                  border: '1px solid #ccc',
+                  borderRadius: '4px',
+                  marginBottom: '10px'
+                }}
               />
             </div>
             <Table>
@@ -193,66 +200,88 @@ const Donations = () => {
         </div> 
 
         {/* Update Modal */}
-        <Modal open={editingDonationId !== null} onClose={handleCloseModal}>
+        <Modal open={showModal} onClose={handleCloseModal}>
           <Box sx={modalStyle}>
             <h2>Update Donation</h2>
 
-            <TextField
-              label="Donor Name"
-              name="name"
-              value={editedDonationData.name || ''}
-              onChange={handleChangeFormData}
-              fullWidth
-              margin="normal"
-            />
+            <div>
+              <label htmlFor="name">Donor Name:</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={editedDonationData.name || ''}
+                onChange={handleChangeFormData}
+                style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px', marginBottom: '10px' }} 
+              />
+            </div>
 
-            <Select
-              label="Campaign Name"
-              name="charityProgram"
-              value={editedDonationData.charityProgram || ''} // Set the value to the campaign ID 
-              onChange={handleChangeFormData}
-              fullWidth
-              margin="normal"
-            >
-              {campaigns.map((campaign) => (
-                <MenuItem key={campaign.id} value={campaign.id}>
-                  {campaign.name}
-                </MenuItem>
-              ))}
-            </Select>
+            <div>
+              <label htmlFor="charityProgram">Campaign Name:</label>
+              <select
+                id="charityProgram"
+                name="charityProgram"
+                value={editedDonationData.charityProgram || ''}
+                onChange={handleChangeFormData}
+                style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px', marginBottom: '10px' }} 
+              >
+                {campaigns.map((campaign) => (
+                  <option key={campaign.id} value={campaign.id}>
+                    {campaign.name}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-            <TextField
-              label="Payment Mode"
-              name="paymentMethod"
-              value={editedDonationData.paymentMethod || ''}
-              onChange={handleChangeFormData}
-              fullWidth
-              margin="normal"
-            />
+            <div>
+              <label htmlFor="paymentMethod">Payment Mode:</label>
+              <input
+                type="text"
+                id="paymentMethod"
+                name="paymentMethod"
+                value={editedDonationData.paymentMethod || ''}
+                onChange={handleChangeFormData}
+                style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px', marginBottom: '10px' }} 
+              />
+            </div>
 
-            <TextField
-              label="Spent On"
-              name="spent"
-              value={editedDonationData.spent || ''}
-              onChange={handleChangeFormData}
-              fullWidth
-              margin="normal"
-            />
+            <div>
+              <label htmlFor="spent">Spent On:</label>
+              <input
+                type="text"
+                id="spent"
+                name="spent"
+                value={editedDonationData.spent || ''}
+                onChange={handleChangeFormData}
+                style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px', marginBottom: '10px' }} 
+              />
+            </div>
 
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={handleSaveUpdate}
+            <button onClick={handleSaveUpdate} 
+              style={{
+                padding: '10px 20px', 
+                backgroundColor: '#4CAF50', 
+                color: 'white',
+                border: 'none',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                marginRight: '10px' 
+              }}
             >
               Save
-            </Button>
-            <Button
-              variant="outlined"
-              color="secondary"
-              onClick={handleCloseModal}
+            </button>
+            <button onClick={handleCloseModal}
+              style={{
+                padding: '10px 20px', 
+                backgroundColor: '#f44336', 
+                color: 'white',
+                border: 'none',
+                borderRadius: '4px',
+                cursor: 'pointer' 
+              }}
             >
               Cancel
-            </Button>
+            </button>
           </Box>
         </Modal>
         <Adminfooter/>
