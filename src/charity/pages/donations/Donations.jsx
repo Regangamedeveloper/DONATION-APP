@@ -27,8 +27,9 @@ const Donations = () => {
     const fetchDonations = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('http://localhost:5000/api/donations'); 
+        const response = await axios.get('http://localhost:5000/donations'); 
         setDonations(response.data);
+        console.log('donations', donations )
       } catch (error) {
         console.error('Error fetching donations:', error);
         // Handle error (e.g., display an error message)
@@ -167,34 +168,27 @@ const Donations = () => {
                   <TableCell className="tablell">Update</TableCell>
                 </TableRow>
               </TableHead>
-              <TableBody>
+                  <TableBody>
                 {filtereddonations.map((donation) => (
-                  <TableRow key={donation.id}> {/* Added key prop */}
+                  <TableRow key={donation.id}>
                     <TableCell className="tableCell">{donation.name}</TableCell>
-                    <TableCell className="tableCell">{donation.charityProgram}</TableCell> 
+                    <TableCell className="tableCell">{donation.charityProgram}</TableCell>
                     <TableCell className="tableCell">{donation.paymentMethod}</TableCell>
+                    <TableCell className="tableCell">{formatCurrency(donation.donationAmount)}</TableCell>
+                    <TableCell className="tableCell">{donation.timestamp}</TableCell>
                     <TableCell className="tableCell">
-                      {formatCurrency(donation.donationAmount)}
-                    </TableCell>
-                    <TableCell className="tableCell">{donation.paid}</TableCell>
-                    <TableCell className="tableCell">
-                      <span className={`status ${donation.status.toLowerCase()}`}>
-                        {donation.status}
-                      </span>
+                      <span className={`status ${donation.status.toLowerCase()}`}>{donation.status}</span>
                     </TableCell>
                     <TableCell className="tableCell">{donation.spent}</TableCell>
                     <TableCell className="tableCell">
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={() => handleUpdateClick(donation.id)}
-                      >
+                      <Button variant="contained" color="primary" onClick={() => handleUpdateClick(donation.id)}>
                         Update
                       </Button>
                     </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
+
             </Table>
           </TableContainer>
         </div> 
@@ -231,6 +225,7 @@ const Donations = () => {
                   </option>
                 ))}
               </select>
+
             </div>
 
             <div>
@@ -243,6 +238,45 @@ const Donations = () => {
                 onChange={handleChangeFormData}
                 style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px', marginBottom: '10px' }} 
               />
+            </div>
+
+            <div>
+              <label htmlFor="donationAmount">Donated Amount:</label>
+              <input
+                type="number"
+                id="donationAmount"
+                name="donationAmount"
+                value={editedDonationData.donationAmount || ''}
+                onChange={handleChangeFormData}
+                style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px', marginBottom: '10px' }} 
+              />
+            </div>
+
+            <div>
+              <label htmlFor="paid">Paid On:</label>
+              <input
+                type="date"
+                id="paid"
+                name="paid"
+                value={editedDonationData.timestamp || ''}
+                onChange={handleChangeFormData}
+                style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px', marginBottom: '10px' }} 
+              />
+            </div>
+
+            <div>
+              <label htmlFor="status">Status:</label>
+              <select
+                id="status"
+                name="status"
+                value={editedDonationData.status || ''}
+                onChange={handleChangeFormData}
+                style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px', marginBottom: '10px' }} 
+              >
+                <option value="Pending">Pending</option>
+                <option value="Processed">Processed</option>
+                <option value="Completed">Completed</option>
+              </select>
             </div>
 
             <div>
@@ -291,3 +325,4 @@ const Donations = () => {
 };
 
 export default Donations;
+

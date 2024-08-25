@@ -8,8 +8,6 @@ const donationSchema = new mongoose.Schema({
   charityProgram: {
     type: String,
     required: true,
-    
-
   },
   donationAmount: {
     type: Number,
@@ -28,16 +26,13 @@ const donationSchema = new mongoose.Schema({
     enum: ['mobile-money', 'visa'],
     required: true,
   },
-  paid:{
-    type:Date,
-  },
   spent:{
     type: String,
   },
   status: {
     type: String,
-    enum: ['Active', 'Completed', 'Pending'], 
-    default: 'Active' 
+    enum: ['Processed', 'Completed', 'Pending'], 
+    default: 'Processed' 
   },
 
   paymentDetails: {
@@ -50,7 +45,6 @@ const donationSchema = new mongoose.Schema({
       cvv: { type: String },
     },
   },
-
   transactionId: {
     type: String,
     // integrate a payment gateway and store the transaction ID here

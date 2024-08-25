@@ -29,7 +29,7 @@ mongoose
   .catch((err) => console.error("Failed to Connect to MongoDB:", err));
 app.use(express.urlencoded({extended:true}));
 app.use("/campaigns",campaignsRoute);
-app.use('/api/donations', donationRoute);
+app.use('/donations', donationRoute);
 // Use the router for campaigns routes
 // Use your routes
 // Start the server

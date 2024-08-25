@@ -28,7 +28,9 @@ const Donate = () => {
     const fetchCampaigns = async () => {
       try {
         const response = await axios.get('http://localhost:5000/campaigns');
+        console.log('test',response)
         setCampaigns(response.data.data); 
+        console.log('campaigns', campaigns)
 
         // Create a lookup object for campaigns by ID
         const newCampaignsById = {};
@@ -48,7 +50,7 @@ const Donate = () => {
 
   const handleDonate = async () => {
     try {
-      // Get the selected campaign from the lookup object
+      // Get the selected campaign name from the lookup object
       const selectedCampaignData = campaignsById[charityProgram];
 
       if (!selectedCampaignData) {
@@ -56,9 +58,11 @@ const Donate = () => {
         setOpenError(true);
         return;
       }
+    
+      const campaignName = selectedCampaignData.name; // Extract the campaign name
 
-      const response = await axios.post('http://localhost:5000/api/donations', {
-        charityProgram: selectedCampaignData, 
+      const response = await axios.post('http://localhost:5000/donations', {
+        charityProgram: campaignName, // Send the campaign name
         donationAmount,
         donationFrequency,
         dedication,
@@ -67,6 +71,7 @@ const Donate = () => {
           paymentMethod === 'mobile-money'
             ? { mobileNumber }
             : { cardDetails },
+    
       });
 
       if (response.status === 201) { // Assuming 201 for successful creation
