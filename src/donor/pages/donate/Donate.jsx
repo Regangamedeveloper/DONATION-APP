@@ -28,7 +28,7 @@ const Donate = () => {
         const response = await fetch('http://localhost:5000/campaigns');
         const result = await response.json();
         console.log('Fetched campaigns:', result); // Ensure this shows the expected data
-        setCampaigns(result.data); // Use `result.data` to set campaigns
+        setCampaigns(result.data.data); // Use `result.data` to set campaigns
         console.log('campaign', campaigns)
       } catch (error) {
         console.error('Error fetching campaigns:', error);
