@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -13,12 +13,45 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Adminfooter from '../../../Admin/components/Adminfooter';
 import Nav from '../../components/nav/Nav';
+import axios from 'axios'; // Import Axios
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+
 const Donations = () => {
   const [donations, setDonations] = useState([]);
   const [loading, setLoading] = useState(false);
   const [editingDonationId, setEditingDonationId] = useState(null);
   const [editedDonationData, setEditedDonationData] = useState({});
   const [searchTerm, setSearchTerm] = useState('');
+  const [campaigns, setCampaigns] = useState([]);
+
+  useEffect(() => {
+    const fetchDonations = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get('http://localhost:5000/api/donations'); 
+        setDonations(response.data);
+      } catch (error) {
+        console.error('Error fetching donations:', error);
+        // Handle error (e.g., display an error message)
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    const fetchCampaigns = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/campaigns');
+        setCampaigns(response.data.data); // Assuming campaigns are nested under 'data'
+      } catch (error) {
+        console.error('Error fetching campaigns:', error);
+        // Handle error (e.g., display an error message)
+      }
+    };
+
+    fetchDonations();
+    fetchCampaigns();
+  }, []);
 
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
@@ -42,11 +75,25 @@ const Donations = () => {
     });
   };
 
-  const handleSaveUpdate = () => {
-    const updateddonations = donations.map((donation) =>
-      donation.id === editingDonationId ? editedDonationData : donation );
-    setDonations(updateddonations);
-    handleCloseModal();
+  // Function to handle saving the updated donation
+  const handleSaveUpdate = async () => {
+    try {
+      const response = await axios.put(`http://localhost:5000/api/donations/${editingDonationId}`, editedDonationData); 
+      // Replace with your actual update endpoint
+      if (response.status === 200) {
+        const updatedDonations = donations.map((donation) =>
+          donation.id === editingDonationId ? response.data : donation
+        );
+        setDonations(updatedDonations);
+        handleCloseModal();
+      } else {
+        console.error('Error updating donation:', response.data);
+        // Handle error (e.g., display an error message)
+      }
+    } catch (error) {
+      console.error('Error updating donation:', error);
+      // Handle error (e.g., display an error message)
+    }
   };
 
   const handleSearchChange = (event) => {
@@ -54,20 +101,20 @@ const Donations = () => {
   };
 
   // Filtering logic (search multiple columns)
-    const filtereddonations = donations.length > 0
+  const filtereddonations = donations.length > 0
     ? donations.filter((donation) => {
-    return (
-      donation.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      donation.campaign?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      donation.mode?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      donation.for?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      donation.on?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      donation.paid?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      donation.status?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      formatCurrency(donation.amount)?.includes(searchTerm.toLowerCase()) 
-    );
-  })
-:donations;
+      return (
+        donation.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        donation.charityProgram?.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        donation.paymentMethod?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        donation.dedication?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        donation.paid?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        donation.status?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        formatCurrency(donation.donationAmount)?.includes(searchTerm.toLowerCase()) 
+      );
+    })
+    : donations;
+
   const modalStyle = {
     position: 'absolute',
     top: '50%',
@@ -79,34 +126,34 @@ const Donations = () => {
     boxShadow: 24,
     p: 4,
   };
- 
+
   return (
     <div className="donations">
       <Sidebar />
       <div className="donationsContainer">
-        <Nav/>
+        <Nav />
         <div className="top">
           <h1>DONATION DETAILS</h1>
         </div>
 
         <div className="bottom">
           <TableContainer className="table">
-          <div className="searchbar">
-          <TextField
-            label="Search Donations"
-            variant="filled"
-            value={searchTerm}
-            onChange={handleSearchChange}
-            sx={{ width: "50%", mb: 2 }}
-          />
-          </div>
+            <div className="searchbar">
+              <TextField
+                label="Search Donations"
+                variant="filled"
+                value={searchTerm}
+                onChange={handleSearchChange}
+                sx={{ width: "50%", mb: 2 }}
+              />
+            </div>
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell className="tablell">Charity Name</TableCell>
+                  <TableCell className="tablell">Donor</TableCell>
                   <TableCell className="tablell">Campaign Name</TableCell>
                   <TableCell className="tablell">Payment Mode</TableCell>
-                  <TableCell className="tablell">Donation Amount</TableCell>
+                  <TableCell className="tablell">Donated Amount</TableCell>
                   <TableCell className="tablell">Paid On</TableCell>
                   <TableCell className="tablell">Status</TableCell>
                   <TableCell className="tablell">Spent On</TableCell>
@@ -117,7 +164,7 @@ const Donations = () => {
                 {filtereddonations.map((donation) => (
                   <TableRow key={donation.id}>
                     <TableCell className="tableCell">{donation.name}</TableCell>
-                    <TableCell className="tableCell">{donation.charityProgram}</TableCell>
+                    <TableCell className="tableCell">{donation.charityProgram}</TableCell> 
                     <TableCell className="tableCell">{donation.paymentMethod}</TableCell>
                     <TableCell className="tableCell">
                       {formatCurrency(donation.donationAmount)}
@@ -151,33 +198,42 @@ const Donations = () => {
             <h2>Update Donation</h2>
 
             <TextField
-              label="Charity Name"
+              label="Donor Name"
               name="name"
               value={editedDonationData.name || ''}
               onChange={handleChangeFormData}
               fullWidth
               margin="normal"
             />
-            <TextField
-              label="charityProgram"
-              name=""
-              value={editedDonationData.campaign || ''}
+
+            <Select
+              label="Campaign Name"
+              name="charityProgram"
+              value={editedDonationData.charityProgram || ''} // Set the value to the campaign ID 
               onChange={handleChangeFormData}
               fullWidth
               margin="normal"
-            />
+            >
+              {campaigns.map((campaign) => (
+                <MenuItem key={campaign.id} value={campaign.id}>
+                  {campaign.name}
+                </MenuItem>
+              ))}
+            </Select>
+
             <TextField
               label="Payment Mode"
               name="paymentMethod"
-              value={editedDonationData.mode || ''}
+              value={editedDonationData.paymentMethod || ''}
               onChange={handleChangeFormData}
               fullWidth
               margin="normal"
             />
+
             <TextField
               label="Spent On"
               name="spent"
-              value={editedDonationData.on || ''}
+              value={editedDonationData.spent || ''}
               onChange={handleChangeFormData}
               fullWidth
               margin="normal"
