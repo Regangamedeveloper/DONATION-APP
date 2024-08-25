@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import './donate.scss'; // Import your CSS file
+import './donate.scss'; 
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import { Stack } from '@mui/material';
-import Navbar from '../../components/navbar/Navbar'
+import Navbar from '../../components/navbar/Navbar';
+import axios from 'axios'; 
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} {...props} />;
@@ -12,7 +13,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 const Donate = () => {
   const [donationAmount, setDonationAmount] = useState('');
   const [donationFrequency, setDonationFrequency] = useState('one-time');
-  const [charityProgram, setCharityProgram] = useState('');
+  const [charityProgram, setCharityProgram] = useState(''); 
   const [dedication, setDedication] = useState('');
   const [paymentMethod, setPaymentMethod] = useState('');
   const [mobileNumber, setMobileNumber] = useState('');
@@ -20,68 +21,64 @@ const Donate = () => {
   const [openSuccess, setOpenSuccess] = useState(false);
   const [openError, setOpenError] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
-  const [campaigns, setCampaigns] = useState([]); 
+  const [campaigns, setCampaigns] = useState([]);
+  const [campaignsById, setCampaignsById] = useState({}); 
 
   useEffect(() => {
     const fetchCampaigns = async () => {
       try {
-        const response = await fetch('http://localhost:5000/campaigns');
-        const result = await response.json();
-        console.log('Fetched campaigns:', result); // Ensure this shows the expected data
-        setCampaigns(result.data.data); // Use `result.data` to set campaigns
-        console.log('campaign', campaigns)
+        const response = await axios.get('http://localhost:5000/campaigns');
+        setCampaigns(response.data.data); 
+
+        // Create a lookup object for campaigns by ID
+        const newCampaignsById = {};
+        response.data.data.forEach((campaign) => {
+          newCampaignsById[campaign._id] = campaign;
+        });
+        setCampaignsById(newCampaignsById);
       } catch (error) {
         console.error('Error fetching campaigns:', error);
         setErrorMessage('Failed to load campaigns. Please try again later.');
         setOpenError(true);
       }
     };
-  
+
     fetchCampaigns();
   }, []);
-  
 
   const handleDonate = async () => {
     try {
-      // Find the selected campaign object
-      const selectedCampaignData = campaigns.find(
-        (campaign) => campaign._id === charityProgram
-      );
+      // Get the selected campaign from the lookup object
+      const selectedCampaignData = campaignsById[charityProgram];
 
       if (!selectedCampaignData) {
-        // Handle case where campaign is not found
         setErrorMessage('Please select a valid charity campaign.');
         setOpenError(true);
-        return; 
+        return;
       }
 
-      const response = await fetch('http://localhost:5000/api/donations', { 
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          charityProgram: selectedCampaignData, // Send the campaign object
-          donationAmount,
-          donationFrequency,
-          dedication,
-          paymentMethod,
-          paymentDetails: paymentMethod === 'mobile-money'
+      const response = await axios.post('http://localhost:5000/api/donations', {
+        charityProgram: selectedCampaignData, 
+        donationAmount,
+        donationFrequency,
+        dedication,
+        paymentMethod,
+        paymentDetails:
+          paymentMethod === 'mobile-money'
             ? { mobileNumber }
             : { cardDetails },
-        }),
       });
 
-      const data = await response.json();
-
-      if (response.ok) {
+      if (response.status === 201) { // Assuming 201 for successful creation
         setOpenSuccess(true);
         setErrorMessage(null);
         setTimeout(() => {
           window.location.reload(); 
         }, 3000);
       } else {
-        setErrorMessage(data.error || 'Donation failed. Please try again.');
+        setErrorMessage(
+          response.data.error || 'Donation failed. Please try again.'
+        );
         setOpenError(true);
       }
 
@@ -108,13 +105,16 @@ const Donate = () => {
 
   return (
     <div className="donate-page">
-      <Navbar/>
+      <Navbar />
       <div className="donate-content">
         <h1>Donate to a Charity Program</h1>
 
         <section className="program-details">
           <h2>Select a Charity Campaign</h2>
-          <select value={charityProgram} onChange={(e) => setCharityProgram(e.target.value)}>
+          <select
+            value={charityProgram}
+            onChange={(e) => setCharityProgram(e.target.value)}
+          >
             <option value="">Select a Program</option>
             {Array.isArray(campaigns) && campaigns.length > 0 ? (
               campaigns.map((campaign) => (
@@ -141,7 +141,10 @@ const Donate = () => {
           />
 
           <label htmlFor="donationFrequency">Donation Frequency</label>
-          <select value={donationFrequency} onChange={(e) => setDonationFrequency(e.target.value)}>
+          <select
+            value={donationFrequency}
+            onChange={(e) => setDonationFrequency(e.target.value)}
+          >
             <option value="one-time">One-Time</option>
             <option value="monthly">Monthly</option>
             <option value="quarterly">Quarterly</option>
@@ -161,7 +164,10 @@ const Donate = () => {
         <section className="payment-methods">
           <h2>Payment Methods</h2>
           <label htmlFor="paymentMethod">Choose Payment Method</label>
-          <select value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value)}>
+          <select
+            value={paymentMethod}
+            onChange={(e) => setPaymentMethod(e.target.value)}
+          >
             <option value="">Select Payment Method</option>
             <option value="mobile-money">Mobile Money</option>
             <option value="visa">Visa</option>
@@ -188,7 +194,9 @@ const Donate = () => {
                 id="cardNumber"
                 placeholder="Card Number"
                 value={cardDetails.number}
-                onChange={(e) => setCardDetails({ ...cardDetails, number: e.target.value })}
+                onChange={(e) =>
+                  setCardDetails({ ...cardDetails, number: e.target.value })
+                }
               />
               <label htmlFor="expiryDate">Expiry Date</label>
               <input
@@ -196,7 +204,9 @@ const Donate = () => {
                 id="expiryDate"
                 placeholder="MM/YY"
                 value={cardDetails.expiry}
-                onChange={(e) => setCardDetails({ ...cardDetails, expiry: e.target.value })}
+                onChange={(e) =>
+                  setCardDetails({ ...cardDetails, expiry: e.target.value })
+                }
               />
               <label htmlFor="cvv">CVV</label>
               <input
@@ -204,7 +214,9 @@ const Donate = () => {
                 id="cvv"
                 placeholder="CVV"
                 value={cardDetails.cvv}
-                onChange={(e) => setCardDetails({ ...cardDetails, cvv: e.target.value })}
+                onChange={(e) =>
+                  setCardDetails({ ...cardDetails, cvv: e.target.value })
+                }
               />
             </div>
           )}
@@ -213,14 +225,30 @@ const Donate = () => {
         <button onClick={handleDonate}>Donate Now</button>
 
         <Stack spacing={2} sx={{ width: '100%' }}>
-          <Snackbar open={openSuccess} autoHideDuration={6000} onClose={handleCloseSuccess}>
-            <Alert onClose={handleCloseSuccess} severity="success" sx={{ width: '100%' }}>
+          <Snackbar
+            open={openSuccess}
+            autoHideDuration={6000}
+            onClose={handleCloseSuccess}
+          >
+            <Alert
+              onClose={handleCloseSuccess}
+              severity="success"
+              sx={{ width: '100%' }}
+            >
               Donation successful!
             </Alert>
           </Snackbar>
 
-          <Snackbar open={openError} autoHideDuration={6000} onClose={handleCloseError}>
-            <Alert onClose={handleCloseError} severity="error" sx={{ width: '100%' }}>
+          <Snackbar
+            open={openError}
+            autoHideDuration={6000}
+            onClose={handleCloseError}
+          >
+            <Alert
+              onClose={handleCloseError}
+              severity="error"
+              sx={{ width: '100%' }}
+            >
               {errorMessage}
             </Alert>
           </Snackbar>

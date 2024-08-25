@@ -12,7 +12,7 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Adminfooter from '../../../Admin/components/Adminfooter';
 import Nav from '../../components/nav/Nav';
-import axios from 'axios'; // Import Axios
+import axios from 'axios'; 
 
 const Donations = () => {
   const [donations, setDonations] = useState([]);
@@ -169,7 +169,7 @@ const Donations = () => {
               </TableHead>
               <TableBody>
                 {filtereddonations.map((donation) => (
-                  <TableRow key={donation.id}>
+                  <TableRow key={donation.id}> {/* Added key prop */}
                     <TableCell className="tableCell">{donation.name}</TableCell>
                     <TableCell className="tableCell">{donation.charityProgram}</TableCell> 
                     <TableCell className="tableCell">{donation.paymentMethod}</TableCell>

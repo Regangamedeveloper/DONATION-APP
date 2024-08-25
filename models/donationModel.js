@@ -8,6 +8,8 @@ const donationSchema = new mongoose.Schema({
   charityProgram: {
     type: String,
     required: true,
+    
+
   },
   donationAmount: {
     type: Number,
@@ -54,7 +56,6 @@ const donationSchema = new mongoose.Schema({
     // integrate a payment gateway and store the transaction ID here
   },
  
-
   timestamp: {
     type: Date,
     default: Date.now,
