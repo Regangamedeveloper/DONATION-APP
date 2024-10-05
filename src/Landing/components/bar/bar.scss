@@ -1,25 +1,53 @@
-.landing-nav{
+.landing-nav {
   display: flex;
-  padding: 0.5rem;
+  padding: 0.5rem 2rem;
   position: sticky;
   top: 0;
   z-index: 999;
   width: 100%;
-  background-color: antiquewhite;
-  .landing-logo{
+  /* From https://css.glass */
+background: white;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(9.7px);
+-webkit-backdrop-filter: blur(9.7px);
+
+  .landing-logo {
     flex: 1;
-    img{
+
+    img {
       height: 60px;
     }
   }
-  .landing-menu{
+
+  .landing-menu {
     display: flex;
     gap: 10px;
-    button{
-      width: 100px;
+
+    button {
+      width: 90px;
       border-radius: 10px;
       box-shadow: none;
-      border: 1px solid black;
+      font-weight: 600;
+      font-size: 1.1rem;
+
+      &:nth-child(1) { 
+        background-color: #017960;
+        color: white;
+        border: none;
+      
+      }
+      &:nth-child(1):hover { 
+        background-color: #033305; 
+      }
+      &:nth-child(2) { 
+        background-color: #f97316;
+        color: white;
+        border: none;
+      
+      }
+      &:nth-child(2):hover { 
+        background-color: #ea580c; 
+      }
     }
   }
 }

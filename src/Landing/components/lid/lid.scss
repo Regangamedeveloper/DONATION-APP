@@ -1,91 +1,56 @@
-.lid{
-    height: 170vh;
-    width:100%;
+.banner-container {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  background: linear-gradient(to right, #3b82f6, #017960); 
+
+  .banner-background {
     position: absolute;
-    .des{
-        width: 600px;
-        position:absolute;
-        z-index: 999;
-        color: aliceblue;
-        top: 20px;
-        text-align: center;
-        margin-left: 350px;
-    }
-    .des h1{
-        font-size:46px;
-        position: relative;
-        text-align: center;
-    }
-    .des p{
-        font-size: 22px;
-        position: relative;
-    }
-    .bot{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding:300px;
-        color: #007B5F;
-    }
-    .bot span{
-        width: 45px;
-        height: 12px;
-        background-color: #007B5F;
-        margin-left: 10px;
-        border-radius: 10px;
-        cursor: pointer;
-        box-shadow: 3px ,2px,2px rgba(73,72,72,0.338);
-    }
-    .transparent{
-      width: 100%;
-      height: 50vh;
-      position: absolute;
-      z-index:"998";
-      top:0;
-      left:0;
-      background-image:linear-gradient(to top,rgba(255,0,0,0),#007B5F);
-    }
-      .lidContainer{
-            /* Basic Styling */
-            width: 90%; /* Adjust width as needed */
-            margin: 50px auto; /* Center the container */
-            padding: 30px; 
-            background-color:whitesmoke; /* Light background color */
-            border-radius: 10px; /* Rounded corners */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            text-align: center; /* Center the heading */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.compassion.com%2Fmultimedia%2Fmake-a-donation-children-in-togo.jpg&f=1&nofb=1&ipt=8190a21f6f92780c2bc40b67dec3b332cb125e1b27cf6eed01e464a27afa2419&ipo=images');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8; 
+    z-index: 1;
+  }
 
-            /* Animation - Customize for your desired slider effect */
-            /* Example: Fade-in animation */
-            animation: fadeIn 1s ease-in-out;
-            
-    .lg {
-      img {
-        height: 90px; // Adjust logo height as needed
+  .banner-content {
+    position: relative;
+    z-index: 2;
+
+    .banner-title {
+      font-size: 4rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .banner-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .banner-button {
+      padding: 1rem 2rem;
+      background-color: #f97316; // Tailwind orange-500
+      border: none;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #ea580c; // Darker shade for hover
       }
     }
-            h1{
-              color: #007B5F; /* Darker text color for contrast */
-              margin-bottom: 20px;
-              
-          }
-        
-        
-            h2{
-            color: #007B5F; /* Darker text color for contrast */
-            margin-bottom: 20px;
-            
-        }
-        @keyframes fadeIn {
-            from {
-              opacity: 0;
-            }
-            to {
-              opacity: 1;
-            }
-          }
-      }
-      
-
-
+  }
 }
