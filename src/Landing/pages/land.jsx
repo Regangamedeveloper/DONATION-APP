@@ -6,20 +6,12 @@ import MediaCover from "../components/mediacover/MediaCover";
 import "./land.scss"
 const Land = ()=>{
     return(
-        <div className="land">
-            <Bar/>
-            <div className="bottom">
+        <div>
+            {/* <Bar/> */}
           <Lid/>
-            </div>
-            <div className="landContainer">
-                <div className="top">
                     <Don/>
-                    </div>
-                    <div className="bottom">
                     <MediaCover/>
                     <Footer/>
-                    </div>
-                    </div>
             </div>
     
             

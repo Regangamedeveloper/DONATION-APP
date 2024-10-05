@@ -1,12 +1,12 @@
 .banner-container {
   position: relative;
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // text-align: center;
   color: white;
-  background: linear-gradient(to right, #3b82f6, #017960); 
+  background: linear-gradient(to right, black, #000807); 
 
   .banner-background {
     position: absolute;
@@ -24,9 +24,18 @@
   .banner-content {
     position: relative;
     z-index: 2;
+  .content{
+    padding: 5rem;
+    text-align: center;
+    background-color: #01796135;
+    margin: 0 auto;
+    border-radius: 50%;
+    width: 40%;
+  }
+ 
 
     .banner-title {
-      font-size: 4rem;
+      font-size: 3.5rem;
       font-weight: bold;
       margin-bottom: 0.5rem;
     }
@@ -37,17 +46,23 @@
     }
 
     .banner-button {
+      margin-left: 10px;
       padding: 1rem 2rem;
-      background-color: #f97316; // Tailwind orange-500
+      background-color: #f97316; 
       border: none;
       color: white;
       font-size: 1rem;
       font-weight: bold;
-      border-radius: 50px;
+      border-radius: 5px;
       cursor: pointer;
       box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
       transition: background-color 0.3s ease;
-
+      &:nth-child(1){
+        background-color: rgb(178, 4, 178); 
+      }
+      &:nth-child(1):hover{
+        background-color: rgb(96, 1, 96); 
+      }
       &:hover {
         background-color: #ea580c; // Darker shade for hover
       }
