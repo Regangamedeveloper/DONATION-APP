@@ -15,6 +15,9 @@ function Login() {
 
   return (
     <div className="login-container">
+      <div className="image-login">
+        
+      </div>
       <div className="login-form">
       <div className="logo">
           {/* Replace with your actual logo */}

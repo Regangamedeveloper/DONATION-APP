@@ -1,20 +1,27 @@
 .signup-container {
     display: flex;
     position: relative;
-    justify-content: center;
-    align-items: center;
+    // justify-content: center;
+    // align-items: center;
     height: 100vh;
-    background-image: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.compassion.com%2Fmultimedia%2Fmake-a-donation-children-in-togo.jpg&f=1&nofb=1&ipt=8190a21f6f92780c2bc40b67dec3b332cb125e1b27cf6eed01e464a27afa2419&ipo=images'); // Replace with your background image
-    background-size: cover;
+    width: 100%;
+    // background-image: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.compassion.com%2Fmultimedia%2Fmake-a-donation-children-in-togo.jpg&f=1&nofb=1&ipt=8190a21f6f92780c2bc40b67dec3b332cb125e1b27cf6eed01e464a27afa2419&ipo=images'); // Replace with your background image
+    // background-size: cover;
+  }
+  .image-signup{
+   background-image: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.compassion.com%2Fmultimedia%2Fmake-a-donation-children-in-togo.jpg&f=1&nofb=1&ipt=8190a21f6f92780c2bc40b67dec3b332cb125e1b27cf6eed01e464a27afa2419&ipo=images'); // Replace with your background image
+   background-size: cover;
+   overlay:rgba(253, 4, 4, 0.2) ;
+   flex: 1;
   }
   
   .signup-form {
     background-color: white;
     padding: 30px;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    width: 400px;
+    width: 500px;
   }
+  
   .logo {
     text-align: center;
     margin-bottom: 30px;

@@ -1,5 +1,6 @@
 import React from 'react';
-import './footer.scss'; // Import the SCSS file
+import './footer.scss';
+import logo from '../../../../src/Admin/images/adra-vertical-logo-998x1024-2675010800.png'
 
 const Footer = () => {
   return (
@@ -7,10 +8,8 @@ const Footer = () => {
       <div className="footer-container">
         <div className="footer-column">
         <div className="fame">
-          <img 
-            src="https://adra.org.nz/wp-content/uploads/2019/11/adra-vertical-logo.png" // Replace with the actual path to your logo 
-            alt="Your Brand" 
-          />
+        <img src={logo} alt=" adra-logo" />
+      
         </div>
           <h3>Address</h3>
           <p>Kireka Hill, Kampala, Uganda</p>
