@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react';
 import './don.scss';
-
-<<<<<<< HEAD
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const cardData = [
   {
@@ -26,37 +25,27 @@ const cardData = [
   },
 ];
 
-export default function MediaCard() {
-  const [expandedCardIndex, ] = useState(null);
+const Don = () => {
+  const [expandedCardIndex, setExpandedCardIndex] = useState(null);
   const navigate = useNavigate(); // Initialize useNavigate
+
   const handleLearnMoreClick = (cardTitle) => {
     // Use cardTitle to determine the navigation path
-    navigate(`/donorhome`);
+    navigate(`/donorhome`); 
   };
-=======
-const Don = () => {
->>>>>>> b864a0807ee76d381a4dae40c512d554a440c24c
+
   return (
     <div className="services-container">
-      <div className="service-container">
-        <img src="https://media.istockphoto.com/id/465426619/photo/close-up-view-of-hand-writing-a-donation-check.jpg?s=1024x1024&w=is&k=20&c=kIPdF8YdVbdHj42tLpMfRTg1QXrW8ni54HXKkqzhjn8=" alt="image 1" />
-        <h1>WHO WE ARE</h1>
-        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid est dignissimos provident pariatur? Natus iure quaerat veniam ducimus voluptates molestias!</p>
+      {cardData.map((card, index) => (
+        <div className="service-container" key={index}>
+          <img src={card.img} alt={card.title} />
+          <h1>{card.title}</h1>
+          <p>{card.description}</p>
+          <button onClick={() => handleLearnMoreClick(card.title)}>Learn More</button>
         </div>
-        <div className="service-container">
-        <img src="https://media.istockphoto.com/id/465426619/photo/close-up-view-of-hand-writing-a-donation-check.jpg?s=1024x1024&w=is&k=20&c=kIPdF8YdVbdHj42tLpMfRTg1QXrW8ni54HXKkqzhjn8=" alt="image 1" />
-        <h1>WHO WE ARE</h1>
-        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid est dignissimos provident pariatur? Natus iure quaerat veniam ducimus voluptates molestias!</p>
-        </div>
-        <div className="service-container">
-        <img src="https://media.istockphoto.com/id/465426619/photo/close-up-view-of-hand-writing-a-donation-check.jpg?s=1024x1024&w=is&k=20&c=kIPdF8YdVbdHj42tLpMfRTg1QXrW8ni54HXKkqzhjn8=" alt="image 1" />
-        <h1>WHO WE ARE</h1>
-        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid est dignissimos provident pariatur? Natus iure quaerat veniam ducimus voluptates molestias!</p>
-        </div>
-      </div>
-      
+      ))}
+    </div>
+  );
+};
 
-  )
-}
-
-export default Don
+export default Don;
