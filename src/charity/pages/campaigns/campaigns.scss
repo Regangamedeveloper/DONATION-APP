@@ -3,44 +3,30 @@ $green-primary: #007B5F;
 $white: #fff;
 .campaigns{
     display: flex;
-    gap: 15px;
-    background-color: whitesmoke;
-    height: 180vh;
+    overflow: hidden;
     .campaignsContainer{
-      background-color: whitesmoke;
-      height: 158vh;
-        flex:6;
-        .top , 
-        .bottom{
-            -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
-padding: 10px;
-margin: 20px;
-display: flex; 
-h1{
-  text-align: center;
-    display: flex;
-    margin-left: 30%;
-    color:#007B5F
- }
- 
-  .searchbar{
-    display: flex;    
-    width: 60%;
-    margin-left: 5px;
-    .MuiTextField-root { 
-      width: 50%;            /* Adjust width as needed */
-      
-      /* Optional: Style the input field itself */
-      input {
-      padding: 15px; /* Add some padding to the input */
-        border-radius: 15px; /* Round the corners */
+      height: 100vh;
+      width: 100%;
+      flex-direction: column; 
+      flex:1;
+      padding-left: 14px; 
+      .top{
+        text-align: center;
+        padding: 5px;
+        h1{
+          font-size: 20px;
+        color: #007B5F;  
+        }
       }
-
- }
+        .bottom{
+        margin-top: 20px;
 }
-.table {
+.table{
+  max-height: 400px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow-y: auto; 
+}
   .tableCell{
     text-align: center;
   }
@@ -76,14 +62,12 @@ h1{
     .tablell {
       font-size: 15px;
       font-weight: bold;
-      background-color:#007B5F;/* Green color */
-      color: white; /* Make text white for better contrast */
-      padding: 8px;
-      text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 100px; 
-  text-align: center;
+      background-color: $green-primary;
+      color: $white;
+      text-align: center;
+      position: sticky; /* Fix the header to the top */
+      top: 0; /* Position it at the top */
+      z-index: 1; /* Ensure it's on top of other elements */
     }
     tbody {
       tr {
@@ -91,14 +75,17 @@ h1{
         &:nth-child(even) {
           background-color: $white; // Alternate row colors
           text-align: center;
+          overflow-y: auto;      
+          }
+          &:hover {
+            background-color: rgba(0, 123, 95, 0.1); // Hover effect on rows
+          }
+      
         }
 
-      }
     }
     
     
-  }
       
-}
 }
 }

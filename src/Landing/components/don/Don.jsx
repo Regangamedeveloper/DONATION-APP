@@ -42,7 +42,7 @@ export default function MediaCard() {
   const navigate = useNavigate(); // Initialize useNavigate
   const handleLearnMoreClick = (cardTitle) => {
     // Use cardTitle to determine the navigation path
-    navigate(`/`);
+    navigate(`/donorhome`);
   };
   return (
     <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>

@@ -47,15 +47,6 @@ const RequestDonation = () => {
 
         <div className="bottom">
           <TableContainer className="table">
-          <div className="searchbar">
-          <TextField
-            label="Search Donors"
-            variant="outlined"
-            value={searchTerm}
-            onChange={handleSearchChange}
-            sx={{ width: "50%", mb: 2 }}
-          />
-          </div>
             <Table>
               <TableHead>
                 <TableRow>

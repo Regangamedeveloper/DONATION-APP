@@ -11,6 +11,7 @@ const AddCampaigns = () => {
     const [name , setName]= useState('');
     const [image , setImage]= useState(null); // Changed to accept the file object
     const [description, setDescription] = useState('');
+    const [objectives,setObjectives]=useState('');
     const [amount, setAmount] =useState('');
     const [endDate, setEndDate] = useState("");
     const [loading ,setLoading] =useState(false);
@@ -60,16 +61,16 @@ const AddCampaigns = () => {
         <div className="addcontainer">
         <Nav/>
         <div className="top">
-            <h1>ADD CAMPAIGN </h1>
+            <h1>New Campaign </h1>
             </div>
        <div className="bottom">
         <div className="items">
 <form>
     <div className="formInput">
-        <label>CampaignName</label>
+        <label>Campaign name</label>
         <input 
         type="text" 
-        placeholder="Compaign Name*"
+        placeholder="Compaign Name"
         value={name}
         onChange={(e)=> setName(e.target.value)}
         />
@@ -83,9 +84,21 @@ const AddCampaigns = () => {
   <label htmlFor="description">Description:</label> 
   <textarea 
     id="description"
+    type="text"
     value={description}
     onChange={(e) => setDescription(e.target.value)}
     placeholder="Enter a detailed description"
+    rows="8" 
+    maxLength="10000" // Limits input to 250 characters
+  />
+</div>
+<div className="formInput">
+  <label htmlFor="description">Campaign Objectives:</label> 
+  <textarea 
+    id="objectives"
+    value={objectives}
+    onChange={(e) => setObjectives(e.target.value)}
+    placeholder="Enter a detailed objectives"
     rows="8" 
     maxLength="10000" // Limits input to 250 characters
   />
@@ -118,8 +131,9 @@ const AddCampaigns = () => {
 </form> 
     </div>
     
-    <Adminfooter/>
+    
     </div>
+    <Adminfooter/>
        </div>
        
         </div>

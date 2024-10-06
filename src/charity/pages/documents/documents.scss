@@ -1,0 +1,82 @@
+.documents {
+    display: flex;
+    height: 100vh; /* Ensure the main container takes full viewport height */
+    width: 100%;   /* Ensure the main container takes full viewport width */
+
+
+.documentsContainer {
+    flex: 1;
+    background-color: white;
+    display: flex;
+    flex-direction: column; 
+}
+
+.bottom {
+    flex: 1; /* Allow the 'bottom' section to grow and fill available space */
+    overflow-y: auto; 
+    display: flex;
+    flex-direction: column; /* Align items vertically by default */
+    align-items: center;    /* Center horizontally */
+    justify-content: flex-start; /* Start content from the top */
+    padding: 20px; /* Add some padding around the content */
+}
+
+  
+    h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #007B5F;
+    }
+  
+    .upload-section {
+      margin-bottom: 20px;
+  
+      .upload-label {
+        display: inline-block;
+        margin-right: 10px;
+        font-weight: 500;
+      }
+  
+      input[type="file"] {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+    }
+  
+    .pdf-viewer {
+      margin-top: 20px;
+      width: 600px;
+      border: 1px solid #ddd;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+  
+      p {
+        margin-top: 10px;
+        font-size: 14px;
+        color: #666;
+      }
+    }
+  
+    .create-excel-section {
+      margin-top: 30px;
+  
+      .create-excel-btn {
+        background-color: #007B5F;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+  
+        &:hover {
+          background-color:#007bff;
+        }
+      }
+    }
+  }
+  

@@ -83,18 +83,8 @@ const Campaigns = () => {
         <div className="top">
           <h1>CAMPAIGN DETAILS</h1>
         </div>
-
         <div className="bottom">
           <TableContainer className="table">
-          <div className="searchbar">
-          <TextField
-            label="Search Campaigns"
-            variant="filled"
-            value={searchTerm}
-            onChange={handleSearchChange}
-            sx={{ width: "50%", mb: 2 }}
-          />
-          </div>
             <Table>
               <TableHead>
                 <TableRow>

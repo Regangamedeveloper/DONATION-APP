@@ -1,20 +1,58 @@
-// bar.scss
 .nav {
-  background-color: #f0f0f0; // Example background color
-  padding: 10px 20px; // Example padding
-  border-bottom: 5px solid rgb(231, 228, 228);
-  .wrapper {
-    display: flex;
-    align-items: center; 
-    justify-content: space-between; // Align logo left, items right
+  height: 15vh; // Adjusted height to make the navbar more spacious
+  border-bottom: 0.5px solid rgb(231, 228, 228);
+  display: flex;
+  align-items: center;
+  font-size: 16px; // Reduced from 30px to fit better
+  color: #555;
+  width: 100%;
 
-    .brand {
-      color: #007B5F;
-      font-size: 20px;
-      img {
-        // Style the logo image as needed
-        max-width: 10%; 
-        height: auto;  
+  .wrapper {
+    width: 100%;
+    padding: 0 20px; // Adjusted padding for better alignment
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+
+    .search {
+      display: flex;
+      align-items: center;
+      border: 0.5px solid lightgray;
+      padding: 5px; // Increased padding for better usability
+      border-radius: 5px;
+
+      input {
+        border: none;
+        outline: none;
+        background: transparent;
+        padding: 5px;
+        &::placeholder {
+          font-size: 12px;
+          color: #888;
+        }
+      }
+    }
+
+    .profileDropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+
+      .dropdownItem {
+        display: block;
+        padding: 10px 15px;
+        color: #333;
+        text-decoration: none;
+
+        &:hover {
+          background-color: #f0f0f0;
+        }
       }
     }
 
@@ -23,30 +61,38 @@
       align-items: center;
 
       .item {
-        margin-left: 20px; // Spacing between items
         display: flex;
         align-items: center;
+        margin-right: 20px;
+        position: relative;
 
         .icon {
-          font-size: 20px; // Adjust icon size
+          font-size: 25px;
+          color: #555;
+        }
+
+        .avatar {
+          width: 40px; // Adjusted avatar size
+          height: 40px;
+          border-radius: 50%;
+          object-fit: cover;
+          cursor: pointer;
         }
 
         .counter {
+          width: 15px;
+          height: 15px;
           background-color: red;
-          color: white;
           border-radius: 50%;
-          padding: 2px 5px;
-          font-size: 12px;
-          margin-left: 5px;
-        }
-
-        .signInButton, 
-        .loginButton {
-          background-color: transparent; // Example 
-          border: none;
-          padding: 8px 12px;
-          cursor: pointer;
-          // ... add more styles as needed
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 10px;
+          font-weight: bold;
+          position: absolute;
+          top: -5px;
+          right: -5px;
         }
       }
     }

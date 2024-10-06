@@ -1,111 +1,123 @@
-$green-primary: #007B5F;
-$white: #fff;
-$gray-light: #f5f5f5;
-@mixin container-styles {
-  padding: 20px;
-  border-radius: 8px;
-  background-color: $white;
-  @include shadow;
-}
-
 .donations {
   display: flex;
-  gap: 15px;
-  position: absolute;
-
+  overflow: hidden;
   .donationsContainer {
-    flex: 6;
-    background-color: whitesmoke;
-    
-    .top,
-    .bottom {
-      -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-      -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-      box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
-      padding: 10px;
-      margin: 20px;
-      display: flex; 
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    padding-left: 14px;  
+    .top {
+      text-align: center;
+      padding: 5px;
 
-      h1{
-        text-align: center;
-          color:#007B5F; 
-          display: flex;
-          margin-left: 25%;
-         
-       }
-        .searchbar{
-          display: flex;    
-          width: 60%;
-          margin-left: 5px;
-          .MuiTextField-root { 
-            width: 50%;            /* Adjust width as needed */
-            
-            /* Optional: Style the input field itself */
-            input {
-            padding: 15px; /* Add some padding to the input */
-              border-radius: 4px; /* Round the corners */
-            }
-      
-       }
+      h1 {
+        font-size: 20px;
+        font-weight: 700;
+        color: #333;
+      }
+    }
+
+    .bottom {
+      margin-top: 20px;
+    }
+
+      .searchbar {
+        margin-bottom: 20px;
+        
+        input {
+          width: 50%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          font-size: 1rem;
+          transition: border-color 0.3s;
+
+          &:focus {
+            outline: none;
+            border-color: #1976d2;
+          }
+        }
       }
 
       .table {
-        height: 100%;
-        .tableCell{
-          text-align: center;
-          // Add a max-width to prevent the table from overflowing its container
-      max-width: 100%; 
-  
-      // Use media queries for better responsiveness on smaller screens
-      @media (max-width: 768px) { 
-        // Make the table horizontally scrollable on smaller screens
-        overflow-x: auto; 
-      }
-        }
-        .status{
-          padding: 5px;
-          border-radius: 5px;
-        
-        &.Active {
-          background-color: #4CAF50; /* Green for Approved */
-        color: white;
-        }
-        &.Pending {
-          background-color: #FFC107; /* Yellow for Pending */
-        color: black;
-        }
-      }
-        .tablell {
-          font-size: 16px;
-          font-weight: bold;
-          background-color: $green-primary;
-          color: $white;
-          word-wrap: break-word;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 100px; 
-  text-align: center;
-  
-        }
+        max-height: 400px;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+       border-radius: 8px;
+        overflow-y: auto; 
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          min-width: 800px; // Ensures proper table spacing when content is small
 
-        // Style the table body (if applicable)
-        tbody {
-          tr {
-            background-color: $gray-light;
+          th, td {
+            padding: 14px;
+            text-align: left;
+            font-size: 14px;
+            white-space: nowrap;
+          }
+
+          th {
+            background-color: #007b5f;
+            color: #fff;
+            font-weight: 600;
+            text-transform: uppercase;
+            position: sticky; // Make header sticky on scroll
+            top: 0;
+            z-index: 1;
+            width: 100%;
+          }
+
+          td {
+            border-bottom: 5px solid #e0e0e0;
+            color: #333;
+
+            &:first-child {
+              font-weight: 600;
+            }
+          }
+
+          tbody tr {
             &:nth-child(even) {
-              background-color: $white; // Alternate row colors
+              background-color: #f9f9f9;
+            }
+
+            &:hover {
+              background-color: #e0f7fa;
             }
           }
         }
       }
+
+      .tableCell {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .status {
+        padding: 7px;
+        border-radius: 16px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-transform: capitalize;
+
+        &.processed {
+          background-color: #4ce90e;
+          color: #3c763d;
+        }
+
+        &.unpaid {
+          background-color: #f2dede;
+          color: #a94442;
+        }
+
+        &.pending {
+          background-color: #fcf8e3;
+          color: #8a6d3b;
+        }
+      }
     }
   }
-}
 
-// Additional styling for responsiveness
-@media screen and (max-width: 768px) {
-  .donations {
-    flex-direction: column; // Stack elements vertically on smaller screens
-  }
-}

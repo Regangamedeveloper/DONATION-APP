@@ -1,97 +1,137 @@
 .sidebar {
-    width: 200px;
-    background-color: #f5f5f5;
-    height: 180vh;
-    padding: 20px;
-    box-shadow: 5px 0 20px rgba(0, 0, 0, 0.1);
+  width: 18%;
+  background-color: #fff;
+  height: 100vh;
+  padding: 3px;
+  box-shadow: 5px 0 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  overflow: hidden;
+
+  .top {
     display: flex;
-    flex-direction: column;
-  
-    .top {
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .tube {
+      width: 50px;
+      height: 50px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+  }
+
+  hr {
+    border: 0.5px solid rgb(231, 228, 228);
+    margin-bottom:10px;
+  }
+
+  .center {
+    flex: 1;
+    overflow-y: auto;
+    position: relative;
+    height: 100%;
+    margin-top: -20px;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      appearance: none;
+      background: none rgba(249, 251, 250, 0);
+      border: none;
+      position: relative;
+      width: 100%;
+      box-sizing: border-box;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      .tube {
-        width: 100px;
-      }
-    }
-  
-    hr {
-      border: 1px solid #ddd;
-      margin-bottom: 20px;
-    }
-  
-    .center {
-      flex: 1;
-  
-      ul {
-        list-style: none;
-        padding: 0;
-        li {
-          a{
-          width: 100%;
+      flex-direction: column;
+
+      li {
+        margin-top: 0.10px;
+        margin-bottom: 0.10px;
+        width: 100%;
+        min-height: 40px;
+        padding: 6px 16px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        font-family: "Euclid Circular A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        text-align: left;
+        text-transform: capitalize;
+        transition: background-color 100ms ease-in-out;
+        font-size: 13px;
+        line-height: 20px;
+        a {
           display: flex;
           align-items: center;
-          padding: 15px 0;
-          &:focus {
-            background-color: #ebfaf7;
-            color:'white';
-            border-radius: 5px;
-            border: none;
-            padding: 15px;
-          }
+          margin-top: -10px;
+          text-decoration: none;
+          color: black;
+          font-weight: 5px;
           &:hover {
-            background-color: #e0e0e0;
-            padding: 15px;
-            cursor: pointer;
+            background-color: #ebfaf7;
+            color: white;
+            border-radius: 10px;
+            border: 10px solid #ebfaf7;
           }
-
-        }
-       
-          .icon {
-            font-size: 20px;
-            margin-right: 15px;
-            color: black;
+          
+          // Style for active link
+          &.active {
+            background-color: #ebfaf7;  // Same hover color to show the active link
+            color: white;  // Change text color on active
+            border-radius: 10px;
             font-weight: bold;
+            border: 10px solid #ebfaf7; 
           }
-  
-          span {
-            font-size: 16px;
-            color:#007B5F;
-            font-weight: bold;
-          }
-        
-
         }
-  
-        .title {
+        .icon {
+          font-size: 20px;
+          margin-right: 15px;
+          color: #333;
           font-weight: bold;
-          font-size: 10px;
-          margin: 20px 0;
         }
+
+        span {
+          font-size: 16px;
+          color: #007B5F;
+          font-weight: bold;
+        }
+      }
+
+      .title {
+        font-size: 12px;
+        color: #888;
+        margin-top: 8px;
+        text-transform: lowercase;
       }
     }
-    .bottom{
-      display: flex;
-      align-items: center;
-      margin: 10px;
+  }
 
-      .colorOption{
-          width: 20px;
-          height: 20px;
-          border-radius: 5px;
-          border: 1px solid #7451f8;
-          cursor: pointer;
-          margin: 5px;
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
 
-          &:nth-child(1){
-              background-color: white;
-          }
-          &:nth-child(2){
-              background-color: #333;
-          }
+    .colorOption {
+      width: 25px;
+      height: 25px;
+      border-radius: 5px;
+      border: 1px solid #7451f8;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
       }
+
+      &:nth-child(1) {
+        background-color: white;
+      }
+      &:nth-child(2) {
+        background-color: #333;
+      }
+    }
+  }
 }
-}
-  
- 

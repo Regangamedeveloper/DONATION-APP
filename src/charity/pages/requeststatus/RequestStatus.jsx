@@ -59,19 +59,18 @@ const RequestStatus = () => {
             <Table>
               <TableHead>
               <TableRow>
-        <TableCell className="tablell">ID</TableCell>
         <TableCell className="tablell">Charity Name</TableCell>
         <TableCell className="tablell">Campaign Name</TableCell>
         <TableCell className="tablell">Compaign Pic</TableCell>
         <TableCell className="tablell">Amount Needed </TableCell>
         <TableCell className="tablell">Donor Name</TableCell>
+        <TableCell className="tablell">Status</TableCell>
         <TableCell className="tablell">Registered Date&Time</TableCell>
       </TableRow>
               </TableHead>
               <TableBody>
                 {filteredRows.map((row) => (
                   <TableRow key={row.id}>
-                    <TableCell className="tableCell">{row.id}</TableCell>
                     <TableCell className="tableCell">{row.name}</TableCell>
                     <TableCell className="tableCell">{row.campaign}</TableCell>
                     <TableCell className="tableCell">
@@ -81,6 +80,11 @@ const RequestStatus = () => {
                     </TableCell>
                     <TableCell className="tableCell">{formatCurrency(row.amount)}</TableCell>
                     <TableCell className="tableCell">{row.donor}</TableCell>
+                    <TableCell className="tableCell">
+                      <span className={`status ${row.status}`}>
+                        {row.status}
+                      </span>
+                    </TableCell>
                     <TableCell className="tableCell">
                       {row.registeredDate}
                     </TableCell>

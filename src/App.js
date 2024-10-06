@@ -1,12 +1,16 @@
 
 import Home from './charity/pages/home/Home';
+import Charityp from './charity/pages/charityp/Charityp';
+import Documents from './charity/pages/documents/Documents';
 import Donations from "./charity/pages/donations/Donations";
 import RequestDonation from "./charity/pages/requestdonation/RequestDonation";
 import AddCampaigns from "./charity/pages/addcampaigns/AddCampaigns";
 import Campaigns from "./charity/pages/campaigns/Campaigns";
 import RequestStatus from "./charity/pages/requeststatus/RequestStatus";
+import Expenditure from './charity/pages/expenditure/Expenditure';
 import Transactions from "./charity/pages/transactions/Transactions";
 import DonorHome from "./donor/pages/donorhome/DonorHome";
+
 import {
   BrowserRouter,
   Routes,
@@ -46,11 +50,14 @@ function App() {
         <Route index element ={<Home/>}/>
         <Route index element ={<Home/>}/>
         {/* <Route path="login" index element ={<Login/>}/> */}
+        <Route path='charityp' index element ={<Charityp/>}/>
+        <Route path='documents' index element={<Documents/>}/>
         <Route path="addcampaigns" index element ={<AddCampaigns/>}/>
         <Route path="campaigns" index element ={<Campaigns/>}/>
         <Route path="donations" index element ={<Donations/>}/>
         <Route path="requestdonation" index element ={<RequestDonation/>}/>
         <Route path="requeststatus" index element ={<RequestStatus/>}/>
+        <Route path="expenditure" index element ={<Expenditure/>}/>
         <Route path="transactions" index element ={<Transactions/>}/>
         <Route path="donorhome" index element ={<DonorHome/>}/>
         <Route path="donate" index element ={<Donate/>}/>

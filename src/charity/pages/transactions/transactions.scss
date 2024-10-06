@@ -3,30 +3,29 @@ $green-primary: #007B5F;
 $white: #fff;
 .transactions{
     display: flex;
-    gap: 15px;
+    overflow: hidden;
     .transactionsContainer{
-      background-color: whitesmoke;
-        flex:6;
-        .top , 
+      background-color: white;
+      height: 100vh;
+      flex-direction: column; 
+      flex:1;
+      display: flex;
+      padding-left: 14px;
+        .top {
+          text-align: center;
+          padding: 5px; 
+    
+          h1 {
+            color:#007B5F;
+            font-size: 20px;
+          }
+        } 
         .bottom{
-            -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
-padding: 10px;
-margin: 20px;
-display: flex; 
- h1{
-  text-align: center;
-    color:#007B5F; 
-    display: flex;
-    margin-left: 30%;
-   
- }
- 
+        margin-top: 14px;
   .searchbar{
     display: flex;    
     width: 60%;
-    margin-left: 700px;
+    text-align: left;
     .MuiTextField-root { 
       width: 50%;            /* Adjust width as needed */
       
@@ -40,23 +39,30 @@ display: flex;
 }
  .table {
   
-   
-.tablell{
+  max-height: 400px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+   border-radius: 8px;
+   overflow-y: auto; /* Enable scrolling for the table */
+
+   .tablell {
     font-size: 15px;
     font-weight: bold;
-    background-color: #007B5F; /* Green color */
-    color: white; /* Make text white for better contrast */
-    padding: 8px;
-    text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 100px; 
+    background-color: $green-primary;
+    color: $white;
+    text-align: center;
+    position: sticky; /* Fix the header to the top */
+    top: 0; /* Position it at the top */
+    z-index: 1; /* Ensure it's on top of other elements */
   }
+
   tbody {
     tr {
       background-color: $gray-light;
       &:nth-child(even) {
         background-color: $white; // Alternate row colors
+      }
+      &:hover {
+        background-color: rgba(0, 123, 95, 0.1); // Hover effect on rows
       }
     }
   }

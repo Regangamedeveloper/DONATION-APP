@@ -7,13 +7,9 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./donations.scss";
-import Button from '@mui/material/Button';
-import Modal from '@mui/material/Modal';
-import Box from '@mui/material/Box';
 import Adminfooter from '../../../Admin/components/Adminfooter';
 import Nav from '../../components/nav/Nav';
 import axios from 'axios'; 
-
 const Donations = () => {
   const [donations, setDonations] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -55,48 +51,7 @@ const Donations = () => {
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
   };
-
-  const handleUpdateClick = (donationId) => {
-    setEditingDonationId(donationId);
-    const donationToUpdate = donations.find((donation) => donation.id === donationId);
-    setEditedDonationData(donationToUpdate);
-    setShowModal(true); 
-  };
-
-  const handleCloseModal = () => {
-    setEditingDonationId(null);
-    setEditedDonationData({});
-    setShowModal(false); 
-  };
-
-  const handleChangeFormData = (event) => {
-    setEditedDonationData({
-      ...editedDonationData,
-      [event.target.name]: event.target.value
-    });
-  };
-
-  // Function to handle saving the updated donation
-  const handleSaveUpdate = async () => {
-    try {
-      const response = await axios.put(`http://localhost:5000/api/donations/${editingDonationId}`, editedDonationData); 
-      // Replace with your actual update endpoint
-      if (response.status === 200) {
-        const updatedDonations = donations.map((donation) =>
-          donation.id === editingDonationId ? response.data : donation
-        );
-        setDonations(updatedDonations);
-        handleCloseModal();
-      } else {
-        console.error('Error updating donation:', response.data);
-        // Handle error (e.g., display an error message)
-      }
-    } catch (error) {
-      console.error('Error updating donation:', error);
-      // Handle error (e.g., display an error message)
-    }
-  };
-
+;
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -164,8 +119,7 @@ const Donations = () => {
                   <TableCell className="tablell">Donated Amount</TableCell>
                   <TableCell className="tablell">Paid On</TableCell>
                   <TableCell className="tablell">Status</TableCell>
-                  <TableCell className="tablell">Spent On</TableCell>
-                  <TableCell className="tablell">Update</TableCell>
+                 
                 </TableRow>
               </TableHead>
                   <TableBody>
@@ -180,11 +134,6 @@ const Donations = () => {
                       <span className={`status ${donation.status.toLowerCase()}`}>{donation.status}</span>
                     </TableCell>
                     <TableCell className="tableCell">{donation.spent}</TableCell>
-                    <TableCell className="tableCell">
-                      <Button variant="contained" color="primary" onClick={() => handleUpdateClick(donation.id)}>
-                        Update
-                      </Button>
-                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -192,135 +141,9 @@ const Donations = () => {
             </Table>
           </TableContainer>
         </div> 
-
-        {/* Update Modal */}
-        <Modal open={showModal} onClose={handleCloseModal}>
-          <Box sx={modalStyle}>
-            <h2>Update Donation</h2>
-
-            <div>
-              <label htmlFor="name">Donor Name:</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={editedDonationData.name || ''}
-                onChange={handleChangeFormData}
-                style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px', marginBottom: '10px' }} 
-              />
-            </div>
-
-            <div>
-              <label htmlFor="charityProgram">Campaign Name:</label>
-              <select
-                id="charityProgram"
-                name="charityProgram"
-                value={editedDonationData.charityProgram || ''}
-                onChange={handleChangeFormData}
-                style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px', marginBottom: '10px' }} 
-              >
-                {campaigns.map((campaign) => (
-                  <option key={campaign.id} value={campaign.id}>
-                    {campaign.name}
-                  </option>
-                ))}
-              </select>
-
-            </div>
-
-            <div>
-              <label htmlFor="paymentMethod">Payment Mode:</label>
-              <input
-                type="text"
-                id="paymentMethod"
-                name="paymentMethod"
-                value={editedDonationData.paymentMethod || ''}
-                onChange={handleChangeFormData}
-                style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px', marginBottom: '10px' }} 
-              />
-            </div>
-
-            <div>
-              <label htmlFor="donationAmount">Donated Amount:</label>
-              <input
-                type="number"
-                id="donationAmount"
-                name="donationAmount"
-                value={editedDonationData.donationAmount || ''}
-                onChange={handleChangeFormData}
-                style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px', marginBottom: '10px' }} 
-              />
-            </div>
-
-            <div>
-              <label htmlFor="paid">Paid On:</label>
-              <input
-                type="date"
-                id="paid"
-                name="paid"
-                value={editedDonationData.timestamp || ''}
-                onChange={handleChangeFormData}
-                style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px', marginBottom: '10px' }} 
-              />
-            </div>
-
-            <div>
-              <label htmlFor="status">Status:</label>
-              <select
-                id="status"
-                name="status"
-                value={editedDonationData.status || ''}
-                onChange={handleChangeFormData}
-                style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px', marginBottom: '10px' }} 
-              >
-                <option value="Pending">Pending</option>
-                <option value="Processed">Processed</option>
-                <option value="Completed">Completed</option>
-              </select>
-            </div>
-
-            <div>
-              <label htmlFor="spent">Spent On:</label>
-              <input
-                type="text"
-                id="spent"
-                name="spent"
-                value={editedDonationData.spent || ''}
-                onChange={handleChangeFormData}
-                style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px', marginBottom: '10px' }} 
-              />
-            </div>
-
-            <button onClick={handleSaveUpdate} 
-              style={{
-                padding: '10px 20px', 
-                backgroundColor: '#4CAF50', 
-                color: 'white',
-                border: 'none',
-                borderRadius: '4px',
-                cursor: 'pointer',
-                marginRight: '10px' 
-              }}
-            >
-              Save
-            </button>
-            <button onClick={handleCloseModal}
-              style={{
-                padding: '10px 20px', 
-                backgroundColor: '#f44336', 
-                color: 'white',
-                border: 'none',
-                borderRadius: '4px',
-                cursor: 'pointer' 
-              }}
-            >
-              Cancel
-            </button>
-          </Box>
-        </Modal>
         <Adminfooter/>
+            </div>
       </div>
-    </div> 
   );
 };
 

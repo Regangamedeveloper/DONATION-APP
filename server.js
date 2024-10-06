@@ -6,6 +6,7 @@ const bodyParser =require("body-parser");
  // Assuming your routes are in a 'routes' folder
 const campaignsRoute =require('./routes/campaigns')
 const donationRoute = require('./routes/donationsRoute');
+const requestdonationRoute = require('./routes/requestdonation');
 
 const app = express();
 app.use(bodyParser.json());
@@ -30,6 +31,7 @@ mongoose
 app.use(express.urlencoded({extended:true}));
 app.use("/campaigns",campaignsRoute);
 app.use('/donations', donationRoute);
+app.use("/requestdonation",requestdonationRoute);
 // Use the router for campaigns routes
 // Use your routes
 // Start the server
