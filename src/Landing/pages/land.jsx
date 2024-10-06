@@ -1,4 +1,7 @@
+import Landbanner from "../components/banner/Landbanner";
 import Bar from "../components/bar/Bar";
+import Callaction from "../components/callaction/Callaction";
+import Compant from "../components/company]/Compant";
 import Don from "../components/don/Don";
 import Footer from "../components/footer/Footer";
 import Lid from "../components/lid/Lid";
@@ -10,6 +13,9 @@ const Land = ()=>{
             {/* <Bar/> */}
           <Lid/>
                     <Don/>
+                    <Landbanner/>
+                    <Callaction/>
+                    <Compant/>
                     <MediaCover/>
                     <Footer/>
             </div>
