@@ -1,4 +1,9 @@
 .menu{
+    position: fixed;
+    top: 15%;
+    bottom: 15%;
+    overflow-y:scroll;
+    width: 200px;
     
     .item{
         display: flex;

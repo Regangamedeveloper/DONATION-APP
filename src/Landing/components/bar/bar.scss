@@ -1,40 +1,47 @@
-// bar.scss
-.bar {
-  background-color:#007B5F ; // Example background color
-  padding: 10px 20px; // Example padding
-  border-bottom: 10px solid rgb(231, 228, 228);
-  .wrapper {
-    display: flex;
-    align-items: center; 
-    justify-content: space-between; // Align logo left, items right
+.landing-nav {
+  display: flex;
+  padding: 1.2rem 2rem;
+  position: sticky;
+  top: 0;
+  width: 100%;
 
-    .log {
-      img {
-        height:70px;
-      }
+  .landing-logo {
+    flex: 1;
+
+    img {
+      height: 65px;
     }
+  }
 
-    .items {
-      display: flex;
-      align-items: center;
-      color: white;
+  .landing-menu {
+    display: flex;
+    gap: 10px;
 
-      .item {
-        margin-left: 20px; // Spacing between items
-        display: flex;
-        align-items: center;
+    button {
+      width: 110px;
+      border-radius: 10px;
+      box-shadow: none;
+      font-weight: 800;
+      font-size: 1.1rem;
 
-        .icon {
-          font-size: 20px; // Adjust icon size
-        }
-        .signInButton, 
-        .loginButton {
-          background-color: white; // Example 
-          border: none;
-          padding: 8px 12px;
-          cursor: pointer;
-          // ... add more styles as needed
-        }
+      &:nth-child(1) { 
+        border: 2px solid #017960; 
+        color: #017960;
+        background-color: inherit;
+      
+      }
+      &:nth-child(1):hover { 
+        border: 2px solid white; 
+        color: white;
+      }
+      &:nth-child(2) { 
+        background-color: #017960;
+        color: white;
+        border: none;
+      
+      }
+      &:nth-child(2):hover { 
+        background-color: #024f40; 
       }
     }
   }

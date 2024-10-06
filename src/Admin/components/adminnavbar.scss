@@ -1,11 +1,14 @@
 // adminnavbar.scss
 
 .adminbar {
+  position: sticky;
+  top:0;
+  z-index: 999;
     display: flex;
     align-items: center;
     justify-content: space-between; // Position logo to the left
     background-color: #fff;
-    padding: 1rem 1.5rem;
+    padding: 0.8rem 1.3rem;
     width: 100%;
     border-bottom: 1px solid rgba(112, 106, 106, 0.1);
     

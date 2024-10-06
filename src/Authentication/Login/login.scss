@@ -1,10 +1,15 @@
 .login-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    // justify-content: center;
+    // align-items: center;
     height: 100vh;
+    width: 100%;
+   
+  }
+  .image-login{
     background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F7e%2Fec%2F7d%2F7eec7dfe0214eafac4e51b863473d8c9.jpg&f=1&nofb=1&ipt=83b599a0cfe282e244f9aad2e1d756e54341560a861e1158a4f1377c806afbfc&ipo=images'); /* Replace with your background image */
     background-size: cover;
+    flex: 1;
   }
   
   .login-form {
@@ -12,7 +17,7 @@
     padding: 30px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    width: 350px;
+    width: 400px;
   }
   
   .logo {

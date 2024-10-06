@@ -1,55 +1,42 @@
-import React, { useState, useRef } from 'react';
-import './mediacover.scss'; // Import your SCSS file
+import React from 'react'
+import './mediacover.scss';
+
 const MediaCover = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const videoRef = useRef(null); 
-
-  const handlePlayPause = () => {
-    if (isPlaying) {
-      videoRef.current.contentWindow.postMessage(
-        '{"event": "command", "func": "pauseVideo"}', 
-        "*" // Target origin: Allow all
-      ); 
-    } else {
-      videoRef.current.contentWindow.postMessage(
-        '{"event": "command", "func": "playVideo"}', 
-        "*" // Target origin: Allow all
-      );
-    }
-    setIsPlaying(!isPlaying);
-  };
-
   return (
-    <section className="mediacover">
-      <div className="story-item">
-        <img src="https://www.unhcr.org/africa/sites/afr/files/styles/landscape_10/public/RF1291882_0.webp?itok=TXwDzFWh" alt="Descriptive alt text for image 1" />
-        <div className="story-text">
-          <h2>Resilience in Karamoja:  A Community Thriving Amidst Challenges</h2>
-          <p>The people of Karamoja, Uganda, have a long history of resilience.  This image shows Karamojong women tending to their garden, showcasing their strength and dedication to providing for their families despite the unique challenges they face.  They are a community with a rich culture and a strong spirit of self-reliance</p>
-        </div>
+    <div className="featured-container">
+      <div className="featured-header">
+        <h1>support our campaigns</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius asperiores molestiae praesentium. Voluptatem consequatur natus porro a illum, in voluptatum minus maiores quos impedit vel culpa cumque excepturi mollitia ipsa.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit eveniet vero consequatur eius modi aliquid sint, itaque iusto natus ducimus!</p>
       </div>
-
-      <div className="story-item">
-        {/* YouTube Embed Code */}
-        <iframe
-  width="560"
-  height="315"
-  src="https://www.youtube.com/embed/Qq5vB82Y8-8" 
-  title="YouTube video player"
-  frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen
-  ref={videoRef}
-  rel="0" // This is the key addition
-></iframe>
-        <div className="story-text">
-          <h2>From Conflict to Hope:  ADRA's Support for DRC Refugees in Uganda</h2>
-          <p>Witness the journey of resilience as Congolese refugees, displaced by conflict, find a new beginning with the help of ADRA in Uganda.  This video highlights their stories, their challenges, and the vital support provided by ADRA to help them rebuild their lives.</p>
+      <div className="featured-campaigns">
+        <div className="featured-campaign">
+        <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.compassion.com%2Fmultimedia%2Fmake-a-donation-children-in-togo.jpg&f=1&nofb=1&ipt=8190a21f6f92780c2bc40b67dec3b332cb125e1b27cf6eed01e464a27afa2419&ipo=images" alt="image on trial" />
+        <div className="featured-intel">
+        <h1>help the needy</h1>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel architecto consequuntur recusandae harum hic iste ipsa perferendis aliquam, iusto temporibus!</p>
+        <button>Donate Now</button>
         </div>
+        </div>
+        <div className="featured-campaign">
+        <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.compassion.com%2Fmultimedia%2Fmake-a-donation-children-in-togo.jpg&f=1&nofb=1&ipt=8190a21f6f92780c2bc40b67dec3b332cb125e1b27cf6eed01e464a27afa2419&ipo=images" alt="image on trial" />
+        <div className="featured-intel">
+        <h1>help the needy</h1>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel architecto consequuntur recusandae harum hic iste ipsa perferendis aliquam, iusto temporibus!</p>
+        <button>Donate Now</button>
+        </div>
+        </div>
+        <div className="featured-campaign">
+        <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.compassion.com%2Fmultimedia%2Fmake-a-donation-children-in-togo.jpg&f=1&nofb=1&ipt=8190a21f6f92780c2bc40b67dec3b332cb125e1b27cf6eed01e464a27afa2419&ipo=images" alt="image on trial" />
+        <div className="featured-intel">
+        <h1>help the needy</h1>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel architecto consequuntur recusandae harum hic iste ipsa perferendis aliquam, iusto temporibus!</p>
+        <button>Donate Now</button>
+        </div>
+        </div>
+        
       </div>
+    </div>
+  )
+}
 
-    </section>
-  );
-};
-
-export default MediaCover;
+export default MediaCover

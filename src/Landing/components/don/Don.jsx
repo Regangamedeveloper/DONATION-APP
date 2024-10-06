@@ -1,18 +1,7 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import CardHeader from '@mui/material/CardHeader';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { red } from '@mui/material/colors'; // Import the 'red' color
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import React from 'react'
+import './don.scss';
 
+<<<<<<< HEAD
 
 const cardData = [
   {
@@ -44,42 +33,30 @@ export default function MediaCard() {
     // Use cardTitle to determine the navigation path
     navigate(`/donorhome`);
   };
+=======
+const Don = () => {
+>>>>>>> b864a0807ee76d381a4dae40c512d554a440c24c
   return (
-    <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-      {cardData.map((card, index) => (
-        <Card key={index} sx={{ maxWidth: 310,bgcolor: '#007B5F',
-          color: 'white' }}>
-          <CardHeader
-            avatar={
-              <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                {card.title.charAt(0)} 
-              </Avatar>
-            }
-            action={
-              <IconButton aria-label="settings" sx={{ color: 'white' }}>
-                <MoreVertIcon /> 
-              </IconButton>
-            }
-            title={card.title} 
-            sx={{ color: 'white' }} 
+    <div className="services-container">
+      <div className="service-container">
+        <img src="https://media.istockphoto.com/id/465426619/photo/close-up-view-of-hand-writing-a-donation-check.jpg?s=1024x1024&w=is&k=20&c=kIPdF8YdVbdHj42tLpMfRTg1QXrW8ni54HXKkqzhjn8=" alt="image 1" />
+        <h1>WHO WE ARE</h1>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid est dignissimos provident pariatur? Natus iure quaerat veniam ducimus voluptates molestias!</p>
+        </div>
+        <div className="service-container">
+        <img src="https://media.istockphoto.com/id/465426619/photo/close-up-view-of-hand-writing-a-donation-check.jpg?s=1024x1024&w=is&k=20&c=kIPdF8YdVbdHj42tLpMfRTg1QXrW8ni54HXKkqzhjn8=" alt="image 1" />
+        <h1>WHO WE ARE</h1>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid est dignissimos provident pariatur? Natus iure quaerat veniam ducimus voluptates molestias!</p>
+        </div>
+        <div className="service-container">
+        <img src="https://media.istockphoto.com/id/465426619/photo/close-up-view-of-hand-writing-a-donation-check.jpg?s=1024x1024&w=is&k=20&c=kIPdF8YdVbdHj42tLpMfRTg1QXrW8ni54HXKkqzhjn8=" alt="image 1" />
+        <h1>WHO WE ARE</h1>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid est dignissimos provident pariatur? Natus iure quaerat veniam ducimus voluptates molestias!</p>
+        </div>
+      </div>
+      
 
-          />
-          <CardMedia
-            sx={{height: 140,color: 'white' }}
-            image={card.img}
-            title={card.title}
-          />
-          <CardContent>
-            <Typography variant="body2" color="white">
-              {card.description}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small"sx={{ color: 'white' }}>Share</Button>
-            <Button size="small"onClick={() => handleLearnMoreClick(card.title)}sx={{ color: 'white' }}>Donate</Button>
-          </CardActions>
-        </Card>
-      ))}
-    </div>
-  );
+  )
 }
+
+export default Don

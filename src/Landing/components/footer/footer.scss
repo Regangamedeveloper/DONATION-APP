@@ -1,13 +1,14 @@
 .footer {
     background-color: #504d4d2a;
-    padding: 30px 0;
+    padding: 30px 20px;
     color: #333;
+    width: 100%;
   
     .footer-container {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      max-width: 1200px;
+      width: 100%;
       margin: 0 auto;
       padding: 0 20px;
     }
@@ -17,7 +18,7 @@
       margin-bottom: 30px;
       .fame {
         img {
-          height: 90px; // Adjust logo height as needed
+          height: 60px; // Adjust logo height as needed
         }
       }
   

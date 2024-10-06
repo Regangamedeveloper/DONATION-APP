@@ -20,6 +20,8 @@ const Signup = () => {
 
   return (
     <div className="signup-container">
+      <div className="image-signup">
+      </div>
       <div className="signup-form">
         <div className="logo">
           <img src={logo} alt="ADRA Logo" />
@@ -65,12 +67,12 @@ const Signup = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <span
+            {/* <span
               className="show-password"
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? <VisibilityOff /> : <Visibility />}
-            </span>
+            </span> */}
           </div>
           <button type="submit" className="green-button">
             Sign Up
