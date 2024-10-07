@@ -1,0 +1,113 @@
+.donate-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+
+  .donate-modal {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    max-height: 80vh;
+    position: relative;
+    .modal-header {
+      h1 {
+        flex-grow: 1;
+        font-size: 35px;
+        text-align: center; 
+        color: #017960;
+        margin-top: 40px;
+      }
+
+      .close-btn {
+        background: none;
+        border: none;
+        color: #ee520a;
+        font-size: 25px;
+        font-weight: bold;
+        cursor: pointer;
+        position: absolute; 
+        top: -7px; 
+        right: -7px; 
+        z-index: 10; 
+      }
+    }
+
+    section {
+      display: flex;
+      flex-direction: column;
+
+      h2 {
+        color: #017960;
+        font-size: 25px;
+        text-align: start;
+      }
+    }
+
+    select,
+    input {
+      padding: 10px;
+      width: 100%;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      color: #444;
+    }
+
+    .mobile-money,
+    .card-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0px;
+    }
+
+    .amount-options {
+      display: flex;
+    }
+
+    button {
+      background-color: #017960;
+      color: #fff;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      font-size: 1rem;
+
+      &:hover {
+        background-color: #014f40;
+      }
+
+      &.btn-mdonate {
+        align-self: start;
+        margin-top: 20px;
+      }
+    }
+
+    /* Add media queries for responsiveness */
+    @media (max-width: 600px) {
+      .donate-modal {
+        width: 100%;
+        padding: 10px;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+}

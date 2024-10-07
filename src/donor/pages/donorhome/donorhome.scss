@@ -1,232 +1,158 @@
-.home-page {
+.landing-page{
   background-color: whitesmoke;
-  //background-image: url('/img/2kids.jpg');
-  background-size: cover;
-  background-position:  center;
-  background-attachment: fixed;
-  
-    .causes {
-      padding: 30px 0;
-  
-      h2 {
-        text-align: center;
-        margin-bottom: 20px;
-        font-size: 36px;
-        color: #000;
-      }
-  
-      .cards {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-  
-        .card {
-          background-color: #fff;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          border-radius: 10px;
-          overflow: hidden;
-          margin: 10px;
-          max-width: 300px;
-          transition: transform 0.3s;
-  
-          &:hover {
-            transform: translateY(-10px);
-          }
-  
-          .card-image {
-            position: relative;
-            width: 100%;
-            height: 200px;
-            overflow: hidden;
-  
-            img {
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-              //transition: opacity 0.3s;
-            }
-  
-            &::before {
-              content: '';
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              background-color: rgba(0, 0, 0, 0.5);
-              opacity: 0;
-              transition: opacity 0.3s;
-            }
 
-            &:hover::before {
-            opacity: 1;
-            }
+  .causes{
+    padding: 30px 0;
   
-            .card-buttons {
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              display: flex;
-              gap: 10px;
-              opacity: 0;
-              transition: opacity 0.3s;
-  
-              &:hover {
-                opacity: 1;
-              }
-  
-              button {
-                padding: 10px 20px;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                font-size: 14px;
-                transition: background-color 0.3s;
-  
-                &.btn-donate {
-                  background-color: rgba(255, 69, 0, 1);
-                  color: #fff;
-  
-                  &:hover {
-                    background-color: rgba(255, 69, 0, 0.8);
-                  }
-                }
-  
-                &.btn-read-more {
-                  background-color: rgba(255, 255, 255, 0.8);
-                  color: rgba(255, 69, 0, 1);
-  
-                  &:hover {
-                    background-color: rgba(255, 255, 255, 0.6);
-                  }
-                }
-              }
-            }
-          }
-  
-          .card-content {
-            padding: 20px;
-  
-            h3 {
-              margin: 0;
-              font-size: 24px;
-              margin-bottom: 10px;
-            }
-  
-            p {
-              margin: 0;
-              color: #666;
-            }
-  
-            .progress {
-              margin-top: 20px;
-  
-              .progress-bar {
-                background-color: rgba(255, 69, 0, 1);
-                height: 10px;
-                border-radius: 5px;
-              }
-  
-              .progress-info {
-                display: flex;
-                justify-content: space-between;
-                margin-top: 10px;
-              }
-            }
-          }
-        }
-
-        .view-all {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-left: 20px;
-          color: #ffffff;
-          width: 70px;
-    
-          span {
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            color: white;
-            transition: color 0.3s;
-    
-            &:hover {
-              color: rgba(255, 69, 0, 1);
-            }
-          }
-        }
-      }
-    }
-    .events-section {
-      padding: 10px 0;
+    h2 {
       text-align: center;
+      margin-bottom: 20px;
+      font-size: 36px;
+      color: #000;
+    }
 
-      h2 {
-        text-align: center;
-        margin-bottom: 20px;
-        font-size: 36px;
-        color: #000;
-      }
-      h3 {
-        text-align: center;
-        margin-bottom: 15px;
-        font-size: 25px;
-        color: #000;
-      }
-      
-      .events-container {
-        display: flex;
-        justify-content: center;
-        margin-top: 40px;
-      
-        .event-card {
-          background-color: #fff;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          border-radius: 10px;
-          overflow: hidden;
-          max-width: 400px;
-          margin: 20px;
-          display: flex;
-          flex-direction: column;
+    .cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      .card {
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+        margin: 10px;
+        max-width: 300px;
+        transition: transform 0.3s;
+
+        &:hover {
+          transform: translateY(-10px);
         }
-        
-        .event-card img {
+
+        .card-image {
+          position: relative;
           width: 100%;
           height: 200px;
-          object-fit: cover;
+          overflow: hidden;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            //transition: opacity 0.3s;
+          }
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s;
+          }
+
+          &:hover::before {
+          opacity: 1;
+          }
+
+          .card-buttons {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            gap: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+
+            &:hover {
+              opacity: 1;
+            }
+
+            button {
+              padding: 10px 20px;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+              font-size: 14px;
+              transition: background-color 0.3s;
+
+              &.btn-donate {
+                background-color: rgba(255, 69, 0, 1);
+                color: #fff;
+
+                &:hover {
+                  background-color: rgba(255, 69, 0, 0.8);
+                }
+              }
+
+              &.btn-read-more {
+                background-color: rgba(255, 255, 255, 0.8);
+                color: rgba(255, 69, 0, 1);
+
+                &:hover {
+                  background-color: rgba(255, 255, 255, 0.6);
+                }
+              }
+            }
+          }
         }
-        
-        .event-details {
+
+        .card-content {
           padding: 20px;
+
+          h3 {
+            margin: 0;
+            font-size: 24px;
+            margin-bottom: 10px;
+          }
+
+          p {
+            margin: 0;
+            color: #666;
+          }
+
+          .progress {
+            margin-top: 20px;
+
+            .progress-bar {
+              background-color: rgba(255, 69, 0, 1);
+              height: 10px;
+              border-radius: 5px;
+            }
+
+            .progress-info {
+              display: flex;
+              justify-content: space-between;
+              margin-top: 10px;
+            }
+          }
         }
-        
-        .event-info {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          margin-bottom: 10px;
-        }
-        
-        .event-info .icon {
+      }
+
+      .view-all {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 20px;
+        color: #ffffff;
+        width: 70px;
+  
+        span {
           font-size: 18px;
-        }
-        
-        .btn-join {
-          background-color: rgba(255, 69, 0, 1);
-          color: #fff;
-          border: none;
-          padding: 10px 20px;
-          border-radius: 5px;
+          font-weight: bold;
           cursor: pointer;
-          margin-top: 20px;
-        }
-        
-        .btn-join:hover {
-          background-color: #E68A36;
+          color: white;
+          transition: color 0.3s;
+  
+          &:hover {
+            color: rgba(255, 69, 0, 1);
+          }
         }
       }
     }
   }
-  
+}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './donorslier.scss';
+import Donate from '../donatemodal/DonateModal';
 
 const slides = [
   {
@@ -21,6 +22,7 @@ const slides = [
 
 const DonorSlier = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isDonateOpen, setIsDonateOpen] = useState(false);
 
   useEffect(() => {
     const slideInterval = setInterval(() => {
@@ -29,6 +31,16 @@ const DonorSlier = () => {
 
     return () => clearInterval(slideInterval);
   }, []);
+
+  // Function to open the Donate modal
+  const handleOpenDonateModal = () => {
+    setIsDonateOpen(true);
+  };
+
+  // Function to close the Donate modal
+  const handleCloseDonateModal = () => {
+    setIsDonateOpen(false);
+  };
 
   return (
     <div className="slier">
@@ -43,7 +55,7 @@ const DonorSlier = () => {
             <h1>{slide.title}</h1>
             <p>{slide.description}</p>
             <div className="slide-buttons">
-              <button className="btn-donate">Donate Now</button>
+              <button className="btn-donate" onClick={handleOpenDonateModal}>Donate Now</button>
               <button className="btn-read-more">Read More</button>
             </div>
           </div>
@@ -58,6 +70,8 @@ const DonorSlier = () => {
           ></span>
         ))}
       </div>
+      {/* Reusable Donate modal component */}
+      <Donate open={isDonateOpen} onClose={handleCloseDonateModal} />
     </div>
   );
 };
