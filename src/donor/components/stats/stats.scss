@@ -1,0 +1,60 @@
+.stats-section {
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/img/2kids.jpg');
+    background-size: cover;
+    background-position: center;
+    
+    padding: 50px 0;
+    text-align: center;
+    color: white;
+    
+    .section-title {
+      font-size: 32px;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+  
+    .stats-container {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap;
+  
+      .stat-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: none;
+        border-radius: 10px;
+        padding: 20px;
+        width: 150px;
+        transition: transform 0.3s;
+  
+        &:hover {
+          transform: scale(1.1);
+        }
+  
+        .stat-icon {
+          img{
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+          }
+        }
+  
+        .stat-value {
+          font-size: 36px;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+  
+        .stat-label {
+          font-size: 18px;
+          //text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+      }
+    }
+  }
+  

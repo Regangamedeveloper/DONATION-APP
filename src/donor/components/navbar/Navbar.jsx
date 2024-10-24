@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './navbar.scss'
-//import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 
 const Navbar = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -30,7 +29,7 @@ const Navbar = () => {
           <Link to="/donorhome" onClick={toggleMenu}>Home</Link>
         </li>
         <li className="navbar-item">
-          <Link to="/donate" onClick={toggleMenu}>Donate</Link>
+          <Link to="/allcampaigns" onClick={toggleMenu}>Allcampaigns</Link>
         </li>
         <div className="navbar-item icon">
         <Link to="/donationrequest" onClick={toggleMenu}>Donation Requests</Link>
