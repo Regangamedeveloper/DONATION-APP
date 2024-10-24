@@ -85,6 +85,21 @@ const Campaigns = () => {
         </div>
         <div className="bottom">
           <TableContainer className="table">
+          <div className="searchbar">
+              <input
+                type="text"
+                placeholder="Search Campaigns"
+                value={searchTerm}
+                onChange={handleSearchChange}
+                style={{
+                  width: '100%', 
+                  padding: '8px', 
+                  border: '1px solid #ccc',
+                  borderRadius: '4px',
+                  marginBottom: '10px'
+                }}
+              />
+            </div>
             <Table>
               <TableHead>
                 <TableRow>
