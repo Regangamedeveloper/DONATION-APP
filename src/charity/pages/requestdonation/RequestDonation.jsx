@@ -50,7 +50,6 @@ const RequestDonation = () => {
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell className="tablell">ID</TableCell>
                   <TableCell className="tablell">Name</TableCell>
                   <TableCell className="tablell">Select Campaign</TableCell>
                   <TableCell className="tablell">Action</TableCell>
@@ -59,8 +58,18 @@ const RequestDonation = () => {
               <TableBody>
                 {filteredRows.map((row) => (
                   <TableRow key={row.id}>
-                    <TableCell className="tableCell">{row.id}</TableCell>
-                    <TableCell className="tableCell">{row.name}</TableCell>
+                    <TableCell className="tableCell">
+                    <select
+                        value={selectedValues[row.name] || "none"}
+                        onChange={(event) => handleChange(event, row.name)}
+                      >
+                        <option value="none">Select Campaign</option>
+                        <option value="option1">DARWIN</option>
+                        <option value="option2">PAUL</option>
+                        <option value="option2">REGAN</option>
+                        <option value="option2">SHAYNAZ</option>
+                        {/* Add more campaign options as needed */}
+                      </select></TableCell>
                     <TableCell className="tableCell">
                       <select
                         value={selectedValues[row.id] || "none"}
