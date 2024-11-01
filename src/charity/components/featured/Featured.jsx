@@ -1,137 +1,174 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import "./featured.scss";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
-const Featured = () => {
+const CampaignProgress = ({ campaign }) => {
+  const { name, targetAmount, raisedAmount, daysLeft, status } = campaign;
+  const progressPercentage = (raisedAmount / targetAmount) * 100;
+
   return (
-    <div className="featured-wrapper">
-      {/* Donation Chart (Card 1) */}
-      <div className="featured">
-        <div className="top">
-          <h1 className="title">Total Donations</h1>
-          <MoreVertIcon fontSize="small" />
-        </div>
-        <div className="bottom">
-          <div className="featuredChart">
-            <CircularProgressbar value={20} text={"20%"} strokeWidth={5} />
-          </div>
-          <p className="title">Total Donations made today</p>
-          <p className="amount">$420</p>
-          <p className="desc">
-            Previous transactions processing. Last donations may not be included.
-          </p>
-          <div className="summary">
-            <div className="item">
-              <div className="itemTitle">Target</div>
-              <div className="itemResult negative">
-                <KeyboardArrowDownIcon fontSize="small" />
-                <div className="resultAmount">$12.4k</div>
-              </div>
-            </div>
-            <div className="item">
-              <div className="itemTitle">Last Week</div>
-              <div className="itemResult positive">
-                <KeyboardArrowUpOutlinedIcon fontSize="small" />
-                <div className="resultAmount">$12.4k</div>
-              </div>
-            </div>
-            <div className="item">
-              <div className="itemTitle">Last Month</div>
-              <div className="itemResult positive">
-                <KeyboardArrowUpOutlinedIcon fontSize="small" />
-                <div className="resultAmount">$12.4k</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Campaign Chart (Card 3) */}
-      <div className="featured">
-  <div className="top">
-    <h1 className="title">Campaigns Progress</h1>
-    <MoreVertIcon fontSize="small" />
-  </div>
-  <div className="bottom">
-    <div className="featuredChart">
-      {/* Showing 80% of active campaigns out of the total */}
-      <CircularProgressbar 
-        value={80} 
-        text={`${80}%`} 
-        strokeWidth={5} 
-        styles={{
-          path: { stroke: "#28a745" }, // Green color for active campaigns
-          text: { fill: "#28a745", fontSize: '20px' }
-        }} 
-      />
-    </div>
-    <p className="title">Total Campaigns Created</p>
-    <p className="amount">150</p>
-    <p className="desc">
-      Some campaigns are still processing, last donations may not be included.
-    </p>
-    <div className="summary">
-      {/* Active Campaigns */}
-      <div className="item">
-        <div className="itemTitle">Active</div>
-        <div className="itemResult positive">
-          <KeyboardArrowUpOutlinedIcon fontSize="small" style={{ color: "green" }} />
-          <div className="resultAmount">120</div>
-        </div>
-      </div>
-      {/* Completed Campaigns */}
-      <div className="item">
-        <div className="itemTitle">Completed</div>
-        <div className="itemResult neutral">
-          <CheckCircleIcon fontSize="small" style={{ color: "#007b5f" }} />
-          <div className="resultAmount">30</div>
-        </div>
+    <div className="campaign-progress">
+      <h3>{name}</h3>
+      <p>Target: UGX {targetAmount.toLocaleString()}</p>
+      <p>Raised: UGX {raisedAmount.toLocaleString()}</p>
+      <p>Days Left: {daysLeft}</p>
+      <p>Status: {status}</p>
+      <div className="progress-bar">
+        <CircularProgressbar
+          value={progressPercentage}
+          text={`${Math.round(progressPercentage)}%`}
+          styles={{
+            path: {
+              stroke: "green", // Blue color for the progress bar
+            },
+            text: {
+              fill: "#333", // Dark gray color for the text
+              fontSize: "16px",
+            },
+            trail: {
+              stroke: "#eee", // Light gray color for the trail
+            },
+          }}
+        />
       </div>
     </div>
-  </div>
-</div>
+  );
+};
 
-      {/* donor Chart (Card 2) */}
-      <div className="featured">
-        <div className="top">
-          <h1 className="title">Target Number of Donors</h1>
-          <MoreVertIcon fontSize="small" />
+const CampaignDashboard = ({ campaigns }) => {
+  const [filter, setFilter] = useState("all");
+  const [filteredCampaigns, setFilteredCampaigns] = useState(campaigns);
+
+  useEffect(() => {
+    setFilteredCampaigns(
+      filter === "all"
+        ? campaigns
+        : campaigns.filter((campaign) => campaign.status === filter)
+    );
+  }, [filter, campaigns]);
+
+  const totalRaised = campaigns.reduce(
+    (acc, campaign) => acc + campaign.raisedAmount,
+    0
+  );
+
+  return (
+    <div className="featured">
+      <h2>CAMPAIGN DASHBOARD</h2>
+      <div className="filter-container">
+          <label>Filter by Status:</label>
+          <select onChange={(e) => setFilter(e.target.value)}>
+            <option value="all">All</option>
+            <option value="active">Active</option>
+            <option value="completed">Completed</option>
+          </select>
         </div>
-        <div className="bottom">
-          <div className="featuredChart">
-            <CircularProgressbar value={56} text={"56%"} strokeWidth={5} />
-          </div>
-          <p className="title">Total number of Donors Available
-          </p>
-          <p className="amount">150</p>
-          <p className="desc">
-            Previous transactions processing. Last donations may not be included.
-          </p>
-          <div className="summary">
-            <div className="item">
-              <div className="itemTitle">Active</div>
-              <div className="itemResult positive">
-                <KeyboardArrowUpOutlinedIcon fontSize="small" />
-                <div className="resultAmount">120</div>
-              </div>
-            </div>
-            <div className="item">
-              <div className="itemTitle">dormant</div>
-              <div className="itemResult negative">
-                <KeyboardArrowDownIcon fontSize="small" />
-                <div className="resultAmount">30</div>
-              </div>
-            </div>
-          </div>
+        <div className="total-raised">
+          <p>Total Raised: UGX {totalRaised.toLocaleString()}</p>
+        </div>
+      <div className="campaign-dashboard">
+        <div className="campaigns">
+          {filteredCampaigns.map((campaign) => (
+            <CampaignProgress key={campaign.id} campaign={campaign} />
+          ))}
         </div>
       </div>
     </div>
   );
 };
 
-export default Featured;
+// Example usage:
+const campaigns = [
+  {
+    id: 1,
+    name: "Campaign A",
+    targetAmount: 50000000,
+    raisedAmount: 1000000,
+    daysLeft: 10,
+    status: "active",
+  },
+  {
+    id: 2,
+    name: "Campaign B",
+    targetAmount: 20000000,
+    raisedAmount: 2000000,
+    daysLeft: 56,
+    status: "active",
+  },
+  {
+    id: 3,
+    name: "Campaign C",
+    targetAmount: 20000000,
+    raisedAmount: 20000000,
+    daysLeft: 0,
+    status: "completed",
+  },
+  {
+    id: 4,
+    name: "Campaign D",
+    targetAmount: 20000000,
+    raisedAmount: 20000000,
+    daysLeft: 0,
+    status: "completed",
+  },
+  {
+    id: 5,
+    name: "Campaign E",
+    targetAmount: 20000000,
+    raisedAmount: 20000,
+    daysLeft: 0,
+    status: "active",
+  },
+  {
+    id: 6,
+    name: "Campaign F",
+    targetAmount: 20000000,
+    raisedAmount: 20000,
+    daysLeft: 67,
+    status: "active",
+  },
+  {
+    id: 7,
+    name: "Campaign K",
+    targetAmount: 20000000,
+    raisedAmount: 20000000,
+    daysLeft: 0,
+    status: "completed",
+  },
+  {
+    id: 8,
+    name: "Campaign P",
+    targetAmount: 20000000,
+    raisedAmount: 20000000,
+    daysLeft: 0,
+    status: "completed",
+  },
+  {
+    id: 9,
+    name: "Campaign R",
+    targetAmount: 20000000,
+    raisedAmount: 20000000,
+    daysLeft: 0,
+    status: "completed",
+  },
+  {
+    id: 10,
+    name: "Campaign E",
+    targetAmount: 20000000,
+    raisedAmount: 20000000,
+    daysLeft: 0,
+    status: "completed",
+  },
+ 
+];
+
+const App = () => (
+  <div>
+    <CampaignDashboard campaigns={campaigns} />
+  </div>
+);
+
+export default App;
