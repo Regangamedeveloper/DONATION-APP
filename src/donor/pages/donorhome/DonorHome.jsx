@@ -6,6 +6,7 @@ import Footer from '../../../Landing/components/footer/Footer'
 import DonorSlier from '../../components/donorslier/DonorSlier'
 import Donate from '../../components/donatemodal/DonateModal'
 import Stats from '../../components/stats/Stats'
+import DonorFeedback from '../../components/donorfeedback/DonorFeedback'
 
 
 const DonorHome = () => {
@@ -93,6 +94,7 @@ const DonorHome = () => {
       {/* Reusable Donate modal component */}
       <Donate open={isDonateOpen} onClose={handleCloseDonateModal} />
       <Stats/>
+      <DonorFeedback/>
       <Footer/>
     </div>
   )

@@ -105,6 +105,10 @@ const ReadMore = () => {
   // State to manage the visibility of the Donate modal
   const [isDonateOpen, setIsDonateOpen] = useState(false);
 
+  // state ot manage rating and commenting
+  const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState("");
+
   // Function to open the Donate modal
   const handleOpenDonateModal = () => {
     setIsDonateOpen(true);
@@ -121,6 +125,18 @@ const ReadMore = () => {
   if (!campaign) {
     return <div>Campaign not found</div>;
   }
+
+  //function to handle rating and commenting
+  const handleRatingChange = (value) => setRating(value);
+  const handleCommentChange = (e) => setComment(e.target.value);
+
+  //submit function
+  const handleSubmitFeedback = () => {
+    console.log("Submitted Rating:", rating);
+    console.log("Submitted Comment:", comment);
+    setRating(0);
+    setComment("");
+  };
 
   return (
     <div className="read-more-page">
@@ -204,6 +220,32 @@ const ReadMore = () => {
           <img src="/images/redcross.png" alt="Red Cross" />
           <img src="/images/wateraid.png" alt="WaterAid" />
         </div>
+      </section>
+
+      {/* Rating Section */}
+      <section className="rating-section">
+        <h2>Rate the Campaign</h2>
+        <div className="rating-container">
+          {[1, 2, 3, 4, 5].map((star) => (
+            <label
+              key={star}
+              className={rating >= star ? "selected" : ""}
+              onClick={() => handleRatingChange(star)}
+            >
+              ★
+            </label>
+          ))}
+        </div>
+        <div className="comment-box">
+          <textarea
+            placeholder="Leave your comment here..."
+            value={comment}
+            onChange={handleCommentChange}
+          />
+        </div>
+        <button className="submit-button" onClick={handleSubmitFeedback}>
+          Submit Feedback
+        </button>
       </section>
       <Footer/>
       
