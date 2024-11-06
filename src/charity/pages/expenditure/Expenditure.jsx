@@ -139,9 +139,9 @@ const Expenditure = () => {
         <Nav />
         <div className="top">
           <h1>Expenditure Details</h1>
-          <button variant="contained" onClick={() => handleOpen(null)}>
+          <Button sx={{ backgroundColor: '#007b5f', color: 'white' }} variant="contained" onClick={() => handleOpen(null)}>
             Add Expenditure
-          </button>
+          </Button>
         </div>
 
         {/* Modal */}
@@ -202,9 +202,20 @@ const Expenditure = () => {
               fullWidth
               margin="normal"
             />
-            <Button variant="contained" onClick={addExpenditure}>
-              {editingRow ? "Update" : "Add"} Expenditure
-            </Button>
+          <Button
+  sx={{
+    backgroundColor: '#007b5f',
+    color: 'white',
+    '&:hover': {
+      backgroundColor: 'green', // Set hover color here
+    },
+  }}
+  variant="contained"
+  onClick={addExpenditure}
+>
+  {editingRow ? "Update" : "Add"} Expenditure
+</Button>
+
           </Box>
         </Modal>
 

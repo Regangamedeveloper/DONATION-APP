@@ -12,10 +12,10 @@ const CampaignProgress = ({ campaign }) => {
   return (
     <div className="campaign-progress">
       <h3>{name}</h3>
-      <p>Target: UGX {targetAmount.toLocaleString()}</p>
-      <p>Raised: UGX {raisedAmount.toLocaleString()}</p>
+      <p >Target: UGX  <span className={`targetAmount ${targetAmount}`}>{targetAmount}</span></p>
+      <p >Raised: UGX <span className={`raisedAmount ${raisedAmount}`}>{raisedAmount}</span></p>
       <p>Days Left: {daysLeft}</p>
-      <p>Status: {status}</p>
+      <p>Status <span className={`status ${status}`}>{status}</span></p>
       <div className="progress-bar">
         <CircularProgressbar
           value={progressPercentage}
@@ -59,7 +59,7 @@ const CampaignDashboard = ({ campaigns }) => {
     <div className="featured">
       <h2>CAMPAIGN DASHBOARD</h2>
       <div className="filter-container">
-          <label>Filter by Status:</label>
+          <label style={{ color:"green" }}>Filter by Status:</label>
           <select onChange={(e) => setFilter(e.target.value)}>
             <option value="all">All</option>
             <option value="active">Active</option>
@@ -67,7 +67,7 @@ const CampaignDashboard = ({ campaigns }) => {
           </select>
         </div>
         <div className="total-raised">
-          <p>Total Raised: UGX {totalRaised.toLocaleString()}</p>
+          <p>Total Raised: UGX<span className={` totalRaised ${ totalRaised}`}>{  totalRaised}</span></p>
         </div>
       <div className="campaign-dashboard">
         <div className="campaigns">

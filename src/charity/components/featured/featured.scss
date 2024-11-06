@@ -14,11 +14,26 @@
   background-color: white;
   font-family: sans-serif;
   width: 100%;
-
+  .totalRaised {
+    align-items: center;
+    color: green;
+    font-weight: bold;
+  }
+  p {
+    margin-left: 10px;
+    font-weight: bold;
+  }
   h2 {
     margin-bottom: 10px;
-    color:green;
+    color:#007B5F;
+    font-size: larger;
   }
+  h3 {
+    margin-bottom: 10px;
+    color:#007B5F;
+    font-weight: bold;
+  }
+
 
   .campaign-dashboard {
     display: flex;
@@ -30,34 +45,33 @@
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 
 
-    .total-raised {
+    .totalRaised {
       display: flex;
       align-items: center;
       margin-bottom: 20px;
+      color: green;
+    }
 
       p {
-        color: #007B5F;
         margin-left: 10px;
         font-weight: bold;
       }
-    }
+    
 
     .filter-container {
       display: flex;
-      align-items: center;
       margin-bottom: -5px;
-
-      label {
-        margin-right: 10px;
-      }
+      align-items: flex-start;
+    }
 
       select {
         padding: 5px;
         border: 1px solid #ccc;
         border-radius: 5px;
         appearance: none;
+
       }
-    }
+    
 
     .campaigns {
       display: flex;
@@ -69,19 +83,40 @@
         background-color: #fff;
         border-radius: 8px;
         padding: 20px;
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
         width: 100%;
         max-width: 300px; /* Restrict max width */
         box-sizing: border-box; /* Ensures padding doesn't add to width */
       }
     }
     
-        h3 {
-          margin-bottom: 10px;
-        }
 
         p {
           margin-bottom: 5px;
+          
+        }
+        .raisedAmount{
+          padding: 2px;
+          border-radius: 5px;
+          color: red;
+        }
+        .targetAmount{
+          padding: 2px;
+          border-radius: 5px;
+          color:green;
+        }
+        .status {
+          padding: 5px;
+          border-radius: 5px;
+      
+          &.active {
+            background-color: #4CAF50; /* Green for Approved */
+      color: white;
+          }
+          &.completed{
+            background-color: #F44336; /* Red for Rejected */
+      color: white;
+          }
         }
 
         .progress-bar {
@@ -107,7 +142,7 @@
             width: 80%;
             height: 80%;
             border-radius: 50%;
-            background-color: green;
+            background-color: blue;
             position: absolute;
             top: 10%;
             left: 10%;
