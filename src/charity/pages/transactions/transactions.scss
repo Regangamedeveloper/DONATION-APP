@@ -18,32 +18,37 @@ $white: #fff;
           h1 {
             color:#007B5F;
             font-size: 20px;
+            margin-right: 850px;
           }
         } 
         .bottom{
-        margin-top: 14px;
-  .searchbar{
-    display: flex;    
-    width: 60%;
-    text-align: left;
-    .MuiTextField-root { 
-      width: 50%;            /* Adjust width as needed */
-      
-      /* Optional: Style the input field itself */
-      input {
-      padding: 15px; /* Add some padding to the input */
-        border-radius: 4px; /* Round the corners */
-      }
-
- }
-}
+        margin-top: 20px;
+        .searchbar {
+          margin-bottom: 20px;
+          width: 100%;
+          display: flex;
+          text-align: left;
+          
+          input {
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+  
+            &:focus {
+              outline: none;
+              border-color: #1976d2;
+            }
+          }
+        }
+  
  .table {
   
   max-height: 400px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
    border-radius: 8px;
    overflow-y: auto; /* Enable scrolling for the table */
-
    .tablell {
     font-size: 15px;
     font-weight: bold;

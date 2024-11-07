@@ -15,7 +15,9 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button } from "@mui/material";
 import MenuItem from '@mui/material/MenuItem';
-import {  Input, InputLabel } from '@mui/material';
+import {  InputLabel } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close'
+import { IconButton } from '@mui/material';
 
 const Expenditure = () => {
   const [rows, setRows] = useState([
@@ -151,6 +153,25 @@ const Expenditure = () => {
         >
           
           <Box className="modal-box">
+            {/* Close Button */}
+            <IconButton
+            onClick={handleClose}
+            sx={{
+              position: 'absolute',
+              top: 8,
+              right: 8,
+              color: 'gray',
+              backgroundColor: 'white',
+              '&:hover': {
+                backgroundColor: 'red'
+              },
+              width: 23,
+              height: 23,
+              boxShadow: 1,
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
           <TextField
             select
             label="Campaign"
@@ -207,7 +228,7 @@ const Expenditure = () => {
     backgroundColor: '#007b5f',
     color: 'white',
     '&:hover': {
-      backgroundColor: 'green', // Set hover color here
+      backgroundColor: '#005f3e', // Set hover color here
     },
   }}
   variant="contained"

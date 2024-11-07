@@ -22,7 +22,7 @@ const Sidebar = () => {
             <hr />
             <div className="center">
                 <ul>
-                    <p className="title">MENUe</p>
+                    <p className="title">MENU</p>
                     <li>
                         <NavLink exact to="/" activeClassName="active" style={{ textDecoration: "none" }}>
                             <HomeIcon className="icon" />

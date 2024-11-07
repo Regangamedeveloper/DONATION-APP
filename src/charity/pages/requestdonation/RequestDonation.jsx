@@ -10,19 +10,32 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import { rows as initialRows } from "../../components/request"; 
+import { rows as initialRows } from "../../components/request";
 import Adminfooter from "../../../Admin/components/Adminfooter";
 import Nav from "../../components/nav/Nav";
+
 const RequestDonation = () => {
   const [selectedValues, setSelectedValues] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
   const [rows] = useState(initialRows);
 
   const handleChange = (event, rowId) => {
-    setSelectedValues({
-      ...selectedValues,
-      [rowId]: event.target.value,
-    });
+    const value = event.target.value;
+    
+    // Check if "All Donors" was selected
+    if (value === "all") {
+      // Select all donor options for this row
+      setSelectedValues({
+        ...selectedValues,
+        [rowId]: ["option1", "option2", "option3", "option4"], // Adjust according to available options
+      });
+    } else {
+      // Set the selected specific donor
+      setSelectedValues({
+        ...selectedValues,
+        [rowId]: value,
+      });
+    }
   };
 
   const handleSearchChange = (event) => {
@@ -40,7 +53,7 @@ const RequestDonation = () => {
     <div className="requestdonation">
       <Sidebar />
       <div className="requestdonationContainer">
-       <Nav/>
+        <Nav />
         <div className="top">
           <h1>REQUEST DONATION DETAILS</h1>
         </div>
@@ -59,27 +72,30 @@ const RequestDonation = () => {
                 {filteredRows.map((row) => (
                   <TableRow key={row.id}>
                     <TableCell className="tableCell">
-                    <select
+                      <select
                         value={selectedValues[row.name] || "none"}
                         onChange={(event) => handleChange(event, row.name)}
                       >
-                        <option value="none">Select Campaign</option>
+                        <option value="none">Select Donor</option>
+                        <option value="all">All Donors</option> {/* New "All Donors" option */}
                         <option value="option1">DARWIN</option>
                         <option value="option2">PAUL</option>
-                        <option value="option2">REGAN</option>
-                        <option value="option2">SHAYNAZ</option>
+                        <option value="option3">REGAN</option>
+                        <option value="option4">SHAYNAZ</option>
                         {/* Add more campaign options as needed */}
-                      </select></TableCell>
+                      </select>
+                    </TableCell>
                     <TableCell className="tableCell">
                       <select
                         value={selectedValues[row.id] || "none"}
                         onChange={(event) => handleChange(event, row.id)}
                       >
                         <option value="none">Select Campaign</option>
+                        <option value="all">All Campaigns</option> {/* New "All Donors" option */}
                         <option value="option1">Education</option>
                         <option value="option2">Health</option>
-                        <option value="option2">land</option>
-                        <option value="option2">Water</option>
+                        <option value="option3">Land</option>
+                        <option value="option4">Water</option>
                         {/* Add more campaign options as needed */}
                       </select>
                     </TableCell>
@@ -94,7 +110,7 @@ const RequestDonation = () => {
             </Table>
           </TableContainer>
         </div>
-        <Adminfooter/>
+        <Adminfooter />
       </div>
     </div>
   );

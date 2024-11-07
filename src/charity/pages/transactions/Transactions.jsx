@@ -44,13 +44,19 @@ const Transactions = () => {
         <div className="bottom">
           <TableContainer className="table">
           <div className="searchbar">
-          <TextField
-            label="Search Transactions"
-            variant="outlined"
-            value={searchTerm}
-            onChange={handleSearchChange}
-            sx={{ width: "", mb: 1 }}
-          />
+          <input
+                type="text"
+                placeholder="Search Donations"
+                value={searchTerm}
+                onChange={handleSearchChange}
+                style={{
+                  width: '100%', 
+                  padding: '8px', 
+                  border: '1px solid #ccc',
+                  borderRadius: '4px',
+                  marginBottom: '10px'
+                }}
+              />
           </div>
             <Table>
               <TableHead>

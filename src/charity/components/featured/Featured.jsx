@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import "./featured.scss";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
@@ -59,7 +58,7 @@ const CampaignDashboard = ({ campaigns }) => {
     <div className="featured">
       <h2>CAMPAIGN DASHBOARD</h2>
       <div className="filter-container">
-          <label style={{ color:"green" }}>Filter by Status:</label>
+          <label style={{ color:"green", marginLeft:'800px' }}>Filter by Status:</label>
           <select onChange={(e) => setFilter(e.target.value)}>
             <option value="all">All</option>
             <option value="active">Active</option>

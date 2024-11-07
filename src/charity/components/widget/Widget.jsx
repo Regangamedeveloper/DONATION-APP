@@ -3,7 +3,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 import TableRowsIcon from '@mui/icons-material/TableRows';
-
+import { NavLink } from "react-router-dom";  
 const Widget = ({ type }) => {
   let data;
 
