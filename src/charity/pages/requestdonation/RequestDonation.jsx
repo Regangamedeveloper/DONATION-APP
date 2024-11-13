@@ -63,7 +63,7 @@ const RequestDonation = () => {
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell className="tablell">Name</TableCell>
+                  <TableCell className="tablell">Select Donor</TableCell>
                   <TableCell className="tablell">Select Campaign</TableCell>
                   <TableCell className="tablell">Action</TableCell>
                 </TableRow>
@@ -82,7 +82,7 @@ const RequestDonation = () => {
                         <option value="option2">PAUL</option>
                         <option value="option3">REGAN</option>
                         <option value="option4">SHAYNAZ</option>
-                        {/* Add more campaign options as needed */}
+                        {/* Add more donor options as needed */}
                       </select>
                     </TableCell>
                     <TableCell className="tableCell">
@@ -100,7 +100,8 @@ const RequestDonation = () => {
                       </select>
                     </TableCell>
                     <TableCell className="tableCell">
-                      <Button variant="contained" color="primary">
+       
+                      <Button variant="contained" sx={{backgroundColor:'#007b5f'}}>
                         Request
                       </Button>
                     </TableCell>

@@ -24,6 +24,22 @@ $white: #fff;
     .bottom {
       margin-top: 20px;
       
+      
+      button {
+        padding: 5px;
+        background-color: #007b5f;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 15px;
+
+        &:hover {
+          background-color:#005f3e;
+        }
+      }
+
+      
       .searchbar {
         .MuiTextField-root {
           width: 50%;

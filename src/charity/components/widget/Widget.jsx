@@ -3,12 +3,12 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 import TableRowsIcon from '@mui/icons-material/TableRows';
-import { NavLink } from "react-router-dom";  
+import { Link } from "react-router-dom"; 
 const Widget = ({ type }) => {
   let data;
 
   //temporary
-  const amount = 100;
+  const amount = 7000000;
   const diff = 20;
 
   switch (type) {
@@ -16,8 +16,14 @@ const Widget = ({ type }) => {
       data = {
         title: "DONORS",
         isMoney: false,
-        link: "See all donors",
+        link: (
+          <Link to="/requestdonation"  style={{width:'max-content' , fontSize:'12px' ,borderBottom:'1px solid gray'}}>
+           See all donors
+          </Link>
+          
+        ),
         icon: (
+          <Link to="/requestdonation" style={{ display: 'flex', alignItems: 'flex-end' ,alignSelf:'flex-end' }}>
           <PersonOutlinedIcon
             className="icon"
             style={{
@@ -25,6 +31,7 @@ const Widget = ({ type }) => {
               backgroundColor: "rgba(255, 0, 0, 0.2)",
             }}
           />
+            </Link>
         ),
       };
       break;
@@ -32,8 +39,13 @@ const Widget = ({ type }) => {
       data = {
         title: "CAMPAIGNS",
         isMoney: false,
-        link: "View all campaigns",
+        link: (
+          <Link to="/campaigns"  style={{width:'max-content' , fontSize:'12px' ,borderBottom:'1px solid gray'}}>
+            View all campaigns
+          </Link>
+        ),
         icon: (
+          <Link to="/campaigns" style={{ display: 'flex', alignItems: 'flex-end' ,alignSelf:'flex-end' }}>
           <TableRowsIcon
             className="icon"
             style={{
@@ -41,6 +53,7 @@ const Widget = ({ type }) => {
               color: "goldenrod",
             }}
           />
+             </Link>
         ),
       };
       break;
@@ -48,12 +61,18 @@ const Widget = ({ type }) => {
       data = {
         title: "DONATIONS",
         isMoney: true,
-        link: "View all donations",
+        link: (
+          <Link to="/donations"  style={{width:'max-content' , fontSize:'12px' ,borderBottom:'1px solid gray'}}>
+         View all donations
+        </Link>
+      ),
         icon: (
+<Link to="/donations" style={{ display: 'flex', alignItems: 'flex-end' ,alignSelf:'flex-end' }}>
           <MonetizationOnOutlinedIcon
             className="icon"
             style={{ backgroundColor: "rgba(0, 128, 0, 0.2)", color: "green" }}
           />
+          </Link>
         ),
       };
       break;
